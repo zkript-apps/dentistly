@@ -1,4 +1,4 @@
-export interface T_User {
+export interface IUser {
   clinicId: string;
   username: string;
   email: string;
