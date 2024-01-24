@@ -1,4 +1,4 @@
-interface T_BackendResponse {
+interface IBackendResponse {
   error: boolean;
   message?: string;
   item?: string | object;
@@ -8,10 +8,10 @@ interface T_BackendResponse {
   currPage?: number;
 }
 
-export type T_ResponseParams = Omit<T_BackendResponse, "error">;
+export type T_ResponseParams = Omit<IBackendResponse, "error">;
 
 export class ResponseService {
-  private config: T_BackendResponse;
+  private config: IBackendResponse;
 
   constructor() {
     this.config = {
@@ -19,7 +19,7 @@ export class ResponseService {
     };
   }
 
-  success(responseParams?: T_ResponseParams): T_BackendResponse {
+  success(responseParams?: T_ResponseParams): IBackendResponse {
     return {
       ...this.config,
       ...responseParams,
@@ -27,7 +27,7 @@ export class ResponseService {
     };
   }
 
-  error(responseParams?: T_ResponseParams): T_BackendResponse {
+  error(responseParams?: T_ResponseParams): IBackendResponse {
     return {
       ...this.config,
       ...responseParams,

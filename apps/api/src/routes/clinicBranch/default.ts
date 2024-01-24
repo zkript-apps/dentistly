@@ -1,11 +1,8 @@
 import { Request, Response } from "express";
-import {
-  REQUIRED_VALUE_EMPTY,
-  UNKNOWN_ERROR_OCCURRED,
-} from "../../utils/constants";
 import { ResponseService } from "../../common/services/response";
 import clinicBranch from "../../models/clinicBranch";
 import clinic from "../../models/clinic";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "@/common/utils/constants";
 
 const response = new ResponseService();
 export const getAllBranches = async (req: Request, res: Response) => {
@@ -114,7 +111,7 @@ export const addBranch = async (req: Request, res: Response) => {
       const createBranch = await newBranch.save();
       res.json(
         response.success({
-          item: newBranch,
+          item: createBranch,
           allItemCount: 1,
           message: "Branch successfully created",
         }),
