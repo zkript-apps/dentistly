@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import { ResponseService } from "../../common/services/response";
 import clinicBranch from "../../models/clinicBranch";
 import clinic from "../../models/clinic";
-import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "@/common/utils/constants";
+import {
+  REQUIRED_VALUE_EMPTY,
+  UNKNOWN_ERROR_OCCURRED,
+} from "@/common/utils/constants";
 
 const response = new ResponseService();
 export const getAllBranches = async (req: Request, res: Response) => {
