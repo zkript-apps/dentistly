@@ -1,49 +1,48 @@
-import mongoose from 'mongoose'
-const { Schema } = mongoose 
-
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const contactInfo = new Schema({
-    name: String,
-    contactNumber: String,
-    relationship: String,
-})
+  name: String,
+  contactNumber: String,
+  relationship: String,
+});
 
 const patient = new Schema({
-    lastName: String,
-    firstName: String,
-    middleName: String,
-    DoB: {
-        type: Date,
-        require: true,
-    },
-    age: Number,
-    gender: {
-        type: String,
-        enum:['Male', 'Female']
-    },
-    address: String,
-    status: {
-        type: String,
-        enum:['Married', 'Single', 'Divorced']
-    },
-    clinic: {
-        type: mongoose.Types.ObjectId,
-        ref: "Clinic",
-    },
-    relativesContactInfo: contactInfo,
-    createdAt: {
-        type: Date,
-        require: false,
-    },
-    updatedAt: {
-        type: Date,
-        require: false,
-    },
+  lastName: String,
+  firstName: String,
+  middleName: String,
+  DoB: {
+    type: Date,
+    require: true,
+  },
+  age: Number,
+  gender: {
+    type: String,
+    enum: ["Male", "Female"],
+  },
+  address: String,
+  status: {
+    type: String,
+    enum: ["Married", "Single", "Divorced"],
+  },
+  clinic: {
+    type: mongoose.Types.ObjectId,
+    ref: "Clinic",
+  },
+  relativesContactInfo: contactInfo,
+  createdAt: {
+    type: Date,
+    require: false,
+  },
+  updatedAt: {
+    type: Date,
+    require: false,
+  },
 
-    deletedAt: {
-        type: Date,
-        require: false,
-    }
-})
+  deletedAt: {
+    type: Date,
+    require: false,
+  },
+});
 
-export default mongoose.model('Patient', patient)
+export default mongoose.model("Patient", patient);

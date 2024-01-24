@@ -10,7 +10,6 @@ import operationsRoute from './operations'
 import clinicBranchesRoute from './clinicBranch'
 
 
-
 export default function (app: Application) {
     app.use(`${API_ROOT}/user`, userRoute)
     app.use(`${API_ROOT}/patient`, patientRoute)
@@ -20,5 +19,5 @@ export default function (app: Application) {
     app.use(`${API_ROOT}/clinic`, clinicRoute)
     app.use(`${API_ROOT}/operations`, operationsRoute)
     app.use(`${API_ROOT}/clinic-branches`, clinicBranchesRoute)
-}
 
+}

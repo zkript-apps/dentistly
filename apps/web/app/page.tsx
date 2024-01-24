@@ -1,9 +1,8 @@
-import React from 'react'
+import ModuleHome from "@/module/Home";
+import React from "react";
 
 const DefaultPage = async () => {
-  return (
-    <div className="text-blue-700 font-bold">Default Page</div>
-  )
-}
+  return <ModuleHome />;
+};
 
-export default DefaultPage
+export default DefaultPage;
