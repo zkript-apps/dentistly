@@ -1,4 +1,4 @@
-import { apiMockUrl, apiUrl } from "../config"
+import { apiMockUrl, apiUrl } from "../config";
 
 enum EContentType {
   JSON = "application/json",
@@ -6,13 +6,13 @@ enum EContentType {
 }
 
 export class ApiService {
-  private BASE_URL: string | undefined
+  private BASE_URL: string | undefined;
 
   constructor(source: "main" | "mock" = "main") {
     if (source === "mock") {
-      this.BASE_URL = apiUrl
+      this.BASE_URL = apiUrl;
     } else {
-      this.BASE_URL = apiMockUrl
+      this.BASE_URL = apiMockUrl;
     }
   }
 
@@ -21,61 +21,61 @@ export class ApiService {
       ...(!removeContentType && {
         "Content-Type": isFormData ? EContentType.formData : EContentType.JSON,
       }),
-    } as Record<string, any>
+    } as Record<string, any>;
     const options = {
       headers,
       credentials: "include" as RequestCredentials,
-    }
-    return options
+    };
+    return options;
   }
 
   async get<T = any>(
     endpoint: string,
     params?: Record<string, any>,
-    signal?: AbortSignal
+    signal?: AbortSignal,
   ): Promise<T> {
-    const reqParams = new URLSearchParams(params).toString()
-    const otherOptions = this.constructOtherOptions()
+    const reqParams = new URLSearchParams(params).toString();
+    const otherOptions = this.constructOtherOptions();
 
     const res = fetch(
       `${this.BASE_URL}${endpoint}${params ? `?${reqParams}` : ""}`,
       {
         ...otherOptions,
         ...(signal ? { signal } : {}),
-      }
-    )
+      },
+    );
 
-    return (await res).json()
+    return (await res).json();
   }
 
   async post<T = any>(endpoint: string, body: any): Promise<T> {
-    const otherOptions = this.constructOtherOptions()
+    const otherOptions = this.constructOtherOptions();
     const res = fetch(`${this.BASE_URL}${endpoint}`, {
       method: "POST",
       body: JSON.stringify(body),
       ...otherOptions,
-    })
-    return (await res).json()
+    });
+    return (await res).json();
   }
 
   async patch<T = any>(endpoint: string, body?: any): Promise<T> {
-    const otherOptions = this.constructOtherOptions()
+    const otherOptions = this.constructOtherOptions();
 
     const res = fetch(`${this.BASE_URL}${endpoint}`, {
       method: "PATCH",
       body: JSON.stringify(body),
       ...otherOptions,
-    })
-    return (await res).json()
+    });
+    return (await res).json();
   }
 
   async delete<T = any>(endpoint: string): Promise<T> {
-    const otherOptions = this.constructOtherOptions()
+    const otherOptions = this.constructOtherOptions();
 
     const res = fetch(`${this.BASE_URL}${endpoint}`, {
       method: "DELETE",
       ...otherOptions,
-    })
-    return (await res).json()
+    });
+    return (await res).json();
   }
 }
