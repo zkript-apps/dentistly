@@ -106,22 +106,31 @@ try {
 }
 
 export const updateBranch = async(req:Request, res:Response)=>{
-const id = req.params._id
+const id = req.params.id
 const {branchName, address} = req.body
 try {
+    const getBranch = await clinicBranch.findOne({_id:id, deletedAt:null})
+    if(!getBranch){
+        console.log(getBranch)
+        return res.json(response.error({message:"Branch not found"}))
+    }
+    if(branchName || address){
    const updateBranch = await clinicBranch.findByIdAndUpdate(
     id,
     {
-        branchName:branchName,
-        address:address
+        $set: req.body,
+        updatedAt:Date.now()
     },
     {new: true}
    )
    res.json(response.success({
-    item:updateBranch?.getChanges(),
+    item:updateBranch as object,
     allItemCount:1,
     message:"Branch successfully updated"
    }))
+}else{
+    res.json(response.error({message:REQUIRED_VALUE_EMPTY}))
+}
 } catch (err:any) {
     const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
     res.json(response.error({message:message}))
@@ -129,5 +138,26 @@ try {
 }
 
 export const deleteBranch = async(req:Request, res:Response)=>{
-
+    const id = req.params.id
+    try {
+        const getBranch = await clinicBranch.findOne({_id:id, deletedAt:null})
+        if(!getBranch){
+            return res.json(response.error({message:"Branch already deleted or not found"}))
+        }
+        const deleteBranch = await clinicBranch.findByIdAndUpdate(
+            id,
+            {
+                deletedAt:Date.now()
+            }
+        )
+        res.json(response.success({
+            item:deleteBranch as object,
+            allItemCount:1,
+            message:"Branch successfully deleted"
+        }))
+        
+    } catch (err:any) {
+       const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED 
+       res.json(response.error({message:message}))
+    }
 }
