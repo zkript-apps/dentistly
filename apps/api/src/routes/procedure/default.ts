@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import procedure from "../../models/procedure";
-import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../common/utils/constants";
 
 export const getAllProcedure = async (req: Request, res: Response) => {
     try {

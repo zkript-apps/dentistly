@@ -1,5 +1,5 @@
 import { Application } from "express";
-import { API_ROOT } from "../utils/constants"
+import { API_ROOT } from "../common/utils/constants"
 import userRoute from './user'
 import patientRoute from './patient'
 import procedureRoute from './procedure'

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import operations from "../../models/operations";
-import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../common/utils/constants";
 
 export const getOperationByClinicId = async (req: Request, res: Response) => {
     try {

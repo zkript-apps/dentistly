@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import checkup from "../../models/checkup";
-import { UNKNOWN_ERROR_OCCURRED, REQUIRED_VALUE_EMPTY } from "../../utils/constants";
+import { UNKNOWN_ERROR_OCCURRED, REQUIRED_VALUE_EMPTY } from "../../common/utils/constants";
 import patient from "../../models/patient";
 import procedure from "../../models/procedure";
 

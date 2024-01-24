@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import appointment from "../../models/appointment";
-import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../common/utils/constants";
 import procedure from "../../models/procedure";
 
 export const getAllAppointments = async (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 
 import { Request, Response } from "express";
 import clinic from "../../models/clinic";
-import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../common/utils/constants";
 
 export const getAllClinic = async (req: Request, res: Response) => {
     try {
