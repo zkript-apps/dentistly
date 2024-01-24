@@ -4,7 +4,16 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "MONGO_URL",
+        "ORIGINS",
+        "PORT",
+        "WEB_URL",
+        "API_URL",
+        "API_MOCK_URL",
+        "NODE_ENV"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
