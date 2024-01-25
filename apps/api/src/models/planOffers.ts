@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const actionsEnum = ["Create", "Read", "Update", "Delete"];
+export const actionsEnum = ["Create", "Read", "Update", "Delete"];
 const planOffers = new Schema({
   table: {
     type: String,
