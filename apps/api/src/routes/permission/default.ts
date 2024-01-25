@@ -2,6 +2,7 @@ import { Request, Response } from "express"
 import permission from "../../models/permission"
 import { UNKNOWN_ERROR_OCCURRED } from "../../utils/constants"
 
+
 export const getAllPermission = async (req: Request, res: Response) => {
     try {
         const permissionCount = await permission.find().countDocuments()
@@ -49,9 +50,32 @@ export const updatePermission = async (req: Request, res: Response) => {
             res.json(updatePermission)
         } catch (err: any) {
             const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
-            res.json(message)
+            res.json({
+                message: message
+            })
         }
     } else {
-        res.status(400).json('Record permission does not exists!')
+        throw new Error('Record permission does not exists!')
+    }
+}
+
+export const deletePermission = async (req: Request, res: Response) => {
+    try {
+        const getPermission = await permission.find({ _id: req.params.id, deletedAt: null})
+        if (getPermission.length > 0) {
+            const deletePermission = await permission.findByIdAndUpdate(req.params.id, {
+                $set: {
+                    deletedAt: Date.now()
+                }
+            })
+            res.json(deletePermission)
+        } else {
+            throw new Error('Permission is already deleted!')
+        }
+    } catch (err: any) {
+        const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED 
+        res.json({
+            message: message
+        })
     }
 }
