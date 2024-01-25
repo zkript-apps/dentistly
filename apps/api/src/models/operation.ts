@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose
 
-const operations = new Schema({
+const operation = new Schema({
     clinic: {
         type: mongoose.Types.ObjectId,
         ref: "Clinic",
@@ -29,4 +29,4 @@ const operations = new Schema({
     }
 })
 
-export default mongoose.model('Operations', operations)
+export default mongoose.model('Operation', operation)

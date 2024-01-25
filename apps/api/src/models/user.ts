@@ -1,11 +1,17 @@
 import mongoose from "mongoose"
 const { Schema } = mongoose
 
+// User Schema
 const user = new Schema({
     clinic: {
         type: mongoose.Types.ObjectId,
         ref: "Clinic",
         required: true,
+    },
+    roles: {
+        type: String,
+        enum: ['Admin', 'Manager'],
+        required: true
     },
     username: {
         type: String,

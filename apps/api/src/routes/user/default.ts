@@ -3,6 +3,9 @@ import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/consta
 import user from "../../models/user";
 
 
+
+
+
 export const getAllUser = async (req: Request, res: Response) => {
     try {
       const userCount = await user.find().countDocuments()
@@ -29,30 +32,36 @@ export const getAllUser = async (req: Request, res: Response) => {
     }
   }
 
-  export const addUser = async (req: Request, res: Response) => {
-    const { clinicId, username, email, password, role } = req.body
-    if (username && email &&  password && role) {
-      const newUser = new user({
-        clinic: clinicId,
-        username,
-        email, 
-        password,
-        updatedAt: null,
-        deletedAt: null,
+
+
+export const addUser = async (req: Request, res: Response) => {
+  const { clinicId, username, email, password, roles } = req.body
+  if (clinicId && username && email &&  password && roles) {
+    const newUser = new user({
+      clinic: clinicId,
+      roles: roles,
+      username,
+      email, 
+      password,
+      updatedAt: null,
+      deletedAt: null,
+    })
+    try {
+      const createTransactionRequest = await newUser.save()
+      res.json({
+        data: createTransactionRequest,
       })
-      try {
-        const createTransactionRequest = await newUser.save()
-        res.json({
-          data: createTransactionRequest,
-        })
-      } catch (err: any) {
-        const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
-        res.json(message)
-      }
-    } else {
-      res.status(400).json(REQUIRED_VALUE_EMPTY)
+    } catch (err: any) {
+      const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
+      res.json(message)
     }
+  } else {
+    res.status(400).json(REQUIRED_VALUE_EMPTY)
   }
+}
+
+
+
 
 
   export const updateUser = async (req: Request, res: Response) => {
