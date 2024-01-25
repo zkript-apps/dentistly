@@ -1,7 +1,8 @@
 import express from "express";
-import { getAllPermission } from "./default";
+import { getAllPermission, getPermission } from "./default";
 
 const router = express.Router()
 router.get('/', getAllPermission)
+router.get('/:id', getPermission)
 
 export default router
