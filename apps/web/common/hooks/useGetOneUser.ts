@@ -1,10 +1,10 @@
-import { ApiService } from "@/common/service/api"
+import { ApiService } from "@/common/service/api";
 import { API_URL_USER } from "../constants/api";
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 
 export async function getOneUserId(id: string | undefined) {
-  const apiService = new ApiService()
-  return await apiService.get(`${API_URL_USER}/${id}`)
+  const apiService = new ApiService();
+  return await apiService.get(`${API_URL_USER}/${id}`);
 }
 
 function useGetOneUser(id: string | undefined) {
@@ -13,7 +13,7 @@ function useGetOneUser(id: string | undefined) {
     queryFn: () => getOneUserId(id),
     refetchOnWindowFocus: false,
     enabled: !!id,
-  })
-  return query
+  });
+  return query;
 }
 export default useGetOneUser;
