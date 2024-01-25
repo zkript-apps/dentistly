@@ -2,10 +2,6 @@ import { Request, Response } from "express";
 import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants";
 import user from "../../models/user";
 
-
-
-
-
 export const getAllUser = async (req: Request, res: Response) => {
     try {
       const userCount = await user.find().countDocuments()
@@ -33,7 +29,6 @@ export const getAllUser = async (req: Request, res: Response) => {
   }
 
 
-
 export const addUser = async (req: Request, res: Response) => {
   const { clinicId, username, email, password, roles } = req.body
   if (clinicId && username && email &&  password && roles) {
@@ -59,9 +54,6 @@ export const addUser = async (req: Request, res: Response) => {
     res.status(400).json(REQUIRED_VALUE_EMPTY)
   }
 }
-
-
-
 
 
   export const updateUser = async (req: Request, res: Response) => {
