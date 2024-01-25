@@ -1,11 +1,11 @@
 import mongoose, { Schema } from "mongoose";
 
-const actionsEnum = ["Create","Read", "Update", "Delete"]
+const actionsEnum = ["Create", "Read", "Update", "Delete"];
 const planOffers = new Schema({
   table: {
     type: String,
     validate: {
-      validator: async function (value:string) {
+      validator: async function (value: string) {
         const modelExists = mongoose.modelNames().includes(value);
         return modelExists;
       },
@@ -15,7 +15,7 @@ const planOffers = new Schema({
   },
   action: {
     type: String,
-    enum:actionsEnum
+    enum: actionsEnum,
   },
   createdAt: {
     type: Date,
@@ -31,6 +31,6 @@ const planOffers = new Schema({
   },
 });
 
-planOffers.index({table:1,action:1},{unique:true})
+planOffers.index({ table: 1, action: 1 }, { unique: true });
 
 export default mongoose.model("PlanOffers", planOffers);
