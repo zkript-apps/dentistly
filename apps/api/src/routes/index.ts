@@ -8,7 +8,7 @@ import clinicRoute from "./clinic";
 import operationsRoute from "./operations";
 import clinicBranchesRoute from "./clinicBranch";
 import { API_ROOT } from "@/common/utils/constants";
-import planOffersRoute from "./planOffer"
+import planOffersRoute from "./planOffer";
 
 export default function (app: Application) {
   app.use(`${API_ROOT}/user`, userRoute);
