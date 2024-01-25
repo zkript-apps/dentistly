@@ -1,11 +1,9 @@
 import { ResponseService } from "@/common/services/response";
 import {
-  API_ROOT,
   REQUIRED_VALUE_EMPTY,
   UNKNOWN_ERROR_OCCURRED,
 } from "@/common/utils/constants";
 import planOffers, { actionsEnum } from "@/models/planOffers";
-import { strict } from "assert";
 import { Request, Response } from "express";
 import mongoose from "mongoose";
 
