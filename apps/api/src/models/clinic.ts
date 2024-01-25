@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
+
 const dayOffs = new Schema({
     day: {
         type: String,

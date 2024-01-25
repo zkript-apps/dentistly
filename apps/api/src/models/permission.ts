@@ -9,7 +9,8 @@ const permission = new Schema({
     },
     operation: {
         type: mongoose.Types.ObjectId,
-        ref: 'Operation'
+        ref: 'Operation',
+        required: true
     },
     createdAt: {
         type: Date,

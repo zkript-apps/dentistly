@@ -1,13 +1,15 @@
 import { Request, Response } from "express"
 import permission from "../../models/permission"
-import { UNKNOWN_ERROR_OCCURRED } from "../../utils/constants"
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "../../utils/constants"
+
+
 
 
 export const getAllPermission = async (req: Request, res: Response) => {
     try {
         const permissionCount = await permission.find().countDocuments()
         // Update or add to the populate array collections if needed - (['clinic])
-        const getAllPermission = await permission.find({ deletedAt: null }).populate(['clinic']).sort({ createdAt: -1})
+        const getAllPermission = await permission.find({ deletedAt: null }).populate(['clinic', 'operation']).sort({ createdAt: -1})
         if (getAllPermission) {
             res.json({
                 items: getAllPermission,
@@ -25,7 +27,7 @@ export const getAllPermission = async (req: Request, res: Response) => {
 export const getPermission = async (req: Request, res: Response) => {
     try {
         // Update or add to the populate array collections if needed - (['clinic])
-        const getPermission = await permission.findOne({ _id: req.params.id, deletedAt: null}).populate(['clinic'])
+        const getPermission = await permission.findOne({ _id: req.params.id, deletedAt: null}).populate(['clinic', 'operation'])
         if (getPermission) {
             res.json({
                 item: getPermission
@@ -36,6 +38,30 @@ export const getPermission = async (req: Request, res: Response) => {
     } catch (err: any) {
         const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
         res.status(500).json(message)
+    }
+}
+
+export const addPermission = async (req: Request, res: Response) => {
+    const { operationId, clinicId } = req.body
+    if (clinicId && operationId) {
+        const newPermission = new permission({
+            clinic: clinicId,
+            operation: operationId
+        })
+        try {
+            const createTransactionRequest = await newPermission.save()
+            res.json({
+                data: createTransactionRequest,
+                message: 'Success'
+            })
+        } catch (err: any) {
+            const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED
+            res.json({ 
+                message: message
+            })
+        }
+    } else {
+        throw new Error(REQUIRED_VALUE_EMPTY)
     }
 }
 

@@ -8,6 +8,7 @@ import appointmentRoute from './appointment'
 import clinicRoute from './clinic'
 import permissionsRoute from './permission'
 
+
 export default function (app: Application) {
     app.use(`${API_ROOT}/user`, userRoute)
     app.use(`${API_ROOT}/patient`, patientRoute)

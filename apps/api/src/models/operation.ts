@@ -5,7 +5,7 @@ const { Schema } = mongoose
 const operation = new Schema({
     clinic: {
         type: mongoose.Types.ObjectId,
-        ref: "Clinic",
+        ref: 'Clinic',
     },
     operationName: {
         type: String,
@@ -14,6 +14,11 @@ const operation = new Schema({
     actions: {
         type: String,
         enum: ['Create', 'Read', 'Update', 'Delete']
+    },
+    operation: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Permission',
+        required: true
     },
     createdAt: {
         type: Date,
