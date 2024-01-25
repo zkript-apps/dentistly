@@ -1,5 +1,4 @@
 import { Application } from "express";
-import { API_ROOT } from "../common/utils/constants";
 import userRoute from "./user";
 import patientRoute from "./patient";
 import procedureRoute from "./procedure";
@@ -7,6 +6,8 @@ import checkupRoute from "./checkup";
 import appointmentRoute from "./appointment";
 import clinicRoute from "./clinic";
 import operationsRoute from "./operations";
+import clinicBranchesRoute from "./clinicBranch";
+import { API_ROOT } from "@/common/utils/constants";
 
 export default function (app: Application) {
   app.use(`${API_ROOT}/user`, userRoute);
@@ -16,4 +17,5 @@ export default function (app: Application) {
   app.use(`${API_ROOT}/appointment`, appointmentRoute);
   app.use(`${API_ROOT}/clinic`, clinicRoute);
   app.use(`${API_ROOT}/operations`, operationsRoute);
+  app.use(`${API_ROOT}/clinic-branches`, clinicBranchesRoute);
 }
