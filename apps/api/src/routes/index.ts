@@ -10,7 +10,6 @@ import clinicBranchesRoute from "./clinicBranch";
 import { API_ROOT } from "@/common/utils/constants";
 import planOffersRoute from "./planOffer";
 
-
 export default function (app: Application) {
   app.use(`${API_ROOT}/user`, userRoute);
   app.use(`${API_ROOT}/patient`, patientRoute);
@@ -21,5 +20,4 @@ export default function (app: Application) {
   app.use(`${API_ROOT}/operations`, operationsRoute);
   app.use(`${API_ROOT}/clinic-branches`, clinicBranchesRoute);
   app.use(`${API_ROOT}/plan-offers`, planOffersRoute);
-
 }
