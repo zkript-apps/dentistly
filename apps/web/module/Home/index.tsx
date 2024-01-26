@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
 
 const ModuleHome = () => {
-  return <div>Home Module</div>;
+  return <div></div>;
 };
 
 export default ModuleHome;
