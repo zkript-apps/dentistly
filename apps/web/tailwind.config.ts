@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 // Color theme: https://www.color-hex.com/
 const config: Config = {
   content: [
@@ -112,5 +112,5 @@ const config: Config = {
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
-}
-export default config
+};
+export default config;

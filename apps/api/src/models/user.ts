@@ -1,5 +1,5 @@
-import mongoose from "mongoose"
-const { Schema } = mongoose
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 // User Schema
 const user = new Schema({
@@ -34,10 +34,10 @@ const user = new Schema({
         require: false
     },
 
-    deletedAt: {
-        type: Date,
-        require: false
-    }
-})
+  deletedAt: {
+    type: Date,
+    require: false,
+  },
+});
 
-export default mongoose.model('User', user)
+export default mongoose.model("User", user);
