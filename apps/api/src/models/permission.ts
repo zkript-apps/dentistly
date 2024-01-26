@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
-
 const { Schema } = mongoose;
 
-const operations = new Schema({
+const permission = new Schema({
   clinic: {
     type: mongoose.Types.ObjectId,
     ref: "Clinic",
-  },
-  operationName: {
-    type: String,
     required: true,
   },
-  actions: {
-    type: String,
-    enum: ["Create", "Read", "Update", "Delete"],
+  operation: {
+    type: mongoose.Types.ObjectId,
+    ref: "Operation",
+    required: true,
   },
   createdAt: {
     type: Date,
@@ -29,4 +26,4 @@ const operations = new Schema({
   },
 });
 
-export default mongoose.model("Operations", operations);
+export default mongoose.model("Permission", permission);

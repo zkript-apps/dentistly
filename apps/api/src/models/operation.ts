@@ -1,38 +1,37 @@
 import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
-// User Schema
-const user = new Schema({
+const operation = new Schema({
   clinic: {
     type: mongoose.Types.ObjectId,
     ref: "Clinic",
-    required: true,
   },
-  username: {
+  operationName: {
     type: String,
     required: true,
   },
-  email: {
+  actions: {
     type: String,
-    required: true,
+    enum: ["Create", "Read", "Update", "Delete"],
   },
-  password: {
-    type: String,
+  operation: {
+    type: mongoose.Types.ObjectId,
+    ref: "Permission",
     required: true,
   },
   createdAt: {
     type: Date,
-    require: false,
+    required: false,
   },
   updatedAt: {
     type: Date,
-    require: false,
+    required: false,
   },
-
   deletedAt: {
     type: Date,
-    require: false,
+    required: false,
   },
 });
 
-export default mongoose.model("User", user);
+export default mongoose.model("Operation", operation);
