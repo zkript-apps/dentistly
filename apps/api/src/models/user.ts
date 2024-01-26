@@ -8,11 +8,6 @@ const user = new Schema({
         ref: "Clinic",
         required: true,
     },
-    roles: {
-        type: String,
-        enum: ['Admin', 'Manager'],
-        required: true
-    },
     username: {
         type: String,
         required: true,
