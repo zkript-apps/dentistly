@@ -8,3 +8,12 @@ export interface IUser {
   updatedAt?: string;
   createdAt?: string;
 }
+
+export interface IPatient {
+  patientId: string;
+  name: string;
+  email: string;
+  deletedAt?: string;
+  updatedAt?: string;
+  createdAt?: string;
+}
