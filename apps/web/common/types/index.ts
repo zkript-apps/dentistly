@@ -20,10 +20,10 @@ export interface IPatient {
   status: string;
   clinic: string;
   relativesContactInfo: {
-    name: string,
-    contactNumber: string,
-    relationship: string
-    };
+    name: string;
+    contactNumber: string;
+    relationship: string;
+  };
   deletedAt?: string;
   updatedAt?: string;
   createdAt?: string;
