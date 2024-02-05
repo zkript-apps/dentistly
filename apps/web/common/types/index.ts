@@ -13,13 +13,13 @@ export interface IPatient {
   lastName: string;
   firstName: string;
   middleName: string;
-  DoB: Date,
-  age: Number,
-  gender: String,
-  address: String,
-  status: String,
-  clinic: String,
-  relativesContactInfo: String,
+  DoB: Date;
+  age: Number;
+  gender: String;
+  address: String;
+  status: String;
+  clinic: String;
+  relativesContactInfo: String;
   deletedAt?: string;
   updatedAt?: string;
   createdAt?: string;
