@@ -8,8 +8,8 @@ export interface IUser {
   updatedAt?: string;
   createdAt?: string;
 }
-
 export interface IPatient {
+  clinicId: string;
   lastName: string;
   firstName: string;
   middleName: string;
@@ -19,7 +19,11 @@ export interface IPatient {
   address: string;
   status: string;
   clinic: string;
-  relativesContactInfo: string;
+  relativesContactInfo: {
+    name: string,
+    contactNumber: string,
+    relationship: string
+    };
   deletedAt?: string;
   updatedAt?: string;
   createdAt?: string;

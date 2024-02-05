@@ -1,8 +1,7 @@
 "use client";
-
 import React from "react";
 
-const ModuleHome = () => {
+const ModuleHome = () => {  
   return <div></div>;
 };
 
