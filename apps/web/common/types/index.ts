@@ -14,12 +14,12 @@ export interface IPatient {
   firstName: string;
   middleName: string;
   DoB: Date,
-  age: Number,
-  gender: String,
-  address: String,
-  status: String,
-  clinic: String,
-  relativesContactInfo: String,
+  age: number,
+  gender: string,
+  address: string,
+  status: string,
+  clinic: string,
+  relativesContactInfo: string,
   deletedAt?: string;
   updatedAt?: string;
   createdAt?: string;
