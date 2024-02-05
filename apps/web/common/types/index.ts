@@ -10,9 +10,16 @@ export interface IUser {
 }
 
 export interface IPatient {
-  patientId: string;
-  name: string;
-  email: string;
+  lastName: string;
+  firstName: string;
+  middleName: string;
+  DoB: Date,
+  age: Number,
+  gender: String,
+  address: String,
+  status: String,
+  clinic: String,
+  relativesContactInfo: String,
   deletedAt?: string;
   updatedAt?: string;
   createdAt?: string;
