@@ -9,7 +9,7 @@ export interface IUser {
   createdAt?: string;
 }
 export interface IPatient {
-  clinicId: string,
+  clinicId: string;
   clinic?: string;
   lastName: string;
   firstName: string;

@@ -4,15 +4,14 @@ import { useMutation } from "@tanstack/react-query";
 import { IPatient } from "../../types";
 
 export async function updatePatient(id: string | null, props: IPatient) {
-    const apiService = new ApiService();
-    return await apiService.patch(`${API_URL_PATIENT}/${id}`, props);
-  }
+  const apiService = new ApiService();
+  return await apiService.patch(`${API_URL_PATIENT}/${id}`, props);
+}
 
-  function useUpdatePatient(id: string | null) {
-    const query = useMutation({
-      mutationFn: (props: IPatient) => updatePatient(id, props),
-    });
-    return query;
-  }
-  export default useUpdatePatient;
-  
+function useUpdatePatient(id: string | null) {
+  const query = useMutation({
+    mutationFn: (props: IPatient) => updatePatient(id, props),
+  });
+  return query;
+}
+export default useUpdatePatient;
