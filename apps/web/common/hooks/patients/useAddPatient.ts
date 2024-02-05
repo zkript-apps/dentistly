@@ -11,7 +11,7 @@ export async function addPatient(props: IPatient) {
 function useAddPatient() {
   const query = useMutation({
     mutationFn: (props: IPatient) => addPatient(props),
-});
+  });
   return query;
 }
 export default useAddPatient;
