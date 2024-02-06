@@ -5,6 +5,7 @@ import {
   UNKNOWN_ERROR_OCCURRED,
 } from "../../common/utils/constants";
 import user from "../../models/user";
+import clinic from "@/models/clinic";
 
 export const getAllPatients = async (req: Request, res: Response) => {
   try {
@@ -26,6 +27,8 @@ export const getAllPatients = async (req: Request, res: Response) => {
     res.status(500).json(message);
   }
 };
+
+
 
 export const getPatient = async (req: Request, res: Response) => {
   try {
