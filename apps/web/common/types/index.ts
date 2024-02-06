@@ -10,6 +10,7 @@ export interface IUser {
 }
 export interface IPatient {
   clinicId: string;
+  clinic?: string;
   lastName: string;
   firstName: string;
   middleName: string;
@@ -18,7 +19,6 @@ export interface IPatient {
   gender: string;
   address: string;
   status: string;
-  clinic: string;
   relativesContactInfo: {
     name: string;
     contactNumber: string;
