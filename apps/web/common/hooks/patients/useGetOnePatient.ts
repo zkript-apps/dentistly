@@ -10,8 +10,8 @@ export async function getOnePatient(id: string | undefined) {
 function useGetOnePatient(id: string | undefined) {
   const query = useQuery({
     queryKey: ["patient", id],
-    queryFn: () => getOnePatient(id)
+    queryFn: () => getOnePatient(id),
   });
-  return query; 
+  return query;
 }
 export default useGetOnePatient;
