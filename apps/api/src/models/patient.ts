@@ -23,7 +23,7 @@ const patient = new Schema({
   address: String,
   status: {
     type: String,
-    enum: ["Married", "Single", "Divorced"],
+    enum: ["Pending", "Approved", "Declined"],
   },
   clinic: {
     type: mongoose.Types.ObjectId,
