@@ -1,11 +1,6 @@
 import { Request, Response } from "express";
-import patient from "../../models/patient";
-import {
-  REQUIRED_VALUE_EMPTY,
-  UNKNOWN_ERROR_OCCURRED,
-} from "../../common/utils/constants";
-import user from "../../models/user";
-import clinic from "@/models/clinic";
+import patient from "@/models/patient";
+import { REQUIRED_VALUE_EMPTY, UNKNOWN_ERROR_OCCURRED } from "@/common/utils/constants";
 
 export const getAllPatients = async (req: Request, res: Response) => {
   try {
