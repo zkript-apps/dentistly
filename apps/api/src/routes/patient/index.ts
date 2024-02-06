@@ -8,7 +8,6 @@ import {
 } from "./default";
 import { approvePatient } from "./custom";
 
-
 const router = express.Router();
 router.get("/", getAllPatients);
 router.get("/:id", getPatient);
