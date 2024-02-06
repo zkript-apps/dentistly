@@ -27,6 +27,29 @@ export const getAllPatients = async (req: Request, res: Response) => {
   }
 };
 
+export const getAllPatientByClinic = async (req: Request, res: Response) => {
+  try {
+    const patientCount = await patient
+      .find({clinic: req.params.clinicId, deletedAt: null}).countDocuments();
+    const getAllPatientByClinic = await patient
+      .find({clinic: req.params.clinicId, deletedAt: null})
+      .populate(["clinic"])
+      .sort({ createdAt: -1 });
+     
+    if (getAllPatientByClinic) {
+      res.json({
+        items: getAllPatientByClinic,
+        count: patientCount,
+      });
+    } else {
+      throw new Error("No records found for the patient!");
+    }
+  } catch (err: any) {
+    const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED;
+    res.status(500).json(message);
+  }
+};
+
 export const getPatient = async (req: Request, res: Response) => {
   try {
     const getPatient = await patient
