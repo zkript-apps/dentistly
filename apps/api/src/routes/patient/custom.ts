@@ -3,12 +3,12 @@ import patient from "@/models/patient";
 import { UNKNOWN_ERROR_OCCURRED } from "@/common/utils/constants";
 
 export const approvePatient = async (req: Request, res: Response) => {
-  try{
-     const getPatient = await patient.find({
+  try {
+    const getPatient = await patient.find({
       _id: req.params.id,
       deletedAt: null,
-     });
-     console.log(getPatient.length)
+    });
+    console.log(getPatient.length);
     if (getPatient.length > 0) {
       try {
         const approvePatient = await patient.findByIdAndUpdate(
@@ -26,8 +26,8 @@ export const approvePatient = async (req: Request, res: Response) => {
       }
     } else {
       res.status(400).json("record does not exist");
-    }}
-    catch(err){
-      res.status(400).json("record does not exist");
     }
-  };
+  } catch (err) {
+    res.status(400).json("record does not exist");
+  }
+};
