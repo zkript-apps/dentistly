@@ -30,12 +30,13 @@ export const getAllPatients = async (req: Request, res: Response) => {
 export const getAllPatientByClinic = async (req: Request, res: Response) => {
   try {
     const patientCount = await patient
-      .find({clinic: req.params.clinicId, deletedAt: null}).countDocuments();
+      .find({ clinic: req.params.clinicId, deletedAt: null })
+      .countDocuments();
     const getAllPatientByClinic = await patient
-      .find({clinic: req.params.clinicId, deletedAt: null})
+      .find({ clinic: req.params.clinicId, deletedAt: null })
       .populate(["clinic"])
       .sort({ createdAt: -1 });
-     
+
     if (getAllPatientByClinic) {
       res.json({
         items: getAllPatientByClinic,

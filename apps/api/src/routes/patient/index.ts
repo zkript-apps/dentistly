@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 router.get("/", getAllPatients);
 router.get("/:id", getPatient);
-router.get('/clinic/:clinicId', getAllPatientByClinic)
+router.get("/clinic/:clinicId", getAllPatientByClinic);
 router.post("/", addPatient);
 router.patch("/:id", updatePatient);
 router.delete("/:id", deletePatient);
