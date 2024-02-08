@@ -1,12 +1,12 @@
-import * as React from "react"
-import { cn } from "@/common/helpers/cn"
-import { Typography } from "./Typography"
-import Asterisk from "./Asterisk"
+import * as React from "react";
+import { cn } from "@/common/helpers/cn";
+import { Typography } from "./Typography";
+import Asterisk from "./Asterisk";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string
-  errorMessage?: string
+  label: string;
+  errorMessage?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             "relative bg-gray-50 focus:ring-blue-500 rounded-lg text-gray-900 px-3 pb-3 pt-2.5 ring-1 ring-inset ring-text-200 focus-within:z-10 focus-within:ring-2 focus-within:ring-blue-500",
-            className
+            className,
           )}
         >
           <label
@@ -39,9 +39,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </Typography>
         )}
       </div>
-    )
-  }
-)
-Input.displayName = "Input"
+    );
+  },
+);
+Input.displayName = "Input";
 
-export { Input }
+export { Input };
