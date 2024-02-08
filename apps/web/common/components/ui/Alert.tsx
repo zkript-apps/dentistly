@@ -2,7 +2,6 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/common/helpers/cn"
 
-
 const alertVariants = cva(
   "inline-flex whitespace-wrap items-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-900 disabled:opacity-50",
   {

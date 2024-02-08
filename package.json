@@ -20,11 +20,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
-    "class-variance-authority": "^0.7.0",
-    "lucide-react": "^0.323.0",
-    "tailwind-merge": "^2.2.1"
-  }
+  ]
 }
