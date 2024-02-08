@@ -1,15 +1,15 @@
-import React from "react"
-import { Switch } from "@headlessui/react"
+import React from "react";
+import { Switch } from "@headlessui/react";
 
 interface ToggleSwitchProps {
-  checked?: boolean
-  defaultChecked?: boolean
-  disabled?: boolean
-  onChange: () => void  
+  checked?: boolean;
+  defaultChecked?: boolean;
+  disabled?: boolean;
+  onChange: () => void;
 }
 
 function classNames(...classes: (string | boolean)[]): string {
-  return classes.filter(Boolean).join(" ")
+  return classes.filter(Boolean).join(" ");
 }
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
@@ -26,14 +26,14 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
       disabled={disabled}
       className={classNames(
         checked ? "bg-blue-500" : "bg-gray-200",
-        "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none peer-focus:outline-none focus:ring-4 peer-focus:ring-4 focus:ring-blue-200 disabled:opacity-60"
+        "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none peer-focus:outline-none focus:ring-4 peer-focus:ring-4 focus:ring-blue-200 disabled:opacity-60",
       )}
     >
       <span className="sr-only">Use setting</span>
       <span
         className={classNames(
           checked ? "translate-x-5" : "translate-x-0",
-          "pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+          "pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
         )}
       >
         <span
@@ -41,7 +41,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
             checked
               ? "opacity-0 duration-100 ease-out"
               : "opacity-100 duration-200 ease-in",
-            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity",
           )}
           aria-hidden="true"
         >
@@ -64,7 +64,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
             checked
               ? "opacity-100 duration-200 ease-in"
               : "opacity-0 duration-100 ease-out",
-            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+            "absolute inset-0 flex h-full w-full items-center justify-center transition-opacity",
           )}
           aria-hidden="true"
         >
@@ -78,7 +78,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
         </span>
       </span>
     </Switch>
-  )
-}
+  );
+};
 
-export default ToggleSwitch
+export default ToggleSwitch;
