@@ -5,7 +5,7 @@ import { VariantProps, cva } from "class-variance-authority"
 const spinnerVariants = cva("font-bold", {
   variants: {
     variant: {
-      default: "text-primary-400 fill-primary-700",
+      default: "text-gray-200 fill-blue-500",
       primary: "text-secondary-400 fill-primary-700",
       danger: "text-error-400 fill-error-700",
       warning: "text-warning-400 fill-warning-700",
