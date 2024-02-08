@@ -1,6 +1,6 @@
-import * as React from "react"
-import { cn } from "@/common/helpers/cn"
-import { VariantProps, cva } from "class-variance-authority"
+import * as React from "react";
+import { cn } from "@/common/helpers/cn";
+import { VariantProps, cva } from "class-variance-authority";
 
 const spinnerVariants = cva("font-bold", {
   variants: {
@@ -22,11 +22,11 @@ const spinnerVariants = cva("font-bold", {
     variant: "default",
     size: "md",
   },
-})
+});
 export interface SpinnerProps
   extends React.DetailsHTMLAttributes<HTMLDivElement>,
     VariantProps<typeof spinnerVariants> {
-  middle?: boolean
+  middle?: boolean;
 }
 const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   ({ variant, className, size, middle = false }, ref) => {
@@ -37,7 +37,7 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           className,
           middle
             ? "flex min-h-screen flex-1 flex-col justify-center items-center py-12 sm:px-6 lg:px-8"
-            : ""
+            : "",
         )}
       >
         <svg
@@ -58,9 +58,9 @@ const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
         </svg>
         <span className="sr-only">Loading...</span>
       </div>
-    )
-  }
-)
-Spinner.displayName = "Spinner"
+    );
+  },
+);
+Spinner.displayName = "Spinner";
 
-export { Spinner, spinnerVariants }
+export { Spinner, spinnerVariants };
