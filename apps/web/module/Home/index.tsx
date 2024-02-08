@@ -1,13 +1,8 @@
-
-
-import { Spinner } from "@/common/components/ui/Spinner";
 import React from "react";
 
 const ModuleHome = () => {
   
-  return <div className="m-5">
-    <Spinner/>
-    </div>;
+  return <div>Module Home</div>;
 };
 
 export default ModuleHome;
