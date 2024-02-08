@@ -1,4 +1,3 @@
-import { Button } from "@/common/components/ui/Button";
 import React from "react";
 
 const ModuleHome = () => {
