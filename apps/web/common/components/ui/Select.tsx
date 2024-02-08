@@ -1,10 +1,10 @@
-import * as React from "react"
-import { cn } from "@/common/helpers/cn"
-import Asterisk from "./Asterisk"
+import * as React from "react";
+import { cn } from "@/common/helpers/cn";
+import Asterisk from "./Asterisk";
 
 export interface SelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  label: string
+  label: string;
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
@@ -13,7 +13,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div
         className={cn(
           " bg-gray-50 focus:ring-blue-500 pb-2.5 pt-2.5 rounded-lg ring-1 ring-inset ring-text-200 focus-within:z-10 focus-within:ring-2 focus-within:ring-blue-500",
-          className
+          className,
         )}
       >
         <label
@@ -30,9 +30,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           {children}
         </select>
       </div>
-    )
-  }
-)
+    );
+  },
+);
 
 export interface SelectOptionProps
   extends React.OptionHTMLAttributes<HTMLOptionElement> {}
@@ -43,11 +43,11 @@ const Option = React.forwardRef<HTMLOptionElement, SelectOptionProps>(
       <option ref={ref} className={className} {...props}>
         {children}
       </option>
-    )
-  }
-)
+    );
+  },
+);
 
-Select.displayName = "Select"
-Option.displayName = "Option"
+Select.displayName = "Select";
+Option.displayName = "Option";
 
-export { Select, Option }
+export { Select, Option };
