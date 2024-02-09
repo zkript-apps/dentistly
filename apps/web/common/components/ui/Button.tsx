@@ -9,9 +9,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-white bg-info-500 hover:bg-info-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm",
+          "text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm",
         primary:
-          "text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm",
+          "text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm",
         danger:
           "focus:outline-none text-white bg-error-500 hover:bg-error-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm",
         warning:
@@ -19,9 +19,9 @@ const buttonVariants = cva(
         success:
           "focus:outline-none text-white bg-success-600 hover:bg-success-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm",
         outline:
-          "border border-primary-600 bg-transparent hover:bg-primary-600 hover:text-white",
+          "border border-blue-600 bg-transparent hover:bg-blue-600 hover:text-white",
         secondary:
-          "focus:outline-none text-white bg-secondary-500 hover:bg-secondary-600 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm",
+          "focus:outline-none text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm",
         ghost: "text-black",
         link: "text-text-500 underline-offset-4 hover:underline",
         shaded:
