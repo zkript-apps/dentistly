@@ -1,7 +1,7 @@
 import React from "react";
 
 const ModuleHome = () => {
-  return <div>Home Module</div>;
+  return <div>Module Home</div>;
 };
 
 export default ModuleHome;
