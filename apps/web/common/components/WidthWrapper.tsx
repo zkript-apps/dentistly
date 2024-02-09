@@ -1,6 +1,6 @@
-import React from "react"
-import { cn } from "../helpers/cn"
-import { VariantProps, cva } from "class-variance-authority"
+import React from "react";
+import { cn } from "../helpers/cn";
+import { VariantProps, cva } from "class-variance-authority";
 
 const WidthWrapperVariants = cva(
   "flex flex-col mx-auto w-full max-w-[2520px] justify-center",
@@ -16,13 +16,13 @@ const WidthWrapperVariants = cva(
     defaultVariants: {
       width: "wide",
     },
-  }
-)
+  },
+);
 
 export interface WidthWrapperProps
   extends React.DetailsHTMLAttributes<HTMLDivElement>,
     VariantProps<typeof WidthWrapperVariants> {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 const WidthWrapper = React.forwardRef<HTMLDivElement, WidthWrapperProps>(
   ({ className, children, width, ...props }, ref) => {
@@ -30,8 +30,8 @@ const WidthWrapper = React.forwardRef<HTMLDivElement, WidthWrapperProps>(
       <div className={cn(WidthWrapperVariants({ width, className }))}>
         {children}
       </div>
-    )
-  }
-)
-WidthWrapper.displayName = "WidthWrapper"
-export { WidthWrapper, WidthWrapperVariants }
+    );
+  },
+);
+WidthWrapper.displayName = "WidthWrapper";
+export { WidthWrapper, WidthWrapperVariants };
