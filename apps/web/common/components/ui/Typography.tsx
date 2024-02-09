@@ -34,7 +34,7 @@ export interface TypographyProps
 
 const Typography = React.forwardRef<HTMLDivElement, TypographyProps>(
   ({ variant, fontWeight, className, children }, ref) => {
-    const Comp = variant != null? variant : "p";
+    const Comp = variant != null ? variant : "p";
     return (
       <Comp
         ref={ref}
