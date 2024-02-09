@@ -19,14 +19,14 @@ const checkboxVariants = cva("rounded", {
   },
 });
 
-export interface checkboxProps
+export interface CheckboxProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof checkboxVariants> {
-  checkBoxValue: String;
+  checkBoxValue: string;
   isChecked: boolean;
 }
 
-const CheckBox = React.forwardRef<HTMLElement, checkboxProps>(
+const CheckBox = React.forwardRef<HTMLElement, CheckboxProps>(
   ({ className, size, children, checkBoxValue, variant, ...props }) => {
     return (
       <div>
