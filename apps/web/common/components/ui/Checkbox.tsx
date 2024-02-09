@@ -25,7 +25,7 @@ const checkBoxVariants = cva(
 export interface checkBoxProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof checkBoxVariants> {
-      checkBoxValue: string,
+      checkBoxValue: String,
       isChecked: boolean,
 }
 
