@@ -29,7 +29,7 @@ const alertVariants = cva(
   },
 );
 
-export interface alertProps
+export interface AlertProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof alertVariants> {
   asChild?: boolean;
@@ -38,7 +38,7 @@ export interface alertProps
   message: string;
 }
 
-const Alert = React.forwardRef<HTMLSpanElement, alertProps>(
+const Alert = React.forwardRef<HTMLSpanElement, AlertProps>(
   (
     { className, variant, size, message, alertMessage, icon, ...props },
     ref,
