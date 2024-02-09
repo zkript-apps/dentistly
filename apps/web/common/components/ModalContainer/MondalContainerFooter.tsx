@@ -1,14 +1,14 @@
-import React from "react"
-import { Button } from "../ui/Button"
+import React from "react";
+import { Button } from "../ui/Button";
 
 type Props = {
-  onClose?: () => void
-  positive?: string
-  negative?: string
-  isPending: boolean
-  isSubmit?: boolean
-  buttonFn: Function
-}
+  onClose?: () => void;
+  positive?: string;
+  negative?: string;
+  isPending: boolean;
+  isSubmit?: boolean;
+  buttonFn: Function;
+};
 
 const ModalContainerFooter = ({
   positive,
@@ -36,7 +36,7 @@ const ModalContainerFooter = ({
         )}
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default ModalContainerFooter
+export default ModalContainerFooter;

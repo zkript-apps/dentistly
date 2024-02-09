@@ -1,16 +1,16 @@
-"use Client"
-import { XMarkIcon } from "@heroicons/react/20/solid"
-import React, { useRef, Fragment } from "react"
-import { Dialog, Transition } from "@headlessui/react"
-import { cn } from "@/common/helpers/cn"
+"use Client";
+import { XMarkIcon } from "@heroicons/react/20/solid";
+import React, { useRef, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { cn } from "@/common/helpers/cn";
 
 type Props = {
-  children: React.ReactNode
-  title?: string
-  isOpen: boolean
-  onClose: () => void
-  size?: "sm" | "md" | "lg" | "full"
-}
+  children: React.ReactNode;
+  title?: string;
+  isOpen: boolean;
+  onClose: () => void;
+  size?: "sm" | "md" | "lg" | "full";
+};
 
 const ModalContainer = ({
   children,
@@ -19,7 +19,7 @@ const ModalContainer = ({
   isOpen,
   size = "lg",
 }: Props) => {
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null);
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
@@ -59,7 +59,7 @@ const ModalContainer = ({
                     "m-5 w-full h-auto md:w-8/12": size === "md",
                     "m-5 w-full h-auto md:w-10/12": size === "lg",
                     "w-screen h-screen": size === "full",
-                  }
+                  },
                 )}
               >
                 <div className="bg-white shadow rounded-2xl">
@@ -86,7 +86,7 @@ const ModalContainer = ({
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
 
-export default ModalContainer
+export default ModalContainer;
