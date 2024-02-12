@@ -1,8 +1,8 @@
-import UnauthHeader from "@/common/components/UnauthHeader";
+import Sidebar from "@/common/components/Sidebar";
 import React from "react";
 
 const DefaultPage = async () => {
-  return <UnauthHeader />;
+  return <ModuleHome />;
 };
 
 export default DefaultPage;
