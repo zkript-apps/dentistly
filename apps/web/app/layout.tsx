@@ -18,11 +18,10 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      
       <body className={inter.className}>
-      <UnauthHeader />
-      <Sidebar/>
-      {children}
+        <UnauthHeader />
+        <Sidebar />
+        {children}
       </body>
     </html>
   );
