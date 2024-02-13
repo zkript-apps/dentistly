@@ -1,25 +1,34 @@
 "use client";
 import { Settings, CircleUser, Menu, Bell } from "lucide-react";
+import React from "react";
+import useIsSideNavOpen from "../helpers/useIsSideNavOpen";
 
 export default function UnauthHeader() {
+
+  const {setIsOpen} = useIsSideNavOpen()
+  
   return (
-    <header className="bg-white border border-b shadow-sm pt-1 pb-1">
+    <div>
+    <header className="bg-white border border-b shadow-sm pt-1 pb-1 ">
       <nav
-        className="mx-auto flex w-full m-0 items-center justify-evenly lg:px-8"
+        className="mx-auto flex w-full m-0 items-center justify-between"
         aria-label="Global"
       >
         {/* left part */}
-        <div className="p-5">
-          <Menu strokeWidth={1.25} />
-        </div>
-        <div className="flex lg:flex-1 font-bold">
+        <div className="flex pb-5 pt-5 pl-5 items-center">
+          <button onClick={() => setIsOpen()}>
+            <Menu strokeWidth={1.25} />
+          </button>
+          <div className="flex lg:flex-1 font-bold pl-5">
           <a href="#" className="">
             Dentistly
           </a>
         </div>
+        </div>
+      
 
         {/* right part */}
-        <div className="flex justify-evenly w-auto items-center">
+        <div className="flex justify-evenly w-auto items-center pr-5">
           <div className="settings p-2">
             <Settings strokeWidth={1.25} />
           </div>
@@ -36,6 +45,9 @@ export default function UnauthHeader() {
           </div>
         </div>
       </nav>
-    </header>
+
+    </header></div>
+   
+   
   );
 }

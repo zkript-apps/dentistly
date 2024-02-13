@@ -22,6 +22,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "lucide-react": "^0.323.0"
+    "lucide-react": "^0.323.0",
+    "zustand": "^4.5.0"
   }
 }

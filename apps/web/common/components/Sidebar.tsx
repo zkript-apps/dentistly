@@ -14,18 +14,22 @@ import {
   Group,
   Building2,
 } from "lucide-react";
+import useIsSideNavOpen from "../helpers/useIsSideNavOpen";
 
 const Sidebar = () => {
+    
+  const {isOpen} = useIsSideNavOpen()
+  
   return (
     // main container
-    <div className="bg-slate-100 h-screen  p-4 w-1/6 ">
+    <div className= {`bg-slate-100 h-screen  p-4 w-[17.5rem] relative z-40 ${!isOpen ? "hidden lg:block" : "block lg:hidden"}`}>
       <div className="w-full flex flex-col h-full box-border">
         {/* Profile section */}
         <div className="flex h-16 shrink-0 items-center">
           <div>
             <CircleUserRound size={35} strokeWidth={1} />
           </div>
-          <div className="text-sm font-semibold p-2">
+          <div className="text-sm font-semibold p-2"> 
             Personal
             <div className="flex text-xs font-normal justify-center items-center">
               Free <Dot size={20} strokeWidth={2} /> <UserRound size={15} /> 1
@@ -119,6 +123,7 @@ const Sidebar = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Sidebar;
