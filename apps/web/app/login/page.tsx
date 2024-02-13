@@ -130,9 +130,9 @@ export default function Login() {
             </div>
   
             <p className="mt-10 text-center text-sm text-gray-500">
-              Not a member?{' '}
+              Don't have Dentistly Account Yet?{' '}
               <a href="#" className="font-semibold leading-6 text-blue-500 hover:text-blue-400">
-                Sign up now
+                Register Now
               </a>
             </p>
           </div>
