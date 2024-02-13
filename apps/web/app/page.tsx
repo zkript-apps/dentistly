@@ -1,8 +1,8 @@
-import Sidebar from "@/common/components/Sidebar";
 import React from "react";
+import Login from "./login/page";
 
 const DefaultPage = async () => {
-  return <Sidebar />;
+  return <div> <Login/></div>;
 };
 
 export default DefaultPage;
