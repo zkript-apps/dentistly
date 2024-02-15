@@ -1,7 +1,8 @@
+import Home from "@/module/Home";
 import React from "react";
 
 const DefaultPage = async () => {
-  return <div> </div>;
+  return <Sidebar />;
 };
 
 export default DefaultPage;
