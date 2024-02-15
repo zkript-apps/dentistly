@@ -1,9 +1,8 @@
-import Dropdown from "@/common/components/Settings";
-import Settings from "@/common/components/Settings";
+import Home from "@/module/Home";
 import React from "react";
 
 const DefaultPage = async () => {
-	return <Settings />;
+  return <Home />;
 };
 
 export default DefaultPage;
