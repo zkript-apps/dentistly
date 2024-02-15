@@ -1,8 +1,7 @@
-import Settings from "@/common/components/Settings/Index";
-import React from "react";
+import Index from "@/common/components/Settings/Index";
 
 const DefaultPage = async () => {
-	return <Settings />;
+	return <Index />;
 };
 
 export default DefaultPage;

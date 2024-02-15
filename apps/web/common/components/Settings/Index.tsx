@@ -63,7 +63,6 @@ const Settings = () => {
 					</div>
 				</div>
 
-				{/* Canva Usage */}
 				<div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
 					<div className="font-semibold pb-2">
 						What will you be using Canva for?
