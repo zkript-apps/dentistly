@@ -20,5 +20,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "lucide-react": "^0.323.0"
+  }
 }
