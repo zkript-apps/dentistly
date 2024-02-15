@@ -1,4 +1,3 @@
-
 import Home from "@/module/Home";
 import React from "react";
 
