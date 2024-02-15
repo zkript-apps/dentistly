@@ -5,7 +5,6 @@ export default function Register() {
 
     const {register, handleSubmit, watch} = useForm()
     return (
-      <>
        
         <div className="flex min-h-full flex-1 flex-col justify-center py-8 sm:px-6 lg:px-8">
           
@@ -136,6 +135,5 @@ export default function Register() {
             </p>
           </div>
         </div>
-      </>
     )
   }
