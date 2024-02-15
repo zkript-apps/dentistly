@@ -1,28 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-"use client"
-import { useForm } from "react-hook-form"
+"use client";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
-    const { register, handleSubmit} = useForm();
- 
-    return (
+  const { register, handleSubmit } = useForm();
 
+  return (
+      <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=500"
+            alt="Your Company"
+          />
+          <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Sign in to your account
+          </h2>
+        </div>
 
-        <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <img
-              className="mx-auto h-10 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=500"
-              alt="Your Company"
-            />
-            <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign in to your account
-            </h2>
-          </div>
-  
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-            <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-              <form onSubmit={handleSubmit((data) => {
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+          <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+            <form
+              onSubmit={handleSubmit((data) => {
                 console.log(data);
                 })}
                  className="space-y-6" action="#" method="POST">
