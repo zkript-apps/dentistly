@@ -1,5 +1,4 @@
-import Dropdown from "@/common/components/Settings";
-import Settings from "@/common/components/Settings";
+import Settings from "@/common/components/Settings/Index";
 import React from "react";
 
 const DefaultPage = async () => {

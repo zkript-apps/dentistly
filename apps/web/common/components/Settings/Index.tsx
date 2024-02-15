@@ -3,11 +3,11 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDown, UserCircle } from "lucide-react";
 
-function classNames(...classes) {
-	return classes.filter(Boolean).join(" ");
-}
-
 const Settings = () => {
+	function classNames(...classes: string[]) {
+		return classes.filter(Boolean).join(" ");
+	}
+
 	return (
 		<div className="flex flex-col border-2 h-screen w-screen justify-center items-center text-left">
 			<div className="w-1/2">
