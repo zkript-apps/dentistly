@@ -1,7 +1,8 @@
 import React from "react";
+import Login from "../Login/page";
 
 const ModuleHome = () => {
-  return <div>Home Module</div>;
+  return <><Login /></>;
 };
 
 export default ModuleHome;
