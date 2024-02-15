@@ -1,21 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
+import { useForm } from "react-hook-form"
 export default function Register() {
+
+    const {register, handleSubmit, watch} = useForm()
     return (
       <>
-        {/*
-          This example requires updating your template:
-  
-          ```
-          <html class="h-full bg-gray-50">
-          <body class="h-full">
-          ```
-        */}
+       
         <div className="flex min-h-full flex-1 flex-col justify-center py-8 sm:px-6 lg:px-8">
           
   
           <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
             <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-              <form className="space-y-4" action="#" method="POST">
+              <form onSubmit={handleSubmit((data)=> {
+                console.log(data)
+              })} className="space-y-4" action="#" method="POST">
               <div>
               <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img
@@ -32,27 +31,19 @@ export default function Register() {
                     Clinic
                   </label>
                   <div className="mt-1">
-                    <input
-                      id="clinic"
-                      name="clinic"
-
+                    <input {...register("clinic")}
                       required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-
                 <div>
-                  
                   <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                     Email Address
                   </label>
                   <div className="mt-1">
-                    <input
-                      id="email"
-                      name="email"
+                    <input  {...register("email")}
                       type="email"
-                      autoComplete="email"
                       required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     />
@@ -64,10 +55,7 @@ export default function Register() {
                     Username
                   </label>
                   <div className="mt-1">
-                    <input
-                      id="username"
-                      name="username"
-
+                    <input  {...register("username")}
                       required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     />
@@ -78,11 +66,8 @@ export default function Register() {
                     Password
                   </label>
                   <div className="mt-1">
-                    <input
-                      id="password"
-                      name="password"
+                    <input {...register("password")}
                       type="password"
-                      autoComplete="current-password"
                       required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     />
@@ -94,11 +79,15 @@ export default function Register() {
                     Confirm Password
                   </label>
                   <div className="mt-1">
-                    <input
-                      id="confirmPassword"
-                      name="confirmPassword"
+                    <input {...register("confirmPassword", {
+                        required: true,
+                        validate: (val:string) => {
+                            if(watch('password') != val) {
+                                return "The password confirmation does not match";
+                            }
+                        }
+                    })}
                       type="password"
-                      autoComplete="current-password"
                       required
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                     />

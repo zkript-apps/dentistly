@@ -1,8 +1,8 @@
+import Home from "@/module/Home";
 import React from "react";
-import Register from "./Register/page"
 
 const DefaultPage = async () => {
-  return <div><Register/></div>;
+  return <div><Home/></div>;
 };
 
 export default DefaultPage;
