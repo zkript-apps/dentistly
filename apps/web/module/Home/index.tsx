@@ -1,8 +1,8 @@
 import React from "react";
-import Register from "../Register/page";
+
 
 const ModuleHome = () => {
-  return <div><Register/></div>;
+  return <div>Home Module</div>;
 };
 
 export default ModuleHome;
