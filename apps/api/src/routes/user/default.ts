@@ -37,12 +37,13 @@ export const getUser = async (req: Request, res: Response) => {
 };
 
 export const addUser = async (req: Request, res: Response) => {
-  const { clinicId, username, email, password, role } = req.body;
-  if (username && email && password && role) {
+  const { clinicId, username, email, password, role} = req.body;
+  if (username && email && password ) {
     const newUser = new user({
       clinic: clinicId,
       username,
       email,
+      role,
       password,
       updatedAt: null,
       deletedAt: null,

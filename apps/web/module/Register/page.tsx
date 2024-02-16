@@ -14,8 +14,7 @@ const onSubmit = async (data: IUser) => {
     clinicId: data.clinicId,
     username: data.username,
     email: data.email,
-    password: data.password,
-    role: data.role,
+    password: data.password
   };
 
   try {
@@ -93,26 +92,7 @@ const onSubmit = async (data: IUser) => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
               </div>
-              </div>
-              <div>
-              <label
-                htmlFor="role"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-              Role
-              </label>
-              <div className="mt-1">
-              <select 
-                {...register("role",{required:true})} 
-                name="role"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6">
-             
-              <option value="First" label="Test1"></option>
-              <option value="Second" label="Test2"></option>
-              </select>
-              </div>
-              </div>
+              </div>          
                 <div>
               <label
                 htmlFor="password"
