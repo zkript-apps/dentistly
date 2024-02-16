@@ -22,9 +22,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@tanstack/react-query": "^5.20.5",
-    "@tanstack/react-query-devtools": "^5.20.5",
-    "lucide-react": "^0.323.0",
-    "react-hook-form": "^7.50.1"
+    "@headlessui/react": "^1.7.18",
+    "lucide-react": "^0.323.0"
   }
 }
