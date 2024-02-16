@@ -1,7 +1,7 @@
-import Index from "@/common/components/Settings/Index";
+import ShareDesign from "@/common/components/Privacy/ShareDesign";
 
 const DefaultPage = async () => {
-  return <Index />;
+	return <ShareDesign />;
 };
 
 export default DefaultPage;
