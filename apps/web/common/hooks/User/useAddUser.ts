@@ -4,7 +4,7 @@ import { IUser } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 
 export async function addUser(props: IUser) {
-  console.log(props)
+  console.log(props);
   const apiService = new ApiService();
   return await apiService.post(`${API_URL_USER}`, props);
 }

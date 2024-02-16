@@ -7,30 +7,29 @@ import { useForm } from "react-hook-form";
 
 export default function Register() {
   const { register, handleSubmit, watch } = useForm<any>();
-              
-const { mutate } = useAddUser();
-const onSubmit = async (data: IUser) => {
-  const newUser = {
-    clinicId: data.clinicId,
-    username: data.username,
-    email: data.email,
-    password: data.password
-  };
 
-  try {
-    await mutate(newUser);
-  } catch (error) {
-    console.error('Error adding user:', error);
-  }
-};
+  const { mutate } = useAddUser();
+  const onSubmit = async (data: IUser) => {
+    const newUser = {
+      clinicId: data.clinicId,
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      await mutate(newUser);
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
+  };
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-8 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
         <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
           <form
-               onSubmit={handleSubmit(onSubmit)}         
-
+            onSubmit={handleSubmit(onSubmit)}
             className="space-y-4"
             action="#"
             method="POST"
@@ -60,7 +59,6 @@ const onSubmit = async (data: IUser) => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
               </div>
-           
             </div>
             <div>
               <label
@@ -92,8 +90,8 @@ const onSubmit = async (data: IUser) => {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
               </div>
-              </div>          
-                <div>
+            </div>
+            <div>
               <label
                 htmlFor="password"
                 className="block text-sm font-medium leading-6 text-gray-900"
