@@ -22,7 +22,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "lucide-react": "^0.323.0",
-    "zustand": "^4.5.0"
+    "@headlessui/react": "^1.7.18",
+    "lucide-react": "^0.323.0"
   }
 }
