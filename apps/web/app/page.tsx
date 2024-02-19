@@ -1,8 +1,8 @@
-import ModuleHome from "@/module/Home";
+import Home from "@/module/Home";
 import React from "react";
 
 const DefaultPage = async () => {
-  return <ModuleHome />;
+  return <Index />;
 };
 
 export default DefaultPage;
