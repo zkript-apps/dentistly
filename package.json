@@ -22,7 +22,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "lucide-react": "^0.323.0",
-    "react-hook-form": "^7.50.1"
+    "@headlessui/react": "^1.7.18",
+    "lucide-react": "^0.323.0"
   }
 }
