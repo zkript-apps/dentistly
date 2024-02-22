@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@iconify/tailwind": "^0.1.4",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.1.1",
@@ -23,6 +24,10 @@
   ],
   "dependencies": {
     "@headlessui/react": "^1.7.18",
-    "lucide-react": "^0.323.0"
+    "@heroicons/react": "^2.1.1",
+    "@tanstack/react-query": "^5.21.7",
+    "@tanstack/react-query-devtools": "^5.21.7",
+    "lucide-react": "^0.323.0",
+    "react-router-dom": "^6.22.1"
   }
 }
