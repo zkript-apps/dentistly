@@ -8,7 +8,7 @@ import Index from "@/common/components/BillingAndPlans/Index";
 import ButtonToModal from "@/common/components/BillingAndPlans/Test";
 
 const DefaultPage = async () => {
-	return <Index />;
+  return <Index />;
 };
 
 export default DefaultPage;
