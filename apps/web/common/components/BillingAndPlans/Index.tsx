@@ -68,7 +68,6 @@ const Index = () => {
           <button onClick={openModal} className="underline text-blue-500 pr-1">
             Add a payment method
           </button>
-          
           so you can purchase premium images and vectors for ₱50 a piece.
         </div>
         <div className="pt-4">
@@ -198,7 +197,7 @@ const Index = () => {
             <div className="flex items-center font-semibold text-xs pt-3 pb-2">
               Tax ID
               <span className="pl-1 h-full">
-                {' '}
+                {" "}
                 <Info size={14} strokeWidth={3} />
               </span>
             </div>
