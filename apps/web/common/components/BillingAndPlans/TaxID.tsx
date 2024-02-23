@@ -34,7 +34,7 @@ const TaxID = () => {
           <div className="flex items-center">
             <div className="flex items-center font-semibold text-xs pt-3 pb-2">
               Tax ID
-              <span className="pl-1 h-full">
+              <span className="pl-1">
                 <Info size={14} strokeWidth={3} />
               </span>
             </div>
