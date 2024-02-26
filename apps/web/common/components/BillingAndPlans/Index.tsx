@@ -98,16 +98,12 @@ const Index = () => {
 
 			{/* TeamBillingInfo.tsx */}
 			<div className="w-1/3 pt-10">
-				<div className="flex w-full justify-center">
-					<div className="w-full">
-						<div className="font-semibold text-lg pt-4 pb-4">
-							Team billing information for Personal
-						</div>
-						<CompanyNameInput />
-						<BillingAddressTextarea />
-						<BillingContactInput />
-					</div>
+				<div className="font-semibold text-lg pt-4 pb-4">
+					Team billing information for Personal
 				</div>
+				<CompanyNameInput />
+				<BillingAddressTextarea />
+				<BillingContactInput />
 			</div>
 
 			{/* TaxID.tsx */}
