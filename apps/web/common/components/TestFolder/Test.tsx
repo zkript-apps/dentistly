@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import { ChevronDown, Crown, Info, Trash2 } from "lucide-react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useMemo } from "react";
 import { Dialog, Transition, RadioGroup } from "@headlessui/react";
-
 const settings = [
 	{
 		imageUrl:
@@ -20,32 +19,27 @@ const settings = [
 		name: "4242****4242",
 		MasterCardImg: "https://www.svgrepo.com/show/303248/mastercard-2-logo.svg",
 	},
-
 	{
 		name: "4242****4242",
 		VisaImg:
 			"https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg",
 	},
-
 	{
 		name: "4242****4242",
 		AmExImg:
 			"https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg",
 	},
-
 	{
 		name: "4242****4242",
 		DiscoverImg:
 			"https://upload.wikimedia.org/wikipedia/commons/5/57/Discover_Card_logo.svg",
 	},
 ];
-
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
-
 const Index = () => {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [setOpen, setIsModalOpen] = useState(false);
 	const [selected, setSelected] = useState(settings[0]);
 	const cancelButtonRef = useRef(null);
 
@@ -75,7 +69,6 @@ const Index = () => {
 					<div className="pt-1">You have 0 Canva credits.</div>
 				</div>
 			</div>
-
 			{/* TeamSubscriptions.tsx */}
 			<div className="w-1/3 pt-10">
 				<div className="font-semibold text-lg pt-4 pb-4">
@@ -89,17 +82,14 @@ const Index = () => {
 					</button>
 				</div>
 			</div>
-
 			{/* TeamBillingInfo.tsx */}
 			<div className="w-1/3 pt-10">
 				<div className="font-semibold text-lg pt-4 pb-4">
 					Team billing information for Personal
 				</div>
-
 				{/* Company Name */}
 				<div>
 					<div className="font-semibold text-xs">Company Name</div>
-
 					<div className="flex pt-2">
 						<div className="w-full">
 							<input
@@ -111,16 +101,13 @@ const Index = () => {
 							/>
 						</div>
 					</div>
-
 					<div className="text-xs text-gray-500">
 						This will appear on your invoice
 					</div>
 				</div>
-
 				{/* Billing Address */}
 				<div className="pt-4">
 					<div className="font-semibold text-xs">Billing Address</div>
-
 					<div className="flex pt-2">
 						<div className="w-full">
 							<textarea
@@ -132,7 +119,6 @@ const Index = () => {
 						</div>
 					</div>
 				</div>
-
 				{/* Billing contacts */}
 				<div className="pt-4">
 					<div className="font-semibold text-xs pb-2">Billing contacts</div>
@@ -140,7 +126,6 @@ const Index = () => {
 						All billing-related emails will be sent to your email address and
 						these billing contacts
 					</div>
-
 					<div className="flex flex-col pt-2">
 						<div className="flex w-full items-center">
 							<input
@@ -154,7 +139,6 @@ const Index = () => {
 								<Trash2 size={25} strokeWidth={1.5} />
 							</button>
 						</div>
-
 						<div>
 							<button className="flex items-center text-sm text-gray-700 hover:text-black font-medium">
 								<div className="pt-2">+ Add new billing contact</div>
@@ -163,7 +147,6 @@ const Index = () => {
 					</div>
 				</div>
 			</div>
-
 			{/* TaxID.tsx */}
 			<div className="w-1/3 pt-10">
 				<div className="font-semibold text-lg">Tax ID</div>
@@ -187,7 +170,6 @@ const Index = () => {
 					<button className="flex items-center border p-2 border-gray-200 w-full text-sm cursor-not-allowed text-gray-400">
 						Enter your legal company name
 					</button>
-
 					<div className="text-xs text-gray-500">
 						This is the name registered under your tax ID.
 					</div>
@@ -196,8 +178,10 @@ const Index = () => {
 					<div className="flex items-center">
 						<div className="flex items-center font-semibold text-xs pt-3 pb-2">
 							Tax ID
-							<span className="pl-1">
+							<span className="pl-1 h-full">
+								{/*  */}
 								<Info size={14} strokeWidth={3} />
+								{/*  */}
 							</span>
 						</div>
 					</div>
@@ -209,7 +193,6 @@ const Index = () => {
 					</div>
 				</div>
 			</div>
-
 			{/* Team.tsx */}
 			<div className="w-1/3 pt-10">
 				<div className="font-semibold text-lg pb-4">Team</div>
@@ -217,10 +200,9 @@ const Index = () => {
 					Create a new team
 				</button>
 			</div>
-
 			{/* Payment Method Modal */}
-			<Transition.Root show={isModalOpen}>
-				<Dialog as="div" className="relative z-10" onClose={setIsModalOpen}>
+			<Transition.Root show={openModal}>
+				<Dialog as="div" className="relative z-10" onClose={setOpen}>
 					<Transition.Child
 						as={Fragment}
 						enter="ease-out duration-300"
@@ -232,7 +214,6 @@ const Index = () => {
 					>
 						<div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 					</Transition.Child>
-
 					<div className="fixed inset-0 w-full z-10 overflow-y-auto">
 						<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
 							<Transition.Child
@@ -271,7 +252,6 @@ const Index = () => {
 										<div className="flex justify-center text-lg p-2 font-bold">
 											Add Payment Method
 										</div>
-
 										<div className="mt-3 text-center sm:mt-5">
 											<RadioGroup value={selected} onChange={setSelected}>
 												<RadioGroup.Label className="sr-only">
@@ -318,87 +298,39 @@ const Index = () => {
 																			style={{ paddingLeft: "8px" }}
 																		/>
 																	)}
-																	{setting.MasterCardImg && (
-																		<img
-																			src={setting.MasterCardImg}
-																			alt={setting.name}
-																			className="flex items-start h-8 w-auto"
-																			style={{
-																				paddingLeft: "8px",
-																				paddingRight: "5px",
-																			}}
-																		/>
+																	{!setting.imageUrl && (
+																		<svg
+																			xmlns="http://www.w3.org/2000/svg"
+																			width="24"
+																			height="24"
+																			viewBox="0 0 24 24"
+																			fill="none"
+																			stroke="currentColor"
+																			strokeWidth="1.25"
+																			strokeLinecap="round"
+																			strokeLinejoin="round"
+																			className="lucide lucide-credit-card flex justify-start items-center w-auto pr-1"
+																			style={{ paddingLeft: "8px" }}
+																		>
+																			<rect
+																				width="20"
+																				height="14"
+																				x="2"
+																				y="5"
+																				rx="2"
+																			/>
+																			<line x1="2" x2="22" y1="10" y2="10" />
+																		</svg>
 																	)}
-																	{setting.VisaImg && (
-																		<img
-																			src={setting.VisaImg}
-																			alt={setting.name}
-																			className="flex items-start h-auto w-12"
-																			style={{
-																				paddingLeft: "8px",
-																				paddingRight: "5px",
-																			}}
-																		/>
-																	)}
-																	{setting.AmExImg && (
-																		<img
-																			src={setting.AmExImg}
-																			alt={setting.name}
-																			className="flex items-start h-auto w-10"
-																			style={{
-																				paddingLeft: "8px",
-																				paddingRight: "5px",
-																			}}
-																		/>
-																	)}
-																	{setting.DiscoverImg && (
-																		<img
-																			src={setting.DiscoverImg}
-																			alt={setting.name}
-																			className="flex items-start h-auto w-12"
-																			style={{
-																				paddingLeft: "8px",
-																				paddingRight: "5px",
-																			}}
-																		/>
-																	)}
-																	{!setting.imageUrl &&
-																		![3, 4, 5, 6].includes(settingIdx) && (
-																			<svg
-																				xmlns="http://www.w3.org/2000/svg"
-																				width="24"
-																				height="24"
-																				viewBox="0 0 24 24"
-																				fill="none"
-																				stroke="currentColor"
-																				strokeWidth="1.25"
-																				strokeLinecap="round"
-																				strokeLinejoin="round"
-																				className="lucide lucide-credit-card flex justify-start items-center w-auto pr-1"
-																				style={{ paddingLeft: "8px" }}
-																			>
-																				<rect
-																					width="20"
-																					height="14"
-																					x="2"
-																					y="5"
-																					rx="2"
-																				/>
-																				<line x1="2" x2="22" y1="10" y2="10" />
-																			</svg>
-																		)}
-
 																	<span className="ml-1 flex flex-col">
 																		<RadioGroup.Label
 																			as="span"
 																			className={classNames(
-																				checked
-																					? "text-gray-800"
-																					: "text-black",
-																				"block text-sm font-medium"
+																				"block text-sm font-medium text-gray-900"
+																				// Other classNames if needed
 																			)}
 																		>
-																			{setting.name}
+																			{/* Label content */}
 																		</RadioGroup.Label>
 																	</span>
 																</>
@@ -419,7 +351,7 @@ const Index = () => {
 										<button
 											type="button"
 											className="inline-flex h-10 items-center  justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-											onClick={() => setIsModalOpen(false)}
+											onClick={() => setOpen(false)}
 											ref={cancelButtonRef}
 										>
 											Cancel
@@ -427,7 +359,7 @@ const Index = () => {
 										<button
 											type="button"
 											className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-											onClick={() => setIsModalOpen(false)}
+											onClick={() => setOpen(false)}
 										>
 											Save
 										</button>
@@ -441,5 +373,4 @@ const Index = () => {
 		</div>
 	);
 };
-
 export default Index;
