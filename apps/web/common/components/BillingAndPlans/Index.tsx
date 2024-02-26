@@ -67,7 +67,7 @@ const Index = () => {
 				<div>
 					<button onClick={openModal} className="underline text-blue-500 pr-1">
 						Add a payment method
-					</button>{" "}
+					</button>{""}
 					so you can purchase premium images and vectors for ₱50 a piece.
 				</div>
 				<div className="pt-4">
