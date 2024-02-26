@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import React, { useState } from "react";
 
 import {
@@ -76,6 +77,7 @@ const People = () => {
               <div className="flex col-span-1 items-center">
                 <span className="pr-2">
                   <UserCircle />
+                </span>
                 </span>{" "}
                 Name
               </div>
