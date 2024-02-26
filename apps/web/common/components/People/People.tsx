@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import React, { useState } from "react";
 
 import {
   ChevronDown,
@@ -77,6 +78,7 @@ const People = () => {
                 <span className="pr-2">
                   <UserCircle />
                 </span>
+                </span>{" "}
                 Name
               </div>
               <div className="flex col-span-1 items-center">
