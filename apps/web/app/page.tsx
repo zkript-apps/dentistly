@@ -1,12 +1,7 @@
-import Index from "@/common/components/BillingAndPlans/Index";
-import ShareDesign from "@/common/components/Privacy/ShareDesign";
-import Home from "@/module/Home";
-import People from "@/common/components/People/People";
-import React from "react";
+import Combined from "@/common/components/CombinedSidebar/Combined";
 
 const DefaultPage = async () => {
-  return <People />;
-  return <ShareDesign />;
+  return <Combined />;
 };
 
 export default DefaultPage;

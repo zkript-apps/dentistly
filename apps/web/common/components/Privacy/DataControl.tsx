@@ -16,7 +16,7 @@ const DataControl = () => {
         </div>
         <div>
           We believe you should have control over your data, and we take our
-          responsibility to safeguard it seriously.
+          responsibility to safeguard it seriously.{""}
           <button className="text-blue-500 underline pl-2">Learn more.</button>
         </div>
       </div>

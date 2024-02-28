@@ -17,7 +17,7 @@ const ShareDesign = () => {
           </div>
           <div className="pb-2">
             Share my usage and activity data with the editors or owners of the
-            designs that I interact with via Design Insights.
+            designs that I interact with via Design Insights.{""}
             <button className="text-blue-500 underline pl-2">
               Learn more.
             </button>

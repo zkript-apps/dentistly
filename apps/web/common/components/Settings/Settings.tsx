@@ -9,8 +9,8 @@ const Settings = () => {
   }
 
   return (
-    <div className="flex flex-col border-2 h-screen w-screen justify-center items-center text-left">
-      <div className="w-1/2">
+    <div className="flex flex-col h-auto w-full justify-center items-left text-left pt-4">
+      <div>
         <div className="text-lg font-semibold pb-5">Your account</div>
         <div className="flex items-center border-b-2 border-gray-200 pt-4 pb-4">
           <UserCircle size={90} strokeWidth={1.25} color="gold" />
@@ -23,7 +23,7 @@ const Settings = () => {
             </div>
             <div></div>
           </div>
-          <button className="flex-none ml-5 w-36 h-10 p-2 rounded bg-gray-200 font-semibold">
+          <button className="flex-none ml-5 w-36 h-10 p-2 rounded bg-gray-200 font-semibold hover:bg-gray-300">
             Upload photo
           </button>
         </div>
@@ -42,10 +42,10 @@ const Settings = () => {
               />
             </div>
             <div className="flex ml-4">
-              <button className="rounded bg-gray-200 mr-2 w-24 h-10 p-2 font-semibold">
+              <button className="rounded bg-gray-200 mr-2 w-24 h-10 p-2 font-semibold hover:bg-gray-300">
                 Cancel
               </button>
-              <button className="bg-blue-600 rounded w-24 h-10 p-2 text-white font-semibold">
+              <button className="bg-blue-600 rounded w-24 h-10 p-2 text-white font-semibold hover:bg-blue-400">
                 Save
               </button>
             </div>
@@ -57,7 +57,7 @@ const Settings = () => {
           <div className="flex pt-2 justify-center items-center">
             <div className="w-full">jp.madrigal07@gmail.com</div>
 
-            <button className="ml-5 h-10 w-20 p-2 rounded bg-gray-200 font-semibold">
+            <button className="ml-5 h-10 w-20 p-2 rounded bg-gray-200 font-semibold hover:bg-gray-300">
               Edit
             </button>
           </div>
@@ -70,7 +70,7 @@ const Settings = () => {
 
           <Menu as="div" className="w-1/2 relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900 hover:bg-gray-50 justify-between items-center">
+              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900 hover:bg-gray-200 justify-between items-center">
                 <span>Small business</span>
                 <ChevronDown className="h-5 w-5" />
               </Menu.Button>
@@ -85,58 +85,54 @@ const Settings = () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute left-0 z-10 mt-2 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute w-full bottom-0 z-10 mb-12 overflow-y-scroll rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Large Company
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Student
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Personal
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Teacher
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                 </div>
@@ -151,7 +147,7 @@ const Settings = () => {
 
           <Menu as="div" className="w-1/2 relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900 hover:bg-gray-50 justify-between items-center">
+              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900  hover:bg-gray-200 justify-between items-center">
                 <span>English (US)</span>
                 <ChevronDown className="h-5 w-5" />
               </Menu.Button>
@@ -166,71 +162,66 @@ const Settings = () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute left-0 z-10 mt-2 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute w-full bottom-0 z-10 mb-12 overflow-y-scroll rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Arabic
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Tagalog
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Malay
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Mandarin
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm",
+                          "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Greek
-                      </a>
+                      </button>
                     )}
                   </Menu.Item>
                 </div>
