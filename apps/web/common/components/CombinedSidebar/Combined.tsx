@@ -7,21 +7,21 @@ import PrivacyPage from "../Privacy/PrivacyPage";
 import ProfileSidebar from "../Privacy/ProfileSidebar";
 
 const Combined = () => {
-	return (
-		<BrowserRouter>
-			<div className="flex w-full">
-				<ProfileSidebar />
-				<div className="content w-1/2">
-					<Routes>
-						<Route path="/" element={<Settings />} />
-						<Route path="/Account" element={<Settings />} />
-						<Route path="/Privacy" element={<PrivacyPage />} />
-						<Route path="/Billing" element={<BillingPlansPage />} />
-						<Route path="/People" element={<People />} />
-					</Routes>
-				</div>
-			</div>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <div className="flex w-full">
+        <ProfileSidebar />
+        <div className="content w-1/2">
+          <Routes>
+            <Route path="/" element={<Settings />} />
+            <Route path="/Account" element={<Settings />} />
+            <Route path="/Privacy" element={<PrivacyPage />} />
+            <Route path="/Billing" element={<BillingPlansPage />} />
+            <Route path="/People" element={<People />} />
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
+  );
 };
 export default Combined;
