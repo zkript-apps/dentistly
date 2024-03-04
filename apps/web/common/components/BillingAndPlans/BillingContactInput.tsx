@@ -1,6 +1,7 @@
 // BillingContactInput.js
 import React from "react";
 import { Trash2 } from "lucide-react";
+import { Button } from "../ui/Button";
 
 const BillingContactInput = () => {
   return (
@@ -19,14 +20,14 @@ const BillingContactInput = () => {
             className="block w-full box-border border-gray-300 rounded border py-1.5 text-gray-900 placeholder-gray-400 focus:border-blue-300 focus:border-opacity-0  sm:text-sm sm:leading-6"
             placeholder="Enter an email address"
           />
-          <button className="pl-2 pr-2">
+          <Button variant="ghost" className="pl-2 pr-2 hover:text-red-500">
             <Trash2 size={25} strokeWidth={1.5} />
-          </button>
+          </Button>
         </div>
         <div>
-          <button className="flex items-center text-sm text-gray-700 hover:text-black font-medium">
+          <Button variant="ghost" className="flex items-center pl-0 text-sm ">
             <div className="pt-2">+ Add new billing contact</div>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

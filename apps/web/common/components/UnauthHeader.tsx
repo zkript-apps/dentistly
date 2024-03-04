@@ -2,6 +2,7 @@
 import { Settings, CircleUser, Menu, Bell } from "lucide-react";
 import React from "react";
 import useIsSideNavOpen from "../helpers/useIsSideNavOpen";
+import { Button } from "./ui/Button";
 
 export default function UnauthHeader() {
   const { setIsOpen } = useIsSideNavOpen();
@@ -15,30 +16,33 @@ export default function UnauthHeader() {
         >
           {/* left part */}
           <div className="flex pb-5 pt-5 pl-5 items-center">
-            <button onClick={() => setIsOpen()}>
+            <Button variant="primary" size="icon" onClick={() => setIsOpen()}>
               <Menu strokeWidth={1.25} />
-            </button>
+            </Button>
             <div className="flex lg:flex-1 font-bold pl-5">
-              <button> Dentistly </button>
+              <Button variant="default"> Dentistly </Button>
             </div>
           </div>
 
           {/* right part */}
           <div className="flex justify-evenly w-auto items-center pr-5">
-            <button className="settings p-2">
+            <Button variant="primary" size="icon" className="settings p-2">
               <Settings strokeWidth={1.25} />
-            </button>
-            <button className="p-2">
+            </Button>
+            <Button variant="primary" size="icon" className="p-2 ml-2">
               <Bell strokeWidth={1.25} />
-            </button>
+            </Button>
             <div className="outside-border ml-2 mr-2 border border-dotted p-0.25 rounded-md border-gray-700">
-              <button className="border-2 pb-2 pt-2 pl-3 pr-3 rounded-md bg-purple-600 text-white">
+              <Button
+                variant="secondary"
+                className="border-2 pb-2 pt-2 pl-3 pr-3 rounded-md bg-blue-600 text-white hover:bg-blue-800"
+              >
                 Create Organization
-              </button>
+              </Button>
             </div>
-            <button className="user-settings p-2">
+            <Button variant="primary" size="icon" className="user-settings p-2">
               <CircleUser strokeWidth={1.25} />
-            </button>
+            </Button>
           </div>
         </nav>
       </header>

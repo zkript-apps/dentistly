@@ -7,6 +7,10 @@ import BillingAddressTextarea from "./BillingAddressTextArea";
 import BillingContactInput from "./BillingContactInput";
 import IssuingCountrySelect from "./IssuingCountrySelect";
 import LegalCompanyNameInput from "./LegalCompanyNameInput";
+import { Info } from "lucide-react";
+import { Button } from "../ui/Button";
+import Team from "./Team";
+import TeamSubscriptions from "./TeamSubscriptions";
 
 const settings = [
   {
@@ -62,15 +66,15 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col items-left w-full mb-4 pt-4">
+    <div className="flex flex-col items-left w-2/5 mb-4 pt-4">
       <div className="font-semibold text-lg">Billing Plans</div>
       <div className="font-semibold text-lg pt-4 pb-4">
         Payment Method for your Team: Personal
       </div>
       <div>
-        <button onClick={openModal} className="underline text-blue-500 pr-1">
+        <Button variant="link" className="p-0 mr-1 h-auto" onClick={openModal}>
           Add a payment method
-        </button>
+        </Button>
         {""}
         so you can purchase premium images and vectors for ₱50 a piece.
       </div>
@@ -81,16 +85,7 @@ const Index = () => {
 
       {/* TeamSubscriptions.tsx */}
       <div className="pt-10">
-        <div className="font-semibold text-lg pt-4 pb-4">
-          Subscriptions for your team: Personal
-        </div>
-        <div className="border w-full p-4 rounded-md">
-          <div className="font-semibold text-lg">Canva Free</div>
-          <div className="pt-4 pb-4 text-sm">Free forever</div>
-          <button className="flex items-center justify-center font-medium text-sm h-10 rounded-md bg-gray-100 hover:bg-gray-200 w-full">
-            <Crown color="gold" size={12}></Crown>Try Canva Pro
-          </button>
-        </div>
+        <TeamSubscriptions />
       </div>
 
       {/* TeamBillingInfo.tsx */}
@@ -130,10 +125,7 @@ const Index = () => {
 
       {/* Team.tsx */}
       <div className="pt-10">
-        <div className="font-semibold text-lg pb-4">Team</div>
-        <button className="font-semibold text-sm bg-gray-100 h-10 w-40 rounded hover:bg-gray-200">
-          Create a new team
-        </button>
+        <Team />
       </div>
 
       {/* Payment Method Modal */}

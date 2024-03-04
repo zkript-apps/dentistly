@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-
 import {
   ChevronDown,
   LayoutGrid,
@@ -10,6 +9,7 @@ import {
   UserCircle,
 } from "lucide-react";
 import Image from "next/image";
+import { Button } from "../ui/Button";
 
 const People = () => {
   const [showListContent, setShowListContent] = useState(true);
@@ -21,16 +21,17 @@ const People = () => {
     <div className="flex flex-col justify-center w-full pt-4">
       <div className="flex h-10">
         <div className="flex-1 font-semibold text-lg">People (1)</div>
-        <button
+        <Button
+          variant="default"
           onClick={handleListButtonClick}
-          className="hover:bg-gray-200 p-1 rounded"
+          className="p-1"
         >
           {showListContent ? (
-            <LayoutGrid size={20} strokeWidth={1.5} />
+            <LayoutGrid size={20} strokeWidth={2} />
           ) : (
-            <List size={20} strokeWidth={1.5} />
+            <List size={20} strokeWidth={2} />
           )}
-        </button>
+        </Button>
       </div>
       <div className="main-container flex items-center bg-blue-100 p-4 rounded-lg">
         <div className="flex-1">
@@ -46,9 +47,9 @@ const People = () => {
             <li>Ideate, create, review, and publish - all from one platform</li>
             <li> Stay on brand across everyone's designs</li>
           </ul>
-          <button className="w-36 h-10 ml-2 mt-2 rounded-md bg-blue-500 text-white text-sm font-semibold hover:bg-blue-600">
+          <Button variant="default" className="w-36 h-10 ml-2 mt-2 ">
             Create a team
-          </button>
+          </Button>
         </div>
         <div>
           <Image
@@ -81,28 +82,43 @@ const People = () => {
             </div>
             <div className="flex items-center col-span-1">Owner</div>
           </div>
+          <div className="flex items-center mt-6 items-left">
+            <Button
+              variant="default"
+              className="flex pt-2  w-10 mr-5 rounded-full"
+            >
+              <span className="hover:bg-gray-200 rounded-full p-2">
+                <Plus />
+              </span>
+            </Button>
+            <div className="font-medium text-sm">Invite people</div>
+          </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center ml-2 mr-2 w-44">
+        <div className="flex flex-col items-center pl-2 mr-2 w-44">
           <div>
             <SquareUser size={200} strokeWidth={1.25} />
           </div>
           <div className="font-medium">Name</div>
-          <button className="flex w-24 items-center cursor-not-allowed text-left pt-2">
+          <button className="flex w-20 text-gray-700 items-center cursor-not-allowed text-left pt-2">
             <div className="flex-1 text-sm">Owner</div>
             <div>
               <ChevronDown size={15} />
             </div>
           </button>
+          <div className="flex items-center mt-10 w-full">
+            <Button
+              variant="default"
+              className="flex pt-2  w-10 mr-5 rounded-full"
+            >
+              <span className="hover:bg-gray-200 rounded-full p-2">
+                <Plus />
+              </span>
+            </Button>
+            <div className="font-medium text-sm">Invite people</div>
+          </div>
         </div>
       )}
-
-      <button className="flex items-center pt-2">
-        <span className="hover:bg-gray-200 rounded-full p-2">
-          <Plus />
-        </span>
-        <div className="font-medium text-sm">Invite people</div>
-      </button>
     </div>
   );
 };

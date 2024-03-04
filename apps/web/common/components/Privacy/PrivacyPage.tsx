@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Switch } from "@headlessui/react";
+import { Button } from "../ui/Button";
 
 interface SettingProps {
   title: string;
@@ -17,7 +18,7 @@ const PrivacySetting = (props: SettingProps) => {
     onToggle(!enabled); // Toggle the state and pass it to the parent component
   };
   return (
-    <div className="card flex border-2 w-full p-5 border-gray-200 mt-2 rounded ">
+    <div className="card flex border-2 w-3/5 p-5 border-gray-200 mt-2 rounded ">
       <div className="flex flex-1 flex-col">
         <div className="font-semibold pb-2">{title}</div>
         <div>{description}</div>
@@ -128,7 +129,9 @@ const PrivacyPage = () => {
         We believe you should have control over your data, and we take our
         responsibility to safeguard it seriously.{""}
         <div>
-          <button className="text-blue-500 underline">Learn more.</button>
+          <Button variant="link" className="p-0 h-auto">
+            Learn more.
+          </Button>
         </div>
       </div>
       <PrivacySetting
@@ -157,10 +160,10 @@ const PrivacyPage = () => {
       />
       <div>
         Visit the{" "}
-        <button className="text-blue-500 underline">
+        <Button variant="link" className="p-0 text-base">
           {" "}
           Messaging preferences
-        </button>{" "}
+        </Button>{" "}
         page to review and update your marketing messaging settings.
       </div>
     </div>

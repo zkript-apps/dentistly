@@ -9,6 +9,7 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/Button";
 
 const ProfileSidebar = () => {
   return (
@@ -26,34 +27,35 @@ const ProfileSidebar = () => {
           </div>
 
           {/* Sidebar Buttons */}
-          <div className="flex flex-col pt-4 items-left justify-center">
+          <div className="flex flex-col pt-4 w-full items-left">
             <Link to="/Account">
-              <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center w-full  rounded h-10 active:font-semibold active:bg-gray-200">
+              <Button variant="primary" className="mb-2 pl-2">
                 <CircleUserRoundIcon strokeWidth={1.25} />
                 <div className="pl-2">Your account</div>
-              </button>
+              </Button>
             </Link>
 
-            <button className="flex hover:bg-gray-100 mb-2 pl-2 w-full items-center rounded h-10 active:font-semibold active:bg-gray-200">
+            <Button variant="primary" className="mb-2 pl-2">
               <LockKeyhole strokeWidth={1.25} />
               <div className="pl-2">Login & security</div>
-            </button>
+            </Button>
 
-            <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center w-full rounded h-10 active:font-semibold active:bg-gray-200">
+            <Button variant="primary" className="mb-2 pl-2">
               <Mail strokeWidth={1.25} />
               <div className="pl-2">Message Preferences</div>
-            </button>
+            </Button>
 
             <Link to="/Privacy">
-              <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center  w-full rounded h-10 active:font-semibold active:bg-gray-200">
+              <Button variant="primary" className="mb-2 pl-2">
                 <LockKeyhole strokeWidth={1.25} />
+
                 <div className="pl-2">Privacy Settings</div>
-              </button>
+              </Button>
             </Link>
           </div>
         </div>
 
-        <div className="flex flex-col p-5 border-b h-auto w-auto justify-center items-left">
+        <div className="flex flex-col p-5 border-b h-auto w-full justify-center items-left">
           {/* Profile Settings Sidebar */}
           <div className="flex items-center">
             <CircleUserRoundIcon size={40} strokeWidth={1.25} />
@@ -65,26 +67,26 @@ const ProfileSidebar = () => {
           {/* Sidebar Buttons */}
           <div className="flex flex-col pt-4 items-left justify-center">
             <Link to="/People">
-              <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center w-full  rounded h-10 active:font-semibold active:bg-gray-200">
+              <Button variant="primary" className="mb-2 pl-2">
                 <Users strokeWidth={1.25} />
                 <div className="pl-2">People</div>
-              </button>
+              </Button>
             </Link>
 
             <Link to="/Billing">
-              <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center rounded h-10 active:font-semibold active:bg-gray-200">
+              <Button variant="primary" className="mb-2 pl-2">
                 <CreditCard strokeWidth={1.25} />
                 <div className="pl-2">Billing & Plans</div>
-              </button>
+              </Button>
             </Link>
-            <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center rounded h-10 active:font-semibold active:bg-gray-200">
+            <Button variant="primary" className="mb-2 pl-2">
               <ShoppingCart strokeWidth={1.25} />
               <div className="pl-2">Purchase History</div>
-            </button>
-            <button className="flex hover:bg-gray-100 mb-2 pl-2 items-center rounded h-10 active:font-semibold active:bg-gray-200">
+            </Button>
+            <Button variant="primary" className="mb-2 pl-2">
               <Globe strokeWidth={1.25} />
               <div className="pl-2">Domains</div>
-            </button>
+            </Button>
           </div>
         </div>
       </div>

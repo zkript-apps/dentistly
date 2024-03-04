@@ -2,6 +2,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDown, UserCircle } from "lucide-react";
+import { Button } from "../ui/Button";
 
 const Settings = () => {
   function classNames(...classes: string[]) {
@@ -9,7 +10,7 @@ const Settings = () => {
   }
 
   return (
-    <div className="flex flex-col h-auto w-full justify-center items-left text-left pt-4">
+    <div className="flex flex-col h-auto w-4/5 justify-center items-left text-left pt-4">
       <div>
         <div className="text-lg font-semibold pb-5">Your account</div>
         <div className="flex items-center border-b-2 border-gray-200 pt-4 pb-4">
@@ -23,9 +24,12 @@ const Settings = () => {
             </div>
             <div></div>
           </div>
-          <button className="flex-none ml-5 w-36 h-10 p-2 rounded bg-gray-200 font-semibold hover:bg-gray-300">
+          <Button
+            variant="default"
+            className="flex-none ml-5 w-36 h-10 p-2 font-semibold"
+          >
             Upload photo
-          </button>
+          </Button>
         </div>
 
         <div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
@@ -42,12 +46,18 @@ const Settings = () => {
               />
             </div>
             <div className="flex ml-4">
-              <button className="rounded bg-gray-200 mr-2 w-24 h-10 p-2 font-semibold hover:bg-gray-300">
+              <Button
+                variant="default"
+                className=" mr-2 w-24 h-10 p-2 font-semibold"
+              >
                 Cancel
-              </button>
-              <button className="bg-blue-600 rounded w-24 h-10 p-2 text-white font-semibold hover:bg-blue-400">
+              </Button>
+              <Button
+                variant="secondary"
+                className=" w-24 h-10 p-2 font-semibold "
+              >
                 Save
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -57,9 +67,12 @@ const Settings = () => {
           <div className="flex pt-2 justify-center items-center">
             <div className="w-full">jp.madrigal07@gmail.com</div>
 
-            <button className="ml-5 h-10 w-20 p-2 rounded bg-gray-200 font-semibold hover:bg-gray-300">
+            <Button
+              variant="default"
+              className="ml-5 h-10 w-20 p-2 font-semibold"
+            >
               Edit
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -89,50 +102,54 @@ const Settings = () => {
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Large Company
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Student
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Personal
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Teacher
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                 </div>
@@ -166,62 +183,67 @@ const Settings = () => {
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Arabic
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Tagalog
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Malay
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Mandarin
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <button
+                      <Button
+                        variant="default"
                         className={classNames(
                           active ? "bg-gray-100 text-black" : "text-black",
                           "block px-4 py-2 text-sm w-full text-left",
                         )}
                       >
                         Greek
-                      </button>
+                      </Button>
                     )}
                   </Menu.Item>
                 </div>
