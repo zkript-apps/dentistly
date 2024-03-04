@@ -1,8 +1,7 @@
-import Home from "@/module/Home";
-import React from "react";
+import Combined from "@/common/components/CombinedSidebar/Combined";
 
 const DefaultPage = async () => {
-  return <Index />;
+  return <Combined />;
 };
 
 export default DefaultPage;
