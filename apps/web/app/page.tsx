@@ -1,7 +1,7 @@
-import Combined from "@/common/components/CombinedSidebar/Combined";
+import Login from "./Login";
 
 const DefaultPage = async () => {
-  return <Combined />;
+	return <Login />;
 };
 
 export default DefaultPage;
