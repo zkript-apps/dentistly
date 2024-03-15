@@ -37,6 +37,10 @@ const user = new Schema({
     type: Date,
     require: false,
   },
+  registrationType: {
+    type: String,
+    enum: ["Google", "Facebook"],
+  },
 });
 
 export default mongoose.model("User", user);
