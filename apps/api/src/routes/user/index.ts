@@ -1,10 +1,10 @@
 import express from "express";
 import {
-	addUser,
-	deleteUser,
-	getAllUser,
-	getUser,
-	updateUser,
+  addUser,
+  deleteUser,
+  getAllUser,
+  getUser,
+  updateUser,
 } from "./default";
 import { verifySignIn } from "./auth";
 
