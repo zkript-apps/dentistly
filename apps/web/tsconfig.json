@@ -1,28 +1,26 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    },
-    "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true
-  },
-  "include": [
-    "next-env.d.ts",
-    "next.config.js",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/api/auth/[...nextauth]/route.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+	"extends": "@repo/typescript-config/nextjs.json",
+	"compilerOptions": {
+		"plugins": [
+			{
+				"name": "next",
+			},
+		],
+		"paths": {
+			"@/*": ["./*"],
+		},
+		"forceConsistentCasingInFileNames": true,
+		"strictNullChecks": true,
+		"skipLibCheck": true,
+		"types": ["node", "mongoose"],
+	},
+	"include": [
+		"next-env.d.ts",
+		"next.config.js",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"app/api/auth/[...nextauth]/route.ts",
+	],
+	"exclude": ["node_modules"],
 }
