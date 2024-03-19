@@ -6,13 +6,12 @@ import GoogleProvider from "next-auth/providers/google";
 const options = {
 	providers: [
 		FacebookProvider({
-			clientId: "1027899781769544",
-			clientSecret: "6f0084d9f7e4d22ec3eb4842bc5d553c",
+			clientId: process.env.FACEBOOK_CLIENT_ID as string,
+			clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
 		}),
 		GoogleProvider({
-			clientId:
-				"513636772773-htf4ahh9upo5r4c3nvu9jkqdll5vf30n.apps.googleusercontent.com",
-			clientSecret: "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",
+			clientId: process.env.GOOGLE_CLIENT_ID as string,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 		}),
 	],
 };
