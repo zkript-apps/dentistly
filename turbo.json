@@ -1,26 +1,30 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "env": [
-        "MONGO_URL",
-        "ORIGINS",
-        "PORT",
-        "WEB_URL",
-        "API_URL",
-        "API_MOCK_URL",
-        "NODE_ENV"
-      ]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    }
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"globalDependencies": ["**/.env.*local"],
+	"pipeline": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": [".next/**", "!.next/cache/**"],
+			"env": [
+				"MONGO_URL",
+				"ORIGINS",
+				"PORT",
+				"WEB_URL",
+				"API_URL",
+				"API_MOCK_URL",
+				"NODE_ENV",
+				"GOOGLE_CLIENT_ID",
+				"GOOGLE_CLIENT_SECRET",
+				"FACEBOOK_CLIENT_ID",
+				"FACEBOOK_CLIENT_SECRET"
+			]
+		},
+		"lint": {
+			"dependsOn": ["^lint"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		}
+	}
 }
