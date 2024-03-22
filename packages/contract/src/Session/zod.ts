@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { E_UserRole } from "./enum";
 
 export const Z_Session = z.object({
 	id: z.number().nullable().optional(),
@@ -6,5 +7,5 @@ export const Z_Session = z.object({
 	registrationType: z.string().nullable(),
 	deletedAt: z.string().nullable(),
 	changePasswordAt: z.string().nullable(),
-	role: z.enum(["Owner", "Admin", "User"]),
+	role: z.nativeEnum(E_UserRole),
 });
