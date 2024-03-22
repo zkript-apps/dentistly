@@ -1,7 +1,12 @@
-import Combined from "@/common/components/CombinedSidebar/Combined";
+import AuthGuard from "@/common/components/AuthGuard";
+import Login from "./Login";
 
 const DefaultPage = async () => {
-  return <Combined />;
+	return (
+		<AuthGuard>
+			<Login />
+		</AuthGuard>
+	);
 };
 
 export default DefaultPage;

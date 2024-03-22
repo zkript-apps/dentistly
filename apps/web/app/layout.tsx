@@ -2,8 +2,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import UnauthHeader from "@/common/components/UnauthHeader";
-import Combined from "@/common/components/CombinedSidebar/Combined";
+// import UnauthHeader from "@/common/components/UnauthHeader";
+// import Combined from "@/common/components/CombinedSidebar/Combined";
+import Login from "./Login";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,9 @@ const RootLayout = () =>
       <html lang="en">
         <body className={inter.className}>
           <div className="flex flex-col w-full">
-            <UnauthHeader />
-            <Combined />
+            <Login/>
+            {/* <UnauthHeader />
+            <Combined /> */}
           </div>
         </body>
       </html>
