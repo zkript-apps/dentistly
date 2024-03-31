@@ -1,5 +1,5 @@
 import { API_URL_USER } from "@/common/constants/api";
-import { ApiService } from "@/common/service/api";
+import { ApiService } from "@/common/services/api";
 import { IUser } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 

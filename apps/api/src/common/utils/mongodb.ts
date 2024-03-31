@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { mongoURL } from "../config";
+import { MONGO_URL } from "../constants/ev";
 
 mongoose
-  .connect(mongoURL)
+  .connect(MONGO_URL)
   .then(() => console.log("MongoDB is connected and running"))
   .catch((err) => console.log("MongoDB error: " + err));

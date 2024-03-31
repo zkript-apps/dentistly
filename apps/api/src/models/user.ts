@@ -39,7 +39,7 @@ const user = new Schema({
   },
   registrationType: {
     type: String,
-    enum: ["Google", "Facebook"],
+    enum: ["Manual", "Google", "Facebook"],
   },
 });
 

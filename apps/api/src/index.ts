@@ -1,20 +1,21 @@
 import express, { Application } from "express";
 import cors from "cors";
-import { origins, port } from "./common/config";
-import routes from "./routes";
-import "./common/utils/mongodb";
+import { ALLOWED_CLIENTS, PORT } from "@/common/constants/ev";
+import routes from "@/routes";
+import "@/common/utils/mongodb";
+import '@/common/utils/redisClient'
 
 const app: Application = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: origins,
+    origin: ALLOWED_CLIENTS,
     credentials: true,
   }),
 );
 
 routes(app);
 
-app.listen(port, () => {
-  console.log(`API Server is running at ${port}`);
+app.listen(PORT, () => {
+  console.log(`API Server is running at ${PORT}`);
 });

@@ -20,7 +20,7 @@ const ModalContainerFooter = ({
 }: Props) => {
   return (
     <div className="flex justify-between px-6 pb-4">
-      <Button variant={"shaded"} type="button" onClick={onClose}>
+      <Button variant="ghost" type="button" onClick={onClose}>
         {negative}
       </Button>
       <Button

@@ -7,18 +7,29 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "MONGO_URL",
-        "ORIGINS",
+        "ALLOWED_CLIENTS",
         "PORT",
         "WEB_URL",
         "API_URL",
         "API_MOCK_URL",
-        "NODE_ENV"
+        "NODE_ENV",
+        "REDIS_PASSWORD",
+        "REDIS_URL",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_SECRET_ID",
+        "FACEBOOK_CLIENT_ID",
+        "FACEBOOK_SECRET_ID",
+        "GOOGLE_APIS_URL"
       ]
     },
     "lint": {
       "dependsOn": ["^lint"]
     },
     "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
       "cache": false,
       "persistent": true
     }
