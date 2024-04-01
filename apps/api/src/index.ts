@@ -3,7 +3,7 @@ import cors from "cors";
 import { ALLOWED_CLIENTS, PORT } from "@/common/constants/ev";
 import routes from "@/routes";
 import "@/common/utils/mongodb";
-import '@/common/utils/redisClient'
+import "@/common/utils/redisClient";
 
 const app: Application = express();
 app.use(express.json());

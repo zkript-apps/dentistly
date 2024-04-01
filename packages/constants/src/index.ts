@@ -1,5 +1,5 @@
-export * from "./countries"
-export * from "./api-routes"
-export * from "./cookies"
+export * from "./countries";
+export * from "./api-routes";
+export * from "./cookies";
 
-export const APP_NAME = "Dentistly"
+export const APP_NAME = "Dentistly";

@@ -1,5 +1,5 @@
-import { z } from "zod"
-import { E_RegistrationType, E_UserRole } from "./enum"
+import { z } from "zod";
+import { E_RegistrationType, E_UserRole } from "./enum";
 
 export const Z_User = z.object({
   _id: z.string(),
@@ -12,4 +12,4 @@ export const Z_User = z.object({
   createdAt: z.date().optional(),
   updatedAt: z.date().nullable().optional(),
   deletedAt: z.date().nullable().optional(),
-})
+});

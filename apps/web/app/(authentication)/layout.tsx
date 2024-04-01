@@ -13,17 +13,15 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: {
-  readonly children: React.ReactNode
+  readonly children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="flex flex-col w-full">
-          <QueryClientWrapper>
-            {children}
-          </QueryClientWrapper>
+          <QueryClientWrapper>{children}</QueryClientWrapper>
         </div>
       </body>
     </html>
   );
-};
+}

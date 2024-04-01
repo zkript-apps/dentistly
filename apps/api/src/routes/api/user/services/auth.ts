@@ -1,31 +1,31 @@
-import { Response, Request } from 'express'
+import { Response, Request } from "express";
 import {
   REQUIRED_VALUE_EMPTY,
   UNKNOWN_ERROR_OCCURRED,
-} from '@/common/constants'
-import { EncryptionService } from '@repo/services'
-import { ResponseService } from '@/common/services/response'
-import { CSRF, SESSION } from '@repo/constants'
-import { getGoogleUserData } from '../helpers/googleApiRequest'
-import generateSession from '../helpers/generateSession'
-import { T_User } from '@repo/contract'
+} from "@/common/constants";
+import { EncryptionService } from "@repo/services";
+import { ResponseService } from "@/common/services/response";
+import { CSRF, SESSION } from "@repo/constants";
+import { getGoogleUserData } from "../helpers/googleApiRequest";
+import generateSession from "../helpers/generateSession";
+import { T_User } from "@repo/contract";
 import {
   googleAuthPrompt,
   googleAuthScope,
   googleOAuth2Client,
-} from '../helpers/googleAuth'
-import redisClient from '@/common/utils/redisClient'
+} from "../helpers/googleAuth";
+import redisClient from "@/common/utils/redisClient";
 import User from "@/models/user";
 
-const response = new ResponseService()
-const passwordEncryption = new EncryptionService('password')
+const response = new ResponseService();
+const passwordEncryption = new EncryptionService("password");
 
 export const info = async (req: Request, res: Response) => {
-  res.json(response.success({ item: res.locals.user }))
-}
+  res.json(response.success({ item: res.locals.user }));
+};
 
 export const manual = async (req: Request, res: Response) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
   if (email && password) {
     try {
       const user = await User.findOne({
@@ -33,160 +33,160 @@ export const manual = async (req: Request, res: Response) => {
         deletedAt: { $exists: false },
       });
       if (!user) {
-        throw new Error('Email or password is invalid')
+        throw new Error("Email or password is invalid");
       }
       const decryptedPassword = passwordEncryption.decrypt(
-        user?.password as string
-      )
-      const originalPassword = decryptedPassword.toString()
-      const decryptInputPassword = passwordEncryption.decrypt(password)
+        user?.password as string,
+      );
+      const originalPassword = decryptedPassword.toString();
+      const decryptInputPassword = passwordEncryption.decrypt(password);
       if (user && originalPassword === decryptInputPassword) {
-        await generateSession(req, res, user as any)
+        await generateSession(req, res, user as any);
         res.json(
           response.success({
             action: {
-              type: 'MANUAL_LOGIN_SUCCESS',
-              link: '/', // Home
+              type: "MANUAL_LOGIN_SUCCESS",
+              link: "/", // Home
             },
-            message: 'User logged in!',
-          })
-        )
+            message: "User logged in!",
+          }),
+        );
       } else {
-        res.json(response.error({ message: 'Email or password is invalid' }))
+        res.json(response.error({ message: "Email or password is invalid" }));
       }
     } catch (err: any) {
       res.json(
         response.error({
           message: err.message ? err.message : UNKNOWN_ERROR_OCCURRED,
-        })
-      )
+        }),
+      );
     }
   } else {
     res.json(
       response.error({
         message: REQUIRED_VALUE_EMPTY,
-      })
-    )
+      }),
+    );
   }
-}
+};
 
 export const logout = async (req: Request, res: Response) => {
-  const sessionCookie = req.cookies[SESSION]
-  const csrfCookie = req.cookies[CSRF]
+  const sessionCookie = req.cookies[SESSION];
+  const csrfCookie = req.cookies[CSRF];
   if (sessionCookie && csrfCookie) {
     try {
       const session = await redisClient.hGetAll(
-        `${sessionCookie}:${csrfCookie}`
-      )
+        `${sessionCookie}:${csrfCookie}`,
+      );
       if (session) {
-        await redisClient.del(`${sessionCookie}:${csrfCookie}`)
+        await redisClient.del(`${sessionCookie}:${csrfCookie}`);
       }
-      res.clearCookie(SESSION)
-      res.clearCookie(CSRF)
+      res.clearCookie(SESSION);
+      res.clearCookie(CSRF);
       res.json(
         response.success({
           action: {
-            type: 'LOGOUT_SUCCESS',
-            link: '/', // Home
+            type: "LOGOUT_SUCCESS",
+            link: "/", // Home
           },
-          message: 'User registered and logged out!',
-        })
-      )
+          message: "User registered and logged out!",
+        }),
+      );
     } catch (err: any) {
       res.json(
         response.error({
           message: err.message ? err.message : UNKNOWN_ERROR_OCCURRED,
-        })
-      )
+        }),
+      );
     }
   } else {
-    res.json(response.success({ message: 'Success logout!' }))
+    res.json(response.success({ message: "Success logout!" }));
   }
-}
+};
 
 export const googleRedirect = async (req: Request, res: Response) => {
-  const code = req.query.code
-  const state = req.query.state
+  const code = req.query.code;
+  const state = req.query.state;
   const redirectTo =
-    state && typeof state === 'string' ? state.replace('redirect_to=', '') : ''
+    state && typeof state === "string" ? state.replace("redirect_to=", "") : "";
   if (code) {
     try {
       const googleCredentials = await googleOAuth2Client.getToken(
-        code as string
-      )
-      googleOAuth2Client.setCredentials(googleCredentials.tokens)
-      const credentials = googleOAuth2Client.credentials
+        code as string,
+      );
+      googleOAuth2Client.setCredentials(googleCredentials.tokens);
+      const credentials = googleOAuth2Client.credentials;
       const googleUserData = await getGoogleUserData(
-        credentials.access_token as string
-      )
+        credentials.access_token as string,
+      );
       const user = await User.findOne({
         email: googleUserData.item?.email,
       });
       if (user) {
-        await generateSession(req, res, user as any)
+        await generateSession(req, res, user as any);
         res.json(
           response.success({
             action: {
-              type: 'SOCIAL_LOGIN_SUCCESS',
-              link: redirectTo ? redirectTo : '/',
+              type: "SOCIAL_LOGIN_SUCCESS",
+              link: redirectTo ? redirectTo : "/",
             },
-            message: 'User logged in!',
-          })
-        )
+            message: "User logged in!",
+          }),
+        );
       } else {
         res.json(
           response.success({
             action: {
-              type: 'SOCIAL_REGISTER',
-              link: '/create-account/google',
+              type: "SOCIAL_REGISTER",
+              link: "/create-account/google",
             },
             item: googleUserData.item,
-          })
-        )
+          }),
+        );
       }
     } catch (err: any) {
       res.json(
         response.error({
           message: err.message ? err.message : UNKNOWN_ERROR_OCCURRED,
-        })
-      )
+        }),
+      );
     }
   } else {
     res.json(
       response.error({
         message: REQUIRED_VALUE_EMPTY,
-      })
-    )
+      }),
+    );
   }
-}
+};
 
 export const google = async (req: Request, res: Response) => {
-  const redirectTo = req.body.redirectTo
+  const redirectTo = req.body.redirectTo;
   try {
     const authorizeUrl = googleOAuth2Client.generateAuthUrl({
       scope: googleAuthScope,
       prompt: googleAuthPrompt,
-      state: redirectTo ? `redirect_to=${redirectTo}` : '',
-    })
+      state: redirectTo ? `redirect_to=${redirectTo}` : "",
+    });
     res.json(
       response.success({
         action: {
-          type: 'SOCIAL_LOGIN',
+          type: "SOCIAL_LOGIN",
           link: authorizeUrl,
         },
-      })
-    )
+      }),
+    );
   } catch (err: any) {
     res.json(
       response.error({
         message: err.message ? err.message : UNKNOWN_ERROR_OCCURRED,
-      })
-    )
+      }),
+    );
   }
-}
+};
 
 export const register = async (req: Request, res: Response) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
   if (email && password) {
     try {
       const user = await User.findOne({
@@ -200,36 +200,36 @@ export const register = async (req: Request, res: Response) => {
           updatedAt: null,
           deletedAt: null,
         });
-        await generateSession(req, res, newUser as any)
+        await generateSession(req, res, newUser as any);
         res.json(
           response.success({
             action: {
-              type: 'REGISTER_LOGIN_SUCCESS',
-              link: '/', // Home
+              type: "REGISTER_LOGIN_SUCCESS",
+              link: "/", // Home
             },
-            message: 'User registered and logged in!',
-          })
-        )
+            message: "User registered and logged in!",
+          }),
+        );
       } else {
-        res.json(response.error({ message: 'Email already exist' }))
+        res.json(response.error({ message: "Email already exist" }));
       }
     } catch (err: any) {
-      res.json(response.error({ message: err.message }))
+      res.json(response.error({ message: err.message }));
     }
   } else {
-    res.json(response.error({ message: REQUIRED_VALUE_EMPTY }))
+    res.json(response.error({ message: REQUIRED_VALUE_EMPTY }));
   }
-}
+};
 
 export const forgotVerify = async (req: Request, res: Response) => {
-  const { email, code, newPassword } = req.body
+  const { email, code, newPassword } = req.body;
   if (email && code && newPassword) {
     try {
       const user = await User.findOne({
         email: email,
       });
       if (!user) {
-        throw new Error('Some of the values are invalid')
+        throw new Error("Some of the values are invalid");
       }
       // const forgotPassword = await prisma.forgotPassword.findFirst({
       //   where: {
@@ -250,8 +250,8 @@ export const forgotVerify = async (req: Request, res: Response) => {
         //     used: true,
         //   },
         // })
-        const decryptNewPassword = passwordEncryption.decrypt(newPassword)
-        const encryptPassword = passwordEncryption.encrypt(decryptNewPassword)
+        const decryptNewPassword = passwordEncryption.decrypt(newPassword);
+        const encryptPassword = passwordEncryption.encrypt(decryptNewPassword);
         const updateUser = await User.findByIdAndUpdate(
           user._id,
           {
@@ -262,32 +262,32 @@ export const forgotVerify = async (req: Request, res: Response) => {
           },
           { new: true },
         );
-        await generateSession(req, res, user as any)
+        await generateSession(req, res, user as any);
         res.json(
           response.success({
             action: {
-              type: 'CHANGE_PASSWORD_LOGIN_SUCCESS',
-              link: '/', // Home
+              type: "CHANGE_PASSWORD_LOGIN_SUCCESS",
+              link: "/", // Home
             },
-            message: 'User password changed and logged in!',
-          })
-        )
+            message: "User password changed and logged in!",
+          }),
+        );
       } else {
         res.json(
           response.error({
             message:
-              'Some values are invalid or forgot password token is expired',
-          })
-        )
+              "Some values are invalid or forgot password token is expired",
+          }),
+        );
       }
     } catch (err: any) {
       res.json(
         response.error({
           message: err.message ? err.message : UNKNOWN_ERROR_OCCURRED,
-        })
-      )
+        }),
+      );
     }
   } else {
-    res.json(response.error({ message: REQUIRED_VALUE_EMPTY }))
+    res.json(response.error({ message: REQUIRED_VALUE_EMPTY }));
   }
-}
+};
