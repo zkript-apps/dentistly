@@ -1,7 +1,7 @@
-import { RegisterForm } from "@/module/Register";
+import Register from "@/module/Register";
 
 const RegisterPage = async () => {
-	return <RegisterForm />;
+	return <Register />;
 };
 
 export default RegisterPage;
