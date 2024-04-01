@@ -1,7 +1,7 @@
 import { RegisterForm } from "@/module/Register";
 
 const RegisterPage = async () => {
-	return <RegisterForm />;
+  return <RegisterForm />;
 };
 
 export default RegisterPage;
