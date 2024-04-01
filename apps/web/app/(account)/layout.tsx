@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function AccountLayout({
   children,
 }: {
-  readonly children: React.ReactNode
+  readonly children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -28,4 +28,4 @@ export default async function AccountLayout({
       </body>
     </html>
   );
-};
+}

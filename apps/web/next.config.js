@@ -21,7 +21,7 @@ module.exports = {
         source: "/mock/:path*",
         destination: `${process.env.API_URL}/mock/:path*`,
       },
-    ]
+    ];
   },
   env: {
     API_URL: process.env.API_URL,

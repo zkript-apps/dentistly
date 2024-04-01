@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export const Z_BackendResponse = z.object({
   error: z.boolean(),
@@ -17,4 +17,4 @@ export const Z_BackendResponse = z.object({
       link: z.string().optional(),
     })
     .optional(),
-})
+});
