@@ -1,7 +1,7 @@
-import { LoginForm } from "@/module/Login";
+import { RegisterForm } from "@/module/Register";
 
 const LoginPage = async () => {
-  return <LoginForm />;
+	return <RegisterForm />;
 };
 
 export default LoginPage;
