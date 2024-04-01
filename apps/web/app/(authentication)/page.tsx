@@ -1,4 +1,4 @@
-import Login from "@/module/Register";
+import Login from "@/module/Login";
 
 const LoginPage = async () => {
   return <Login />;
