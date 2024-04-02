@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
 
-export function LoginForm() {
+const Login = () => {
   const { register, handleSubmit, watch } = useForm<IUserLogin>();
   const { mutate } = useLogin();
   const onSubmit = async (data: IUserLogin) => {
@@ -65,4 +65,6 @@ export function LoginForm() {
       </div>
     </form>
   );
-}
+};
+
+export default Login;

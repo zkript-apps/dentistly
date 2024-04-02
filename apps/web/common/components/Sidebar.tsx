@@ -1,129 +1,194 @@
-"use client";
+import Link from "next/link";
 import {
   Home,
-  ChevronRight,
-  CircleUserRound,
-  Dot,
-  UserRound,
-  Sparkles,
-  Folders,
-  Grip,
-  LayoutPanelLeftIcon,
-  Crown,
-  Trash2,
-  Group,
-  Building2,
+  LineChart,
+  Menu,
+  Package,
+  Package2,
+  ShoppingCart,
+  Users,
 } from "lucide-react";
-import useIsSideNavOpen from "../helpers/useIsSideNavOpen";
 
-const Sidebar = () => {
-  const { isOpen } = useIsSideNavOpen();
+import { Badge } from "@/common/components/shadcn/ui/badge";
+import { Button } from "@/common/components/shadcn/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/common/components/shadcn/ui/card";
 
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/common/components/shadcn/ui/sheet";
+
+const ShadcnSidebar = () => {
   return (
-    // main container
-    <div
-      className={`bg-slate-100 h-screen  p-4 w-[17.5rem] relative z-40 ${!isOpen ? "hidden lg:block" : "block lg:hidden"}`}
-    >
-      <div className="w-full flex flex-col h-full box-border">
-        {/* Profile section */}
-        <div className="flex h-16 shrink-0 items-center">
-          <div>
-            <CircleUserRound size={35} strokeWidth={1} />
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <div className="hidden border-r bg-muted/40 md:block">
+        <div className="flex h-full max-h-screen flex-col gap-2">
+          <div className="flex-1">
+            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Home className="h-4 w-4" />
+                Dashboard
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <ShoppingCart className="h-4 w-4" />
+                Orders
+                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                  6
+                </Badge>
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+              >
+                <Package className="h-4 w-4" />
+                Products{" "}
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <Users className="h-4 w-4" />
+                Customers
+              </Link>
+              <Link
+                href="#"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+              >
+                <LineChart className="h-4 w-4" />
+                Analytics
+              </Link>
+            </nav>
           </div>
-          <div className="text-sm font-semibold p-2">
-            Personal
-            <div className="flex text-xs font-normal justify-center items-center">
-              Free <Dot size={20} strokeWidth={2} /> <UserRound size={15} /> 1
+          <div className="mt-auto p-4">
+            <Card>
+              <CardHeader className="p-2 pt-0 md:p-4">
+                <CardTitle>Upgrade to Pro</CardTitle>
+                <CardDescription>
+                  Unlock all features and get unlimited access to our support
+                  team.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
+                <Button size="sm" className="w-full">
+                  Upgrade
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <header>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="shrink-0 md:hidden"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="flex flex-col">
+              <nav className="grid gap-2 text-lg font-medium">
+                <Link
+                  href="#"
+                  className="flex items-center gap-2 text-lg font-semibold"
+                >
+                  <Package2 className="h-6 w-6" />
+                  <span className="sr-only">Acme Inc</span>
+                </Link>
+                <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <Home className="h-5 w-5" />
+                  Dashboard
+                </Link>
+                <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  Orders
+                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                    6
+                  </Badge>
+                </Link>
+                <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <Package className="h-5 w-5" />
+                  Products
+                </Link>
+                <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <Users className="h-5 w-5" />
+                  Customers
+                </Link>
+                <Link
+                  href="#"
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <LineChart className="h-5 w-5" />
+                  Analytics
+                </Link>
+              </nav>
+              <div className="mt-auto">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Upgrade to Pro</CardTitle>
+                    <CardDescription>
+                      Unlock all features and get unlimited access to our
+                      support team.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Button size="sm" className="w-full">
+                      Upgrade
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </header>
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+          <div className="flex items-center">
+            <h1 className="text-lg font-semibold md:text-2xl">Inventory</h1>
+          </div>
+          <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+            <div className="flex flex-col items-center gap-1 text-center">
+              <h3 className="text-2xl font-bold tracking-tight">
+                You have no products
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                You can start selling as soon as you add a product.
+              </p>
+              <Button className="mt-4">Add Product</Button>
             </div>
           </div>
-        </div>
-        <button className=" bg-gray-200 rounded items-center justify-center w-full flex p-2 mt-4 mb-4">
-          <Crown color={"gold"} size={15} />
-          <div className="ml-2 text-sm font-semibold">Try Canva Pro</div>
-        </button>
-
-        {/* Sidebar Menu */}
-        <div className="flex pb-5">
-          <div className="flex-none">
-            <Home strokeWidth={1.25} />
-          </div>
-          <div className="flex-1 pl-4">Home</div>
-          <div className="flex-none">
-            <ChevronRight strokeWidth={1.25} />
-          </div>
-        </div>
-
-        <div className="flex pb-5">
-          <div className="flex-none">
-            <Sparkles color={"blue"} strokeWidth={1.25} />
-          </div>
-          <div className="flex-1 pl-4 text-blue-700">Magic Studio</div>
-          <div className="flex justify-center items-center flex-none border-1 bg-blue-700 text-white rounded text-xs h-5 w-8">
-            New
-          </div>
-        </div>
-
-        <div className="flex pb-5">
-          <div className="flex-none">
-            <Folders strokeWidth={1.25} />
-          </div>
-          <div className="flex-1 pl-4">Projects</div>
-          <div className="flex-none">
-            <ChevronRight strokeWidth={1.25} />
-          </div>
-        </div>
-
-        <div className="flex pb-5">
-          <div className="flex-none">
-            <LayoutPanelLeftIcon strokeWidth={1.25} />
-          </div>
-          <div className="flex-1 pl-4">Templates</div>
-          <div className="flex-none">
-            <ChevronRight strokeWidth={1.25} />
-          </div>
-        </div>
-
-        <div className="flex pb-5 flex-row items-center justify-center">
-          <div className="flex-none">
-            <Building2 strokeWidth={1.25} />
-          </div>
-          <div className="flex flex-1 pl-4 justify-start items-center">
-            Brands
-            <div className="rounded-full bg-yellow-300 p-1 ml-2">
-              <Crown size={15} color="white" />
-            </div>
-          </div>
-          <div className="flex">
-            <ChevronRight strokeWidth={1.25} />
-          </div>
-        </div>
-
-        <div className="flex pb-5">
-          <div className="flex-none">
-            <Grip strokeWidth={1.25} />
-          </div>
-          <div className="flex-1 pl-4">Apps</div>
-          <div className="flex-none">
-            <ChevronRight strokeWidth={1.25} />
-          </div>
-        </div>
-
-        {/* Bottom Part Settings */}
-        <div className="flex flex-col justify-end h-full w-full text-sm font-medium">
-          <div className="flex pb-4 shadow-sm items-center">
-            <Group strokeWidth={1.25} />
-            <div className="pl-2">Create A Team</div>
-          </div>
-          <div className="flex pt-4 items-center">
-            <Trash2 strokeWidth={1.25} />
-            <div className="pl-2" aria-hidden="true">
-              Trash
-            </div>
-          </div>
-        </div>
+        </main>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default ShadcnSidebar;
