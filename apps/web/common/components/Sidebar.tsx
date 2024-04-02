@@ -1,13 +1,10 @@
 import Link from "next/link";
 import {
-	Bell,
-	CircleUser,
 	Home,
 	LineChart,
 	Menu,
 	Package,
 	Package2,
-	Search,
 	ShoppingCart,
 	Users,
 } from "lucide-react";
@@ -21,15 +18,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/common/components/shadcn/ui/card";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/common/components/shadcn/ui/dropdown-menu";
-import { Input } from "@/common/components/shadcn/ui/input";
+
 import {
 	Sheet,
 	SheetContent,
