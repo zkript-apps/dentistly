@@ -23,9 +23,11 @@ export default async function AccountLayout({
 			<body className={inter.className}>
 				<div className="flex flex-col w-full">
 					<QueryClientWrapper>
-						<ShadcnHeader />
-						<ShadcnSidebar />
-						<main>{children}</main>
+						<div className="flex flex-col">
+							<ShadcnHeader />
+							<ShadcnSidebar />
+							<main>{children}</main>
+						</div>
 					</QueryClientWrapper>
 				</div>
 			</body>
