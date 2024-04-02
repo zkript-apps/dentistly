@@ -1,7 +1,8 @@
-import { LoginForm } from "@/module/Login";
+import Login from "@/module/Login";
+import AccountLayout from "../(account)/layout";
 
 const LoginPage = async () => {
-  return <LoginForm />;
+	return <AccountLayout />;
 };
 
 export default LoginPage;
