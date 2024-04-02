@@ -13,13 +13,13 @@ import { Label } from "@/common/components/shadcn/ui/label";
 import { useForm } from "react-hook-form";
 
 import useLogin from "./hooks/useLogin";
-import { IUser } from "@/common/types";
+import { IUserLogin } from "@/common/types";
 
 export function LoginForm() {
   
-  const { register, handleSubmit, watch } = useForm<any>();
+  const { register, handleSubmit, watch, } = useForm<IUserLogin>();
   const { mutate } = useLogin();
-  const onSubmit = async (data: IUser) => {
+  const onSubmit = async (data: IUserLogin) => {
     try {
       console.log(data);
     } catch (error) {
