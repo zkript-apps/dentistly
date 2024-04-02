@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
 import useAddUser from "@/common/hooks/User/useAddUser";
 import { IUser } from "@/common/types";
 import { useForm } from "react-hook-form";
