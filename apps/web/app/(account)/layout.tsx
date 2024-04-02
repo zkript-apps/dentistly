@@ -21,15 +21,11 @@ export default async function AccountLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="flex flex-col w-full">
-					<QueryClientWrapper>
-						<div className="flex flex-col">
-							<ShadcnHeader />
-							<ShadcnSidebar />
-							<main>{children}</main>
-						</div>
-					</QueryClientWrapper>
-				</div>
+				<QueryClientWrapper>
+					<ShadcnHeader />
+					<ShadcnSidebar />
+					<main>{children}</main>
+				</QueryClientWrapper>
 			</body>
 		</html>
 	);
