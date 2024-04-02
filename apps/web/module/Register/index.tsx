@@ -1,24 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import useAddUser from "@/common/hooks/User/useAddUser";
-import { IUser } from "@/common/types";
+import { IUserRegister } from "@/common/types";
 import { useForm } from "react-hook-form";
+import useRegister from "./hooks/useRegister";
 
 export default function Register() {
-  const { register, handleSubmit, watch } = useForm<any>();
+  const { register, handleSubmit, watch } = useForm<IUserRegister>();
 
-  const { mutate } = useAddUser();
-  const onSubmit = async (data: IUser) => {
-    const newUser = {
-      clinicId: data.clinicId,
-      username: data.username,
-      email: data.email,
-      password: data.password,
-    };
+  const { mutate } = useRegister();
+  const onSubmit = async (data: IUserRegister) => {
 
     try {
-      await mutate(newUser);
+      console.log (data);
     } catch (error) {
       console.error("Error adding user:", error);
     }
@@ -54,7 +48,7 @@ export default function Register() {
               </label>
               <div className="mt-1">
                 <input
-                  {...register("clinicId")}
+                  {...register("clinicName")}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
@@ -78,14 +72,29 @@ export default function Register() {
             </div>
             <div>
               <label
-                htmlFor="username"
+                htmlFor="firstName"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
-                Username
+                First Name
               </label>
               <div className="mt-1">
                 <input
-                  {...register("username")}
+                  {...register("firstName")}
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="lastName"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Last Name
+              </label>
+              <div className="mt-1">
+                <input
+                  {...register("lastName")}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
@@ -101,30 +110,6 @@ export default function Register() {
               <div className="mt-1">
                 <input
                   {...register("password")}
-                  type="password"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label
-                htmlFor="confirmPassword"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Confirm Password
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("confirmPassword", {
-                    required: true,
-                    validate: (val: string) => {
-                      if (watch("password") != val) {
-                        return "The password confirmation does not match";
-                      }
-                    },
-                  })}
                   type="password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
