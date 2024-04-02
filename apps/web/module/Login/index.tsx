@@ -16,8 +16,7 @@ import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
 
 export function LoginForm() {
-  
-  const { register, handleSubmit, watch, } = useForm<IUserLogin>();
+  const { register, handleSubmit, watch } = useForm<IUserLogin>();
   const { mutate } = useLogin();
   const onSubmit = async (data: IUserLogin) => {
     try {
