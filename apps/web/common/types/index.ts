@@ -1,5 +1,5 @@
 export interface IDelete {
-  patientId: string,
+  patientId: string;
 }
 
 export interface IUserLogin {

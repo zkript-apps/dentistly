@@ -3,7 +3,7 @@ import { IDelete } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 import { ApiService } from "@/common/services/api";
 
-export async function patientUser (props: IDelete) {
+export async function patientUser(props: IDelete) {
   const apiService = new ApiService();
   return await apiService.post(`${API_URL_USER}/auth/manual`, props);
 }
