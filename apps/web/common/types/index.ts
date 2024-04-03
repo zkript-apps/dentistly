@@ -1,3 +1,7 @@
+export interface IDelete {
+  patientId: string,
+}
+
 export interface IUserLogin {
   email: string;
   password: string;
