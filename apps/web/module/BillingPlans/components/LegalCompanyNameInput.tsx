@@ -10,7 +10,7 @@ const LegalCompanyNameInput = () => {
 				disabled
 				type="name"
 				placeholder="Enter your legal company name"
-				className="flex items-center border p-2 border-gray-200 w-full text-sm text-gray-500"
+				className="flex items-center border box-border pl-2 border-gray-200 w-full text-sm text-gray-500"
 			></Input>
 			<div className="text-xs text-gray-500">
 				This is the name registered under your tax ID.
