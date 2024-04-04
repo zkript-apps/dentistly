@@ -1,15 +1,14 @@
-import { API_URL_USER } from "@/common/constants/api";
-import { IDelete } from "@/common/types";
+import { API_URL_PATIENT } from "@/common/constants/api";
 import { useMutation } from "@tanstack/react-query";
 import { ApiService } from "@/common/services/api";
 
-export async function patientUser (props: IDelete) {
+export async function patientUser (patientId: string) {
   const apiService = new ApiService();
-  return await apiService.post(`${API_URL_USER}/auth/manual`, props);
+  return await apiService.patch(`${API_URL_PATIENT}/${patientId}` );
 }
 function useDeletePatient() {
   const query = useMutation({
-    mutationFn: (props: IDelete) => patientUser(props),
+    mutationFn: (patientId: string) => patientUser(patientId),
   });
   return query;
 }
