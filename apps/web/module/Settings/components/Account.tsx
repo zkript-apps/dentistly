@@ -1,259 +1,246 @@
 "use client";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDown, UserCircle } from "lucide-react";
-import { Button } from "@/common/components/ui/Button";
+import * as React from "react";
 
-const Settings = () => {
-  function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(" ");
-  }
+import { UserCircle } from "lucide-react";
+import { Search } from "react-feather";
+import { Input } from "@/common/components/shadcn/ui/input";
+import { Label } from "@/common/components/shadcn/ui/label";
+import { Button } from "@/common/components/shadcn/ui/button";
+import { useEffect, useRef, useState } from "react";
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/common/components/shadcn/ui/select";
 
-  return (
-    <div className="flex flex-col h-auto w-4/5 justify-center items-left text-left pt-4">
-      <div>
-        <div className="text-lg font-semibold pb-5">Your account</div>
-        <div className="flex items-center border-b-2 border-gray-200 pt-4 pb-4">
-          <UserCircle size={90} strokeWidth={1.25} color="gold" />
-          <div className="flex flex-1 flex-col justify-center">
-            <div className="pl-3 pb-3 font-semibold">
-              Upload your profile photo
-            </div>
-            <div className="pl-3">
-              This helps your teammates recognize you in Canva.
-            </div>
-            <div></div>
-          </div>
-          <Button
-            variant="default"
-            className="flex-none ml-5 w-36 h-10 p-2 font-semibold"
-          >
-            Upload photo
-          </Button>
-        </div>
+const languages = [
+	{ label: "English", value: "en" },
+	{ label: "French", value: "fr" },
+	{ label: "German", value: "de" },
+	{ label: "Spanish", value: "es" },
+	{ label: "Portuguese", value: "pt" },
+	{ label: "Russian", value: "ru" },
+	{ label: "Japanese", value: "ja" },
+	{ label: "Korean", value: "ko" },
+	{ label: "Chinese", value: "zh" },
+	{ label: "Arabic", value: "ar" },
+	{ label: "Bengali", value: "bn" },
+	{ label: "Dutch", value: "nl" },
+	{ label: "Filipino", value: "fil" },
+	{ label: "Greek", value: "el" },
+	{ label: "Hindi", value: "hi" },
+	{ label: "Italian", value: "it" },
+	{ label: "Malay", value: "ms" },
+	{ label: "Polish", value: "pl" },
+	{ label: "Swedish", value: "sv" },
+	{ label: "Thai", value: "th" },
+	{ label: "Turkish", value: "tr" },
+	{ label: "Ukrainian", value: "uk" },
+	{ label: "Vietnamese", value: "vi" },
+	{ label: "Indonesian", value: "id" },
+	{ label: "Finnish", value: "fi" },
+	{ label: "Czech", value: "cs" },
+	{ label: "Danish", value: "da" },
+	{ label: "Norwegian", value: "no" },
+	{ label: "Romanian", value: "ro" },
+	{ label: "Hungarian", value: "hu" },
+	{ label: "Hebrew", value: "he" },
+	{ label: "Persian", value: "fa" },
+	{ label: "Serbian", value: "sr" },
+	{ label: "Slovak", value: "sk" },
+	{ label: "Croatian", value: "hr" },
+	{ label: "Bulgarian", value: "bg" },
+	{ label: "Lithuanian", value: "lt" },
+	{ label: "Slovenian", value: "sl" },
+	{ label: "Latvian", value: "lv" },
+	{ label: "Estonian", value: "et" },
+	{ label: "Swahili", value: "sw" },
+	{ label: "Icelandic", value: "is" },
+	{ label: "Georgian", value: "ka" },
+	{ label: "Armenian", value: "hy" },
+	{ label: "Macedonian", value: "mk" },
+	{ label: "Albanian", value: "sq" },
+	{ label: "Urdu", value: "ur" },
+	{ label: "Amharic", value: "am" },
+	{ label: "Tamil", value: "ta" },
+	{ label: "Telugu", value: "te" },
+	{ label: "Kannada", value: "kn" },
+	{ label: "Malayalam", value: "ml" },
+	{ label: "Gujarati", value: "gu" },
+	{ label: "Odia", value: "or" },
+	{ label: "Punjabi", value: "pa" },
+	{ label: "Marathi", value: "mr" },
+	{ label: "Assamese", value: "as" },
+	{ label: "Nepali", value: "ne" },
+	{ label: "Sinhala", value: "si" },
+	{ label: "Burmese", value: "my" },
+	{ label: "Khmer", value: "km" },
+	{ label: "Lao", value: "lo" },
+];
 
-        <div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
-          <div className="font-semibold">Name</div>
+const Account = () => {
+	const [searchQuery, setSearchQuery] = useState("");
+	const [filteredOptions, setFilteredOptions] = useState(languages);
+	const inputRef = useRef(null);
 
-          <div className="flex pt-2">
-            <div className="w-full">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                className="block w-full border-gray-300 rounded border-2 py-1.5 text-gray-900 placeholder-gray-400 focus:ring-inset focus:ring-blue-300 sm:text-sm sm:leading-6"
-                placeholder="Ex. John Patrick Madrigal"
-              />
-            </div>
-            <div className="flex ml-4">
-              <Button
-                variant="default"
-                className=" mr-2 w-24 h-10 p-2 font-semibold"
-              >
-                Cancel
-              </Button>
-              <Button
-                variant="secondary"
-                className=" w-24 h-10 p-2 font-semibold "
-              >
-                Save
-              </Button>
-            </div>
-          </div>
-        </div>
+	const handleInputChange = (e) => {
+		const query = e.target.value;
+		setSearchQuery(query);
 
-        <div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
-          <div className="font-semibold">Email address</div>
-          <div className="flex pt-2 justify-center items-center">
-            <div className="w-full">jp.madrigal07@gmail.com</div>
+		if (query === "") {
+			setFilteredOptions(languages);
+		} else {
+			const filtered = languages.filter((language) =>
+				language.label.toLowerCase().includes(query.toLowerCase())
+			);
+			setFilteredOptions(
+				filtered.length > 0
+					? filtered
+					: [{ label: "No options found", value: "no_option_found" }]
+			);
+		}
+	};
 
-            <Button
-              variant="default"
-              className="ml-5 h-10 w-20 p-2 font-semibold"
-            >
-              Edit
-            </Button>
-          </div>
-        </div>
+	useEffect(() => {
+		if (inputRef.current) {
+			setTimeout(() => {
+				inputRef.current.focus();
+			}, 0);
+		}
+	}, [filteredOptions]);
 
-        <div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
-          <div className="font-semibold pb-2">
-            What will you be using Canva for?
-          </div>
+	return (
+		<div className="flex flex-col h-auto w-4/5 justify-center items-left text-left pt-4">
+			<div>
+				<div className="text-lg font-semibold pb-5">Your account</div>
+				<div className="flex items-center border-b-2 border-gray-200 pt-4 pb-4">
+					<UserCircle size={90} strokeWidth={1.25} color="gold" />
+					<div className="flex flex-1 flex-col justify-center">
+						<div className="pl-3 pb-3 font-semibold">
+							Upload your profile photo
+						</div>
+						<div className="pl-3">
+							This helps your teammates recognize you in Canva.
+						</div>
+						<div></div>
+					</div>
+					<Button
+						variant="default"
+						className="flex-none ml-5 w-36 h-10 p-2 font-semibold bg-gray-200 text-black"
+					>
+						Upload photo
+					</Button>
+				</div>
 
-          <Menu as="div" className="w-1/2 relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900 hover:bg-gray-200 justify-between items-center">
-                <span>Small business</span>
-                <ChevronDown className="h-5 w-5" />
-              </Menu.Button>
-            </div>
+				<div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
+					<Label htmlFor="email" className="font-semibold">
+						Name
+					</Label>
+					<div className="flex items-center">
+						<div className="items-center flex-col w-full">
+							<div className="w-full">
+								<Input
+									type="email"
+									id="email"
+									placeholder="Ex. John Patrick Madrigal"
+								/>
+							</div>
+						</div>
+						<div className="flex ml-4">
+							<Button
+								variant="default"
+								className=" mr-2 w-24 h-10 p-2 font-semibold  bg-gray-200 text-black"
+							>
+								Cancel
+							</Button>
+							<Button
+								variant="secondary"
+								className=" w-24 h-10 p-2 font-semibold bg-blue-600 text-white"
+							>
+								Save
+							</Button>
+						</div>
+					</div>
+				</div>
 
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute w-full bottom-0 z-10 mb-12 overflow-y-scroll rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Large Company
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Student
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Personal
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Teacher
-                      </Button>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        </div>
+				<div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
+					<div className="font-semibold text-sm">Email address</div>
+					<div className="flex pt-2 justify-center items-center">
+						<div className="w-full text-sm ">jp.madrigal07@gmail.com</div>
 
-        {/* Language */}
-        <div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
-          <div className="font-semibold pb-2">Language</div>
+						<Button
+							variant="default"
+							className="ml-5 h-10 w-20 p-2 font-semibold bg-gray-200 text-black "
+						>
+							Edit
+						</Button>
+					</div>
+				</div>
 
-          <Menu as="div" className="w-1/2 relative inline-block text-left">
-            <div>
-              <Menu.Button className="inline-flex w-full bg-white px-3 py-2 border-gray-300 rounded border-2 text-gray-900  hover:bg-gray-200 justify-between items-center">
-                <span>English (US)</span>
-                <ChevronDown className="h-5 w-5" />
-              </Menu.Button>
-            </div>
+				<div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
+					<div className="font-semibold pb-2 text-sm">
+						What will you be using Canva for?
+					</div>
 
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute w-full bottom-0 z-10 mb-12 overflow-y-scroll rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Arabic
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Tagalog
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Malay
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Mandarin
-                      </Button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <Button
-                        variant="default"
-                        className={classNames(
-                          active ? "bg-gray-100 text-black" : "text-black",
-                          "block px-4 py-2 text-sm w-full text-left",
-                        )}
-                      >
-                        Greek
-                      </Button>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        </div>
-      </div>
-    </div>
-  );
+					<Select>
+						<SelectTrigger className="w-1/2">
+							<SelectValue placeholder="Select an option" />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectGroup>
+								<SelectItem value="smb">Small Business</SelectItem>
+								<SelectItem value="student">Student</SelectItem>
+								<SelectItem value="teacher">Teacher</SelectItem>
+								<SelectItem value="lc">Large Company</SelectItem>
+								<SelectItem value="charity">Non profit or charity</SelectItem>
+								<SelectItem value="Personal">Personal</SelectItem>
+							</SelectGroup>
+						</SelectContent>
+					</Select>
+				</div>
+
+				{/* Language */}
+				<div className="mt-5 border-gray-200 border-b-2 pt-4 pb-4">
+					<div className="font-semibold pb-2 text-sm">Language</div>
+					<Select>
+						<SelectTrigger className="w-1/2">
+							<SelectValue placeholder="Select an option" />
+						</SelectTrigger>
+						<SelectContent className="relative">
+							<div className="fixed top-0 left-0 right-0 z-10 bg-white flex items-center pl-3 pr-2 py-2">
+								<Search size={18} className="text-gray-500" />{" "}
+								{/* Search icon */}
+								<Input
+									type="text"
+									placeholder="Search..."
+									className="w-full ml-2"
+									value={searchQuery}
+									onChange={handleInputChange}
+									ref={inputRef} // Reference to the input element
+								/>
+							</div>
+							<div className="mt-12">
+								<SelectGroup>
+									{filteredOptions.length > 0 ? (
+										filteredOptions.map((framework) => (
+											<SelectItem key={framework.value} value={framework.value}>
+												{framework.label}
+											</SelectItem>
+										))
+									) : (
+										<div className="text-gray-500">No option found</div>
+									)}
+								</SelectGroup>
+							</div>
+						</SelectContent>
+					</Select>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-export default Settings;
+export default Account;
