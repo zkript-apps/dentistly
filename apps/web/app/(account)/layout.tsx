@@ -33,4 +33,15 @@ export default async function AccountLayout({
 			</body>
 		</html>
 	);
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <QueryClientWrapper>
+          <ShadcnHeader />
+          <ShadcnSidebar />
+          <main>{children}</main>
+        </QueryClientWrapper>
+      </body>
+    </html>
+  );
 }
