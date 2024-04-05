@@ -84,9 +84,8 @@ const languages = [
 const Account = () => {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [filteredOptions, setFilteredOptions] = useState(languages);
-	const inputRef = useRef(null);
 
-	const handleInputChange = (e) => {
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const query = e.target.value;
 		setSearchQuery(query);
 
@@ -104,11 +103,12 @@ const Account = () => {
 		}
 	};
 
+	const inputRef = useRef<HTMLInputElement>(null); // Initialize inputRef with null
+
 	useEffect(() => {
+		// Check if inputRef.current is defined before calling focus
 		if (inputRef.current) {
-			setTimeout(() => {
-				inputRef.current.focus();
-			}, 0);
+			inputRef.current.focus(); // Focus on the input element
 		}
 	}, [filteredOptions]);
 
@@ -216,10 +216,10 @@ const Account = () => {
 								<Input
 									type="text"
 									placeholder="Search..."
-									className="w-full ml-2"
+									className="w-full"
 									value={searchQuery}
 									onChange={handleInputChange}
-									ref={inputRef} // Reference to the input element
+									ref={inputRef}
 								/>
 							</div>
 							<div className="mt-12">
