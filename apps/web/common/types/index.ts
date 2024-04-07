@@ -22,7 +22,7 @@ export interface IUser {
   role?: any;
   registrationType?: any;
   address?: string;
-  conatctNumber?: number;
+  contactNumber?: number;
   birthDate?: string;
   createdAt?: string;
   deletedAt?: string;
