@@ -1,16 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { Button } from "@/common/components/shadcn/ui/button";
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition, RadioGroup } from "@headlessui/react";
-import CompanyNameInput from "./CompanyNameInput";
-import BillingAddressTextarea from "./BillingAddressTextArea";
-import BillingContactInput from "./BillingContactInput";
-import IssuingCountrySelect from "./IssuingCountrySelect";
-import LegalCompanyNameInput from "./LegalCompanyNameInput";
-import { Info } from "lucide-react";
-import { Button } from "../../../common/components/ui/Button";
-import Team from "./Team";
-import TeamSubscriptions from "./TeamSubscriptions";
 
 const settings = [
   {
@@ -52,7 +44,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Index = () => {
+const TeamPaymentMethod = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selected, setSelected] = useState(settings[0]);
   const cancelButtonRef = useRef(null);
@@ -66,66 +58,24 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col items-left w-2/5 mb-4 pt-4">
+    <div className="flex flex-col items-left mb-4 pt-4">
       <div className="font-semibold text-lg">Billing Plans</div>
       <div className="font-semibold text-lg pt-4 pb-4">
         Payment Method for your Team: Personal
       </div>
       <div>
-        <Button variant="link" className="p-0 mr-1 h-auto" onClick={openModal}>
+        <Button
+          variant="link"
+          className="p-0 mr-1 h-auto text-base"
+          onClick={openModal}
+        >
           Add a payment method
         </Button>
-        {""}
         so you can purchase premium images and vectors for ₱50 a piece.
       </div>
       <div className="pt-4">
         Canva credits
         <div className="pt-1">You have 0 Canva credits.</div>
-      </div>
-
-      {/* TeamSubscriptions.tsx */}
-      <div className="pt-10">
-        <TeamSubscriptions />
-      </div>
-
-      {/* TeamBillingInfo.tsx */}
-      <div className="pt-10">
-        <div className="font-semibold text-lg pt-4 pb-4">
-          Team billing information for Personal
-        </div>
-        <CompanyNameInput />
-        <BillingAddressTextarea />
-        <BillingContactInput />
-      </div>
-
-      {/* TaxID.tsx */}
-      <div className="pt-10">
-        <div className="font-semibold text-lg">Tax ID</div>
-        <div className="text-sm pb-4 pt-3">
-          Enter this information if you are a tax-exempt organization. Only
-          supported countries are shown.
-        </div>
-        <IssuingCountrySelect />
-        <LegalCompanyNameInput />
-        <div className="pb-4">
-          <div className="flex items-center font-semibold text-xs pt-3 pb-2">
-            Tax ID
-            <div className="pl-1">
-              <Info size={14} strokeWidth={3} />
-            </div>{" "}
-          </div>
-          <div className="flex items-center border p-2 border-gray-200 w-full text-sm cursor-not-allowed text-gray-400">
-            Enter your tax ID
-          </div>
-          <div className="text-xs text-gray-500">
-            This will appear on your invoice.
-          </div>
-        </div>
-      </div>
-
-      {/* Team.tsx */}
-      <div className="pt-10">
-        <Team />
       </div>
 
       {/* Payment Method Modal */}
@@ -326,21 +276,23 @@ const Index = () => {
                     </div>
                   </div>
                   <div className="flex justify-center items-center gap-3 mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3 w-1/3">
-                    <button
+                    <Button
+                      variant="default"
                       type="button"
                       className="inline-flex h-10 items-center  justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                       onClick={() => setIsModalOpen(false)}
                       ref={cancelButtonRef}
                     >
                       Cancel
-                    </button>
-                    <button
+                    </Button>
+                    <Button
+                      variant="default"
                       type="button"
                       className="inline-flex h-10 items-center justify-center rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       onClick={() => setIsModalOpen(false)}
                     >
                       Save
-                    </button>
+                    </Button>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -352,4 +304,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default TeamPaymentMethod;
