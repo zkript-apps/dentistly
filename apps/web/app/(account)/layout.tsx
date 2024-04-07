@@ -1,8 +1,10 @@
 import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import UnauthHeader from "@/common/components/UnauthHeader";
 import QueryClientWrapper from "@/common/components/QueryClientWrapper";
+import React from "react";
+import ShadcnHeader from "@/common/components/Header";
+import ShadcnSidebar from "@/common/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +21,11 @@ export default async function AccountLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col w-full">
-          <QueryClientWrapper>
-            <UnauthHeader />
-            {children}
-          </QueryClientWrapper>
-        </div>
+        <QueryClientWrapper>
+          <ShadcnHeader />
+          <ShadcnSidebar />
+          <main>{children}</main>
+        </QueryClientWrapper>
       </body>
     </html>
   );

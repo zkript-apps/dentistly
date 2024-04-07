@@ -1,144 +1,110 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
-
-import { IUserRegister } from "@/common/types";
+"use client"
+import Link from "next/link";
+import { Button } from "@/common/components/shadcn/ui/button";
+import { toast } from "sonner"
+import { T_UserRegister } from "@repo/contract";
 import { useForm } from "react-hook-form";
 import useRegister from "./hooks/useRegister";
 
-export default function Register() {
-  const { register, handleSubmit, watch } = useForm<IUserRegister>();
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/common/components/shadcn/ui/card";
+import { Input } from "@/common/components/shadcn/ui/input";
+import { Label } from "@/common/components/shadcn/ui/label";
+import { useRouter } from "next/navigation";
 
+const Register = () => {
+  const router = useRouter()
+  const { register, handleSubmit } = useForm<T_UserRegister>();
   const { mutate } = useRegister();
-  const onSubmit = async (data: IUserRegister) => {
-
+  const onSubmit = async (data: T_UserRegister) => {
     try {
-      console.log (data);
+      const callBackReq = {
+        onSuccess: (data: any) => {
+          if (!data.error) {
+            if (data.action && data.action.link) {
+              router.push(data.action.link)
+            }
+          } else {
+            toast.error(String(data.message))
+          }
+        },
+        onError: (err: any) => {
+          toast.error(String(err))
+        },
+      }
+      mutate(data, callBackReq)
     } catch (error) {
-      console.error("Error adding user:", error);
+      toast.error(String(error))
     }
   };
-
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center py-8 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+    <div className="flex justify-center items-center h-screen">
+      <Card className="mx-auto max-w-sm">
+        <CardHeader>
+          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardDescription>
+            Enter your information to create an account
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-4"
             action="#"
             method="POST"
           >
-            <div>
-              <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <img
-                  className="mx-auto h-10 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=500"
-                  alt="Your Company"
-                />
-                <h2 className="mt-5 mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                  Create Account
-                </h2>
-              </div>
-
-              <label
-                htmlFor="clinic"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Clinic
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("clinicName")}
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label htmlFor="clinicName">Clinic Name</Label>
+                <Input
+                  id="clinicName"
+                  type="clinicName"
+                  {...register("clinicName", { required: true })}
+                  placeholder=""
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Email Address
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("email")}
-                  type="email"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label htmlFor="first-name">First name</Label>
+                  <Input id="firstName" {...register("firstName", { required: true })} placeholder="" required />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="last-name">Last name</Label>
+                  <Input id="lastName" {...register("lastName", { required: true })} placeholder="" required />
+                </div>
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="firstName"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                First Name
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("firstName")}
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                />
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" {...register("email", { required: true })} placeholder="" required />
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="lastName"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Last Name
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("lastName")}
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                />
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" {...register("password", { required: true })} type="password" required />
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Password
-              </label>
-              <div className="mt-1">
-                <input
-                  {...register("password")}
-                  type="password"
-                  required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between"></div>
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-              >
-                Create Account
-              </button>
+              <Button type="submit" className="w-full">
+                Create an account
+              </Button>
+              <Button variant="outline" className="w-full">
+                Sign up with Google
+              </Button>
             </div>
           </form>
-        </div>
-
-        <p className="mt-9 text-center text-sm text-gray-500">
-          Already have an account?{" "}
-          <a
-            href="#"
-            className="font-semibold leading-6 text-blue-500 hover:text-blue-400"
-          >
-            Login
-          </a>
-        </p>
-      </div>
+          <div className="mt-4 text-center text-sm">
+            Already have an account?{" "}
+            <Link href="#" className="underline">
+              Sign in
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
-}
+};
+
+export default Register;

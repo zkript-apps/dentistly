@@ -2,6 +2,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import QueryClientWrapper from "@/common/components/QueryClientWrapper";
+import { Toaster } from "@/common/components/shadcn/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,10 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex flex-col w-full">
-          <QueryClientWrapper>{children}</QueryClientWrapper>
+          <QueryClientWrapper>
+            {children}
+            <Toaster />
+          </QueryClientWrapper>
         </div>
       </body>
     </html>

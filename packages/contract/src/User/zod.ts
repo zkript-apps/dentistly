@@ -6,10 +6,18 @@ export const Z_User = z.object({
   clinic: z.any(),
   role: z.nativeEnum(E_UserRole),
   email: z.string().email(),
-  username: z.string().optional(),
   password: z.string().min(8).optional(),
   registrationType: z.nativeEnum(E_RegistrationType),
   createdAt: z.date().optional(),
   updatedAt: z.date().nullable().optional(),
   deletedAt: z.date().nullable().optional(),
 });
+
+export const Z_UserRegister = z.object({
+  clinicName: z.string(),
+  email: z.string().email(),
+  password: z.string().min(8).optional(),
+  firstName: z.string(),
+  lastName: z.string(),
+});
+
