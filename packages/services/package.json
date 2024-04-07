@@ -7,8 +7,10 @@
     "dev": "npx tsc --watch"
   },
   "devDependencies": {
-    "crypto-js": "^4.2.0",
     "@types/crypto-js": "^4.2.1",
+    "@types/node": "^20.12.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
     "typescript": "^5.2.2"
   }
 }

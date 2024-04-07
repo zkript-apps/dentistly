@@ -7,12 +7,11 @@ const user = new Schema({
     ref: "Clinic",
     required: true,
   },
-  username: {
-    type: String,
-    required: true,
-  },
+  firstName: String,
+  lastName: String,
   email: {
     type: String,
+    unique: true,
     required: true,
   },
   role: {
@@ -26,17 +25,10 @@ const user = new Schema({
   },
   createdAt: {
     type: Date,
-    require: false,
+    default: Date.now(),
   },
-  updatedAt: {
-    type: Date,
-    require: false,
-  },
-
-  deletedAt: {
-    type: Date,
-    require: false,
-  },
+  updatedAt: Date,
+  deletedAt: Date,
   registrationType: {
     type: String,
     enum: ["Manual", "Google", "Facebook"],

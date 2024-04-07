@@ -14,25 +14,19 @@ const dayOffs = new Schema({
 const clinic = new Schema({
   clinicName: {
     type: String,
+    unique: true,
     required: true,
   },
   address: {
     type: String,
-    required: true,
   },
   dayOff: dayOffs,
   createdAt: {
     type: Date,
-    required: false,
+    default: Date.now(),
   },
-  updatedAt: {
-    type: Date,
-    required: false,
-  },
-  deletedAt: {
-    type: Date,
-    required: false,
-  },
+  updatedAt: Date,
+  deletedAt: Date,
 });
 
 export default mongoose.model("Clinic", clinic);

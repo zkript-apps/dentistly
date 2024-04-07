@@ -1,17 +1,17 @@
-import { IUserLogin } from "@/common/types";
+import { API_URL_USERS } from "@/common/constants/api";
+import { ICheckup } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 import { ApiService } from "@/common/services/api";
-import { API_URL_USERS } from "@/common/constants/api";
 
-export async function loginUser(props: IUserLogin) {
+export async function checkupUser(props: ICheckup) {
   const apiService = new ApiService();
   return await apiService.post(`${API_URL_USERS}/auth/manual`, props);
 }
-function useLogin() {
+function useAddCheckup() {
   const query = useMutation({
-    mutationFn: (props: IUserLogin) => loginUser(props),
+    mutationFn: (props: ICheckup) => checkupUser(props),
   });
   return query;
 }
 
-export default useLogin;
+export default useAddCheckup;
