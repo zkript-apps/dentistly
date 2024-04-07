@@ -1,21 +1,22 @@
 "use client";
 import { useState } from "react";
-import { Switch } from "@headlessui/react";
-import { Button } from "../../../common/components/ui/Button";
+import { Switch } from "@/common/components/shadcn/ui/switch";
+import { Button } from "@/common/components/shadcn/ui/button";
 
 interface SettingProps {
   title: string;
   description: string;
-  enabled: boolean;
-  onToggle: (checked: boolean) => void; // Corrected type
+  enabled: boolean; // Add the enabled prop to the interface
+  onToggle: () => void;
 }
 
 const PrivacySetting = (props: SettingProps) => {
-  const { title, description, enabled, onToggle } = props; // Destructure onToggle
+  const { title, description } = props; // Destructure onToggle
 
-  // Handle toggle change
-  const handleToggleChange = () => {
-    onToggle(!enabled); // Toggle the state and pass it to the parent component
+  const [enabled, setEnabled] = useState(false);
+
+  const handleToggle = () => {
+    setEnabled(!enabled);
   };
   return (
     <div className="card flex border-2 w-3/5 p-5 border-gray-200 mt-2 rounded ">
@@ -26,11 +27,10 @@ const PrivacySetting = (props: SettingProps) => {
       <div className="flex ml-auto items-start">
         <span className="mr-2 font-medium">{enabled ? "On" : "Off"}</span>
         <Switch
+          id="airplane-mode"
           checked={enabled}
-          onChange={handleToggleChange}
-          className={`${
-            enabled ? "bg-indigo-600" : "bg-gray-300"
-          } relative inline-flex flex-shrink-0 h-6 w-11 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out `}
+          onCheckedChange={handleToggle}
+          className="data-[state=checked]:bg-indigo-600 data-[state=unchecked]:bg-gray-300"
         >
           <span
             aria-hidden="true"
@@ -90,8 +90,6 @@ const PrivacySetting = (props: SettingProps) => {
 };
 
 const PrivacyPage = () => {
-  // State for managing toggle switches
-
   const [settings, setSettings] = useState({
     personalizeAds: false,
     enhanceUserProfile: false,
@@ -114,7 +112,6 @@ const PrivacyPage = () => {
       <div className="text-lg font-semibold">Privacy Settings</div>
 
       <div className="text-lg font-semibold mt-4">Data Sharing</div>
-      {/* Privacy settings sections */}
       <PrivacySetting
         title="Personalize Canva ads on other websites"
         description="Canva may use my profile and analytics data to show me personalized ads about Canva when I am browsing on other apps and websites."
