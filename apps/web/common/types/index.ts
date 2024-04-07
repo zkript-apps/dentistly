@@ -29,19 +29,24 @@ export interface IUser {
   updatedAt?: string;
 }
 
-export interface IPatient {
+export interface ICheckup {
   clinicId: string;
-  lastName: string;
-  firstName: string;
-  middleName: string;
-  DoB: string;
-  gender: "Male" | "Female";
-  address: string;
-  status: "Married" | "Single" | "Divorced";
+  cost: number;
+  paymentStatus: "Unpaid" | "Paid" | "Partially Paid";
+  findings: string;
+  procedureId: string;
+  patiendId: string;
+}
 
-  relativesContactInfo: {
-    name: string;
-    contactNumber: string;
-    relationshitL: string;
-  };
+export interface IUpdateCheckup {
+  id: string;
+  clinicId: string;
+  cost: number;
+  paymentStatus: "Unpaid" | "Paid" | "Partially Paid";
+  findings: string;
+  procedureId: string;
+  patiendId: string;
+}
+export interface IDeleteCheckup {
+  id: string;
 }
