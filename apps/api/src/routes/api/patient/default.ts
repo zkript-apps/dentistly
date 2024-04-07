@@ -105,6 +105,8 @@ export const updatePatient = async (req: Request, res: Response) => {
   });
 
   if (getPatient.length === 0) {
+    res.status(400).json("record does not exist");
+  } else {
     try {
       const updatePatient = await patient.findByIdAndUpdate(
         req.params.id,
@@ -119,8 +121,6 @@ export const updatePatient = async (req: Request, res: Response) => {
       const message = err.message ? err.message : UNKNOWN_ERROR_OCCURRED;
       res.json(message);
     }
-  } else {
-    res.status(400).json("record does not exist");
   }
 };
 
