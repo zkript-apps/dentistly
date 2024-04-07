@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 import {
   Bell,
   CircleUser,
@@ -10,17 +10,17 @@ import {
   Search,
   ShoppingCart,
   Users,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Badge } from "@/common/components/shadcn/ui/badge"
-import { Button } from "@/common/components/shadcn/ui/button"
+import { Badge } from "@/common/components/shadcn/ui/badge";
+import { Button } from "@/common/components/shadcn/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/common/components/shadcn/ui/card"
+} from "@/common/components/shadcn/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,11 +28,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/common/components/shadcn/ui/dropdown-menu"
-import { Input } from "@/common/components/shadcn/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/common/components/shadcn/ui/sheet"
+} from "@/common/components/shadcn/ui/dropdown-menu";
+import { Input } from "@/common/components/shadcn/ui/input";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/common/components/shadcn/ui/sheet";
 
-export default function AuthLayout({ children }: { readonly children: React.ReactNode }) {
+export default function AuthLayout({
+  children,
+}: {
+  readonly children: React.ReactNode;
+}) {
   return (
     <div className="flex">
       <div className="sticky top-0 hidden border-r bg-muted/40 md:block h-screen w-72">
@@ -220,5 +228,5 @@ export default function AuthLayout({ children }: { readonly children: React.Reac
         </main>
       </div>
     </div>
-  )
+  );
 }
