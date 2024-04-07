@@ -1,10 +1,15 @@
-export interface IUser {
-  clinicId: string;
-  username: string;
+export interface IUserLogin {
   email: string;
   password: string;
-  role?: string;
+}
+export interface IUser {
+  id?: number;
+  role?: any;
+  registrationType?: any;
+  address?: string;
+  conatctNumber?: number;
+  birthDate?: string;
+  createdAt?: string;
   deletedAt?: string;
   updatedAt?: string;
-  createdAt?: string;
 }
