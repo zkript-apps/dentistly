@@ -28,3 +28,20 @@ export interface IUser {
   deletedAt?: string;
   updatedAt?: string;
 }
+
+export interface IPatient {
+  clinicId: string;
+  lastName: string;
+  firstName: string;
+  middleName: string;
+  DoB: string;
+  gender: "Male" | "Female";
+  address: string;
+  status: "Married" | "Single" | "Divorced";
+
+  relativesContactInfo: {
+    name: string;
+    contactNumber: string;
+    relationshitL: string;
+  };
+}
