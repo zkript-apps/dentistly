@@ -8,7 +8,12 @@ import { ResponseService } from "@/common/services/response";
 import { CSRF, SESSION } from "@repo/constants";
 import { getGoogleUserData } from "../helpers/googleApiRequest";
 import generateSession from "../helpers/generateSession";
-import { E_RegistrationType, E_UserRole, T_User, Z_UserRegister } from "@repo/contract";
+import {
+  E_RegistrationType,
+  E_UserRole,
+  T_User,
+  Z_UserRegister,
+} from "@repo/contract";
 import {
   googleAuthPrompt,
   googleAuthScope,
@@ -187,7 +192,7 @@ export const google = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  const inputIsValid = Z_UserRegister.safeParse(req.body)
+  const inputIsValid = Z_UserRegister.safeParse(req.body);
   if (inputIsValid.success) {
     const { clinicName, email, password, firstName, lastName } = req.body;
     try {
@@ -198,11 +203,11 @@ export const register = async (req: Request, res: Response) => {
         const clinic = await Clinic.findOne({
           clinicName: clinicName,
         });
-        if(!clinic) {
+        if (!clinic) {
           const clinicData = new Clinic({
             clinicName,
           });
-          const newClinic = await clinicData.save()
+          const newClinic = await clinicData.save();
           const userData = new User({
             clinic: newClinic._id,
             email,
@@ -212,7 +217,7 @@ export const register = async (req: Request, res: Response) => {
             lastName,
             registrationType: E_RegistrationType.Manual,
           });
-          const newUser = await userData.save()
+          const newUser = await userData.save();
           await generateSession(req, res, newUser as any);
           res.json(
             response.success({
