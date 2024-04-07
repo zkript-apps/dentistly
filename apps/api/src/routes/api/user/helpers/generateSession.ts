@@ -16,14 +16,14 @@ async function generateSession(req: Request, res: Response, user: T_User) {
   const csrf = csrfEncryption.encrypt({
     // this object needs to be the same as db session excluding id
     // implement ipgeolocation.io
-    userId: user._id,
+    userId: user._id.toString(),
     sessionKey: sessionKey,
     ipAddress: ip,
     // location: "",
     // device: "",
   });
   await redisClient.hSet(`${sessionKey}:${csrf}`, {
-    userId: user._id,
+    userId: user._id.toString(),
     ipAddress: String(ip),
     status: "Active",
     // location: "",

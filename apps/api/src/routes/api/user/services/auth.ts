@@ -8,7 +8,12 @@ import { ResponseService } from "@/common/services/response";
 import { CSRF, SESSION } from "@repo/constants";
 import { getGoogleUserData } from "../helpers/googleApiRequest";
 import generateSession from "../helpers/generateSession";
-import { T_User } from "@repo/contract";
+import {
+  E_RegistrationType,
+  E_UserRole,
+  T_User,
+  Z_UserRegister,
+} from "@repo/contract";
 import {
   googleAuthPrompt,
   googleAuthScope,
@@ -16,6 +21,7 @@ import {
 } from "../helpers/googleAuth";
 import redisClient from "@/common/utils/redisClient";
 import User from "@/models/user";
+import Clinic from "@/models/clinic";
 
 const response = new ResponseService();
 const passwordEncryption = new EncryptionService("password");
@@ -186,30 +192,45 @@ export const google = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-  if (email && password) {
+  const inputIsValid = Z_UserRegister.safeParse(req.body);
+  if (inputIsValid.success) {
+    const { clinicName, email, password, firstName, lastName } = req.body;
     try {
       const user = await User.findOne({
         email: email as string,
       });
       if (!user) {
-        const newUser = new User({
-          email,
-          role: "Owner",
-          password,
-          updatedAt: null,
-          deletedAt: null,
+        const clinic = await Clinic.findOne({
+          clinicName: clinicName,
         });
-        await generateSession(req, res, newUser as any);
-        res.json(
-          response.success({
-            action: {
-              type: "REGISTER_LOGIN_SUCCESS",
-              link: "/", // Home
-            },
-            message: "User registered and logged in!",
-          }),
-        );
+        if (!clinic) {
+          const clinicData = new Clinic({
+            clinicName,
+          });
+          const newClinic = await clinicData.save();
+          const userData = new User({
+            clinic: newClinic._id,
+            email,
+            role: E_UserRole.Owner,
+            password,
+            firstName,
+            lastName,
+            registrationType: E_RegistrationType.Manual,
+          });
+          const newUser = await userData.save();
+          await generateSession(req, res, newUser as any);
+          res.json(
+            response.success({
+              action: {
+                type: "REGISTER_LOGIN_SUCCESS",
+                link: "/dashboard", // Dashboard
+              },
+              message: "User registered and logged in!",
+            }),
+          );
+        } else {
+          res.json(response.error({ message: "Clinic name already exist" }));
+        }
       } else {
         res.json(response.error({ message: "Email already exist" }));
       }
