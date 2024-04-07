@@ -18,12 +18,5 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.2.3",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "dependencies": {
-    "shadcn-ui": "^0.8.0"
-  }
+  "packageManager": "pnpm@8.9.0"
 }
