@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import QueryClientWrapper from "@/common/components/QueryClientWrapper";
 import React from "react";
-import ShadcnHeader from "@/common/components/Header";
-import ShadcnSidebar from "@/common/components/Sidebar";
+import AuthLayout from "@/common/components/AuthLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +21,9 @@ export default async function AccountLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<QueryClientWrapper>
-					<div className="fixed top-0 w-full">
-						<ShadcnHeader />
-					</div>
-					<div className="fixed left-0 top-16 h-full">
-						<ShadcnSidebar />
-					</div>
-					<main className="ml-80 mt-16">{children}</main>
+					<AuthLayout>
+						{children}
+					</AuthLayout>
 				</QueryClientWrapper>
 			</body>
 		</html>
