@@ -1,17 +1,17 @@
-import { IUserLogin } from "@/common/types";
+import { API_URL_USERS } from "@/common/constants/api";
+import { IPatient } from "@/common/types";
 import { useMutation } from "@tanstack/react-query";
 import { ApiService } from "@/common/services/api";
-import { API_URL_USERS } from "@/common/constants/api";
 
-export async function loginUser(props: IUserLogin) {
+export async function patientUser(props: IPatient) {
   const apiService = new ApiService();
   return await apiService.post(`${API_URL_USERS}/auth/manual`, props);
 }
-function useLogin() {
+function useAddPatient() {
   const query = useMutation({
-    mutationFn: (props: IUserLogin) => loginUser(props),
+    mutationFn: (props: IPatient) => patientUser(props),
   });
   return query;
 }
 
-export default useLogin;
+export default useAddPatient;
