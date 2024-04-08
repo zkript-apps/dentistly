@@ -5,7 +5,7 @@ import { ApiService } from "@/common/services/api";
 
 export async function deleteCheckup(id: string) {
   const apiService = new ApiService();
-  console.log(`${API_URL_CHECKUP}/${id}`)
+  console.log(`${API_URL_CHECKUP}/${id}`);
   return await apiService.delete(`${API_URL_CHECKUP}/${id}`);
 }
 function useDeleteCheckup() {
