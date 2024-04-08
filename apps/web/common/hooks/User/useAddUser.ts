@@ -1,11 +1,11 @@
-import { API_URL_USERS } from "@/common/constants/api";
+import { API_URL_USER } from "@/common/constants/api";
 import { ApiService } from "@/common/services/api";
 import { useMutation } from "@tanstack/react-query";
 
 export async function addUser(props: any) {
   console.log(props);
   const apiService = new ApiService();
-  return await apiService.post(`${API_URL_USERS}`, props);
+  return await apiService.post(`${API_URL_USER}`, props);
 }
 
 function useAddUser() {
