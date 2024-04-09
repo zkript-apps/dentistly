@@ -4,7 +4,7 @@ import BillingPlans from "@/module/BillingPlans";
 const BillingPlansPage = async () => {
   return (
     <AuthGuard>
-      <BillingPlans />;
+      <BillingPlans />
     </AuthGuard>
   );
 };
