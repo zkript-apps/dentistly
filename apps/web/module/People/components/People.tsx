@@ -9,9 +9,9 @@ import {
   UserCircle,
 } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/common/components/ui/Button";
+import { Button } from "@/common/components/shadcn/ui/button";
 
-const People = () => {
+const Peoples = () => {
   const [showListContent, setShowListContent] = useState(true);
 
   const handleListButtonClick = () => {
@@ -21,11 +21,7 @@ const People = () => {
     <div className="flex flex-col justify-center w-full pt-4">
       <div className="flex h-10">
         <div className="flex-1 font-semibold text-lg">People (1)</div>
-        <Button
-          variant="default"
-          onClick={handleListButtonClick}
-          className="p-1"
-        >
+        <Button variant="ghost" onClick={handleListButtonClick} className="p-1">
           {showListContent ? (
             <LayoutGrid size={20} strokeWidth={2} />
           ) : (
@@ -70,10 +66,10 @@ const People = () => {
             <div className="col-span-1 font-medium">Email</div>
             <div className="col-span-1 font-medium">Team Role</div>
           </div>
-          <div className="grid grid-cols-3 text-sm ml-2 h-14 border-t border-b border-gray-200 mb-4">
+          <div className="grid grid-cols-3 text-sm ml-2 h-14 border-t border-b border-gray-200">
             <div className="flex col-span-1 items-center">
               <span className="pr-2">
-                <UserCircle />
+                <UserCircle size={40} />
               </span>{" "}
               Name
             </div>
@@ -82,16 +78,16 @@ const People = () => {
             </div>
             <div className="flex items-center col-span-1">Owner</div>
           </div>
-          <div className="flex items-center mt-6 items-left">
-            <Button
-              variant="default"
-              className="flex pt-2  w-10 mr-5 rounded-full"
-            >
-              <span className="hover:bg-gray-200 rounded-full p-2">
-                <Plus />
-              </span>
+          <div className="flex items-center w-40 justify-between ml-2 mt-4">
+            <Button variant="ghost" className="items-left p-2 rounded-full">
+              <Plus />
             </Button>
-            <div className="font-medium text-sm">Invite people</div>
+            <Button
+              variant="ghost"
+              className="font-medium text-sm pr-2 hover:bg-white"
+            >
+              Invite people
+            </Button>
           </div>
         </div>
       ) : (
@@ -100,22 +96,29 @@ const People = () => {
             <SquareUser size={200} strokeWidth={1.25} />
           </div>
           <div className="font-medium">Name</div>
-          <button className="flex w-20 text-gray-700 items-center cursor-not-allowed text-left pt-2">
+          <Button
+            variant="ghost"
+            className="flex w-20 text-gray-700 items-center text-left pt-2"
+            disabled
+          >
             <div className="flex-1 text-sm">Owner</div>
             <div>
               <ChevronDown size={15} />
             </div>
-          </button>
-          <div className="flex items-center mt-10 w-full">
+          </Button>
+          <div className="flex items-center w-40 justify-between mt-4">
             <Button
-              variant="default"
-              className="flex pt-2  w-10 mr-5 rounded-full"
+              variant="ghost"
+              className="flex items-left p-2 rounded-full"
             >
-              <span className="hover:bg-gray-200 rounded-full p-2">
-                <Plus />
-              </span>
+              <Plus />
             </Button>
-            <div className="font-medium text-sm">Invite people</div>
+            <Button
+              variant="ghost"
+              className="font-medium text-sm pr-2 hover:bg-white"
+            >
+              Invite people
+            </Button>
           </div>
         </div>
       )}
@@ -123,4 +126,4 @@ const People = () => {
   );
 };
 
-export default People;
+export default Peoples;
