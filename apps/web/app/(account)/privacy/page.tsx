@@ -1,7 +1,12 @@
+import AuthGuard from "@/common/components/AuthGuard";
 import Privacy from "@/module/Privacy";
 
 const PrivacyPage = async () => {
-  return <Privacy />;
+  return (
+    <AuthGuard>
+      <Privacy />
+    </AuthGuard>
+  );
 };
 
 export default PrivacyPage;
