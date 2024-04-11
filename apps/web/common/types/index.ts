@@ -52,7 +52,7 @@ export interface IDeleteCheckup {
 }
 
 export interface IOperation {
-  clinic: string,
-  operationName: string,
-  actions: "Create" | "Read" | "Update" | "Delete",
+  clinic: string;
+  operationName: string;
+  actions: "Create" | "Read" | "Update" | "Delete";
 }
