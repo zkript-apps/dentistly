@@ -32,20 +32,20 @@ export interface IUser {
 export interface ICheckup {
   clinicId: string;
   cost: number;
-  paymentStatus: "Unpaid" | "Paid" | "Partially Paid";
+  paymentStatus: string;
   findings: string;
   procedureId: string;
-  patiendId: string;
+  patientId: string;
 }
 
 export interface IUpdateCheckup {
   id: string;
   clinicId: string;
   cost: number;
-  paymentStatus: "Unpaid" | "Paid" | "Partially Paid";
+  paymentStatus: string;
   findings: string;
   procedureId: string;
-  patiendId: string;
+  patientId: string;
 }
 export interface IDeleteCheckup {
   id: string;
