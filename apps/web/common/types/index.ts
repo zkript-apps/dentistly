@@ -50,3 +50,9 @@ export interface IUpdateCheckup {
 export interface IDeleteCheckup {
   id: string;
 }
+
+export interface IProcedure {
+  procedureName: string,
+  description: string,
+}
+
