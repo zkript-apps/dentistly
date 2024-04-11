@@ -50,3 +50,9 @@ export interface IUpdateCheckup {
 export interface IDeleteCheckup {
   id: string;
 }
+
+export interface IOperation {
+  clinic: string,
+  operationName: string,
+  actions: "Create" | "Read" | "Update" | "Delete",
+}
