@@ -1,18 +1,18 @@
+"use client";
 import Link from "next/link";
 import {
   Bell,
+  Bolt,
   CircleUser,
+  CreditCard,
   Home,
-  LineChart,
+  LockKeyhole,
   Menu,
-  Package,
   Package2,
   Search,
-  ShoppingCart,
   Users,
 } from "lucide-react";
 
-import { Badge } from "@/common/components/shadcn/ui/badge";
 import { Button } from "@/common/components/shadcn/ui/button";
 import {
   Card,
@@ -35,12 +35,14 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/common/components/shadcn/ui/sheet";
+import { usePathname } from "next/navigation";
 
 export default function AuthLayout({
   children,
 }: {
   readonly children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   return (
     <div className="flex">
       <div className="sticky top-0 hidden border-r bg-muted/40 md:block h-screen w-72">
@@ -58,60 +60,62 @@ export default function AuthLayout({
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
               <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                href="/dashboard"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/dashboard"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
               >
                 <Home className="h-4 w-4" />
                 Dashboard
               </Link>
+
               <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                href="/settings"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/settings"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
               >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
+                <Bolt className="h-4 w-4" />
+                Settings
               </Link>
               <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+                href="/privacy"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/privacy"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
               >
-                <Package className="h-4 w-4" />
-                Products{" "}
+                <LockKeyhole className="h-4 w-4" />
+                Privacy{" "}
               </Link>
               <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                href="/people"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/people"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
               >
                 <Users className="h-4 w-4" />
-                Customers
+                People
               </Link>
               <Link
-                href="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                href="/billing-plans"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/billing-plans"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
               >
-                <LineChart className="h-4 w-4" />
-                Analytics
+                <CreditCard className="h-4 w-4" />
+                Billing Plans
               </Link>
             </nav>
-          </div>
-          <div className="mt-auto p-4">
-            <Card x-chunk="dashboard-02-chunk-0">
-              <CardHeader className="p-2 pt-0 md:p-4">
-                <CardTitle>Upgrade to Pro</CardTitle>
-                <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Upgrade
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
@@ -131,49 +135,66 @@ export default function AuthLayout({
             <SheetContent side="left" className="flex flex-col">
               <nav className="grid gap-2 text-lg font-medium">
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="flex items-center gap-2 text-lg font-semibold"
                 >
                   <Package2 className="h-6 w-6" />
                   <span className="sr-only">Acme Inc</span>
                 </Link>
                 <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  href="/dashboard"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    pathname === "/dashboard"
+                      ? "text-primary bg-gray-200 font-semibold"
+                      : "text-muted-foreground"
+                  }`}
                 >
                   <Home className="h-5 w-5" />
-                  Dashboardasd
+                  Dashboard
                 </Link>
                 <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+                  href="/settings"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    pathname === "/settings"
+                      ? "text-primary bg-gray-200 font-semibold"
+                      : "text-muted-foreground"
+                  }`}
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge>
+                  <Bolt className="h-5 w-5" />
+                  Settings
                 </Link>
                 <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  href="/privacy"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    pathname === "/privacy"
+                      ? "text-primary bg-gray-200 font-semibold"
+                      : "text-muted-foreground"
+                  }`}
                 >
-                  <Package className="h-5 w-5" />
-                  Products
+                  <LockKeyhole className="h-5 w-5" />
+                  Privacy
                 </Link>
                 <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  href="/people"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    pathname === "/people"
+                      ? "text-primary bg-gray-200 font-semibold"
+                      : "text-muted-foreground"
+                  }`}
                 >
                   <Users className="h-5 w-5" />
-                  Customers
+                  People
                 </Link>
                 <Link
-                  href="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  href="/billing-plans"
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                    pathname === "/billing-plans"
+                      ? "text-primary bg-gray-200 font-semibold"
+                      : "text-muted-foreground"
+                  }`}
                 >
-                  <LineChart className="h-5 w-5" />
-                  Analytics
+                  <CreditCard className="h-5 w-5" />
+                  Billing Plans
                 </Link>
               </nav>
               <div className="mt-auto">
