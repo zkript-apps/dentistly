@@ -7,14 +7,14 @@ type T_Session_Action = {
 };
 
 const useSessionStore = create<T_Session & T_Session_Action>((set) => ({
-  id: null,
+  _id: null,
   email: null,
   registrationType: null,
   role: E_UserRole.User,
   update: (session: T_Session) => set(() => ({ ...session })),
   remove: () =>
     set({
-      id: null,
+      _id: null,
       email: null,
       registrationType: null,
       role: E_UserRole.User,
