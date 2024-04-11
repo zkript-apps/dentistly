@@ -52,8 +52,8 @@ export interface IDeleteCheckup {
 }
 
 export interface IUpdateOperation {
-  _id: string,
-  clinic: string,
-  operationName: string,
-  actions: "Create" | "Read" | "Update" | "Delete",
+  _id: string;
+  clinic: string;
+  operationName: string;
+  actions: "Create" | "Read" | "Update" | "Delete";
 }
