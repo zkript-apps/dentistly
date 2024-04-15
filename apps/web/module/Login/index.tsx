@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 
 import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
+import Link from "next/link";
 
 const Login = () => {
   const { register, handleSubmit, watch } = useForm<IUserLogin>();
@@ -52,7 +53,15 @@ const Login = () => {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  href="/forgot-password"
+                  className="ml-auto inline-block text-sm underline"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
               <Input {...register("password")} type="password" required />
             </div>
           </CardContent>

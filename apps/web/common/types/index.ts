@@ -17,6 +17,15 @@ export interface IUserLogin {
   email: string;
   password: string;
 }
+
+export interface IUserForgotPassword {
+  email: string;
+}
+export interface IUserNewPassword {
+  newPassword: string;
+  confirmPassword: string;
+}
+
 export interface IUser {
   id?: number;
   role?: any;
@@ -51,7 +60,9 @@ export interface IDeleteCheckup {
   id: string;
 }
 
-export interface IProcedure {
+
+export interface IUpdateProcedure {
+  procedureId: string;
   procedureName: string;
   description: string;
 }
