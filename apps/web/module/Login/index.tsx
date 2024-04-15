@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 
 import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
+import Link from "next/link";
 
 const Login = () => {
   const { register, handleSubmit, watch } = useForm<IUserLogin>();
@@ -51,16 +52,32 @@ const Login = () => {
                 required
               />
             </div>
-            <div className="grid gap-2">
+
+          <div className="">
+            <div className="flex justify-between items-center">
               <Label htmlFor="password">Password</Label>
-              <Input {...register("password")} type="password" required />
+              <Link href="/forgot-password" className="hover:underline text-sm mb-1">Forgot your password?</Link>
             </div>
-          </CardContent>
+            <Input {...register("password")} type="password" required />
+          </div>
+          <Button className="w-full" type="submit">
+            Login
+          </Button>
+        </CardContent>
+        <div>
           <CardFooter>
-            <Button className="w-full" type="submit">
-              Sign in
+            <Button className="border border-solid rounded-md hover:outline-2 bg-color-white text-bold w-full">
+              Login with Google
             </Button>
           </CardFooter>
+        </div>
+          <CardFooter className="justify-center">
+              <div className="grid-2">
+                <Label>Don't have an account? </Label>
+                <Link href="/create-account" className="underline">Sign up</Link>
+              </div>
+          </CardFooter>
+
         </Card>
       </div>
     </form>
