@@ -60,7 +60,8 @@ export interface IDeleteCheckup {
   id: string;
 }
 
-export interface IOperation {
+export interface IUpdateOperation {
+  _id: string;
   clinic: string;
   operationName: string;
   actions: "Create" | "Read" | "Update" | "Delete";
