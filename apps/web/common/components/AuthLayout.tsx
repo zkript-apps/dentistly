@@ -5,6 +5,7 @@ import {
   Bolt,
   CircleUser,
   CreditCard,
+  FileKey,
   Home,
   LockKeyhole,
   Menu,
@@ -72,26 +73,15 @@ export default function AuthLayout({
               </Link>
 
               <Link
-                href="/settings"
+                href="/billing-plans"
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                  pathname === "/settings"
+                  pathname === "/billing-plans"
                     ? "text-primary bg-gray-200 font-semibold"
                     : "text-muted-foreground"
                 }`}
               >
-                <Bolt className="h-4 w-4" />
-                Settings
-              </Link>
-              <Link
-                href="/privacy"
-                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                  pathname === "/privacy"
-                    ? "text-primary bg-gray-200 font-semibold"
-                    : "text-muted-foreground"
-                }`}
-              >
-                <LockKeyhole className="h-4 w-4" />
-                Privacy{" "}
+                <CreditCard className="h-4 w-4" />
+                Billing and Plans
               </Link>
               <Link
                 href="/people"
@@ -102,18 +92,29 @@ export default function AuthLayout({
                 }`}
               >
                 <Users className="h-4 w-4" />
-                People
+                People{" "}
               </Link>
               <Link
-                href="/billing-plans"
+                href="/privacy"
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
-                  pathname === "/billing-plans"
+                  pathname === "/privacy"
                     ? "text-primary bg-gray-200 font-semibold"
                     : "text-muted-foreground"
                 }`}
               >
-                <CreditCard className="h-4 w-4" />
-                Billing Plans
+                <FileKey className="h-4 w-4" />
+                Privacy
+              </Link>
+              <Link
+                href="/settings"
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                  pathname === "/settings"
+                    ? "text-primary bg-gray-200 font-semibold"
+                    : "text-muted-foreground"
+                }`}
+              >
+                <Bolt className="h-4 w-4" />
+                Settings
               </Link>
             </nav>
           </div>
