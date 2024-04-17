@@ -1,10 +1,12 @@
 "use client";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/common/components/shadcn/ui/button";
 import { toast } from "sonner";
 import { T_UserRegister } from "@repo/contract";
 import { useForm } from "react-hook-form";
 import useRegister from "./hooks/useRegister";
+import { useRouter } from "next/navigation";
 
 import {
   Card,
@@ -15,18 +17,18 @@ import {
 } from "@/common/components/shadcn/ui/card";
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
-import { useRouter } from "next/navigation";
 
 const Register = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<T_UserRegister>();
-  const { mutate } = useRegister();
+  const { mutate: registerUser } = useRegister();
+
   const onSubmit = async (data: T_UserRegister) => {
     try {
       const callBackReq = {
         onSuccess: (data: any) => {
           if (!data.error) {
-            if (data.action && data.action.link) {
+            if (data.action?.data.action.link) {
               router.push(data.action.link);
             }
           } else {
@@ -37,27 +39,29 @@ const Register = () => {
           toast.error(String(err));
         },
       };
-      mutate(data, callBackReq);
+      registerUser(data, callBackReq);
     } catch (error) {
-      toast.error(String(error));
+      console.error("Error adding user:", error);
+      toast.error("An error occurred. Please try again later.");
     }
   };
+
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="mx-auto max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
-          <CardDescription>
-            Enter your information to create an account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-4"
-            action="#"
-            method="POST"
-          >
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-4"
+      action="#"
+      method="POST"
+    >
+      <div className="flex justify-center items-center h-screen">
+        <Card className="mx-auto max-w-sm">
+          <CardHeader>
+            <CardTitle className="text-xl">Sign Up</CardTitle>
+            <CardDescription>
+              Enter your information to create an account
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="clinicName">Clinic Name</Label>
@@ -108,23 +112,23 @@ const Register = () => {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">
+              <Button variant="default" type="submit" className="w-full">
                 Create an account
               </Button>
               <Button variant="outline" className="w-full">
                 Sign up with Google
               </Button>
             </div>
-          </form>
-          <div className="mt-4 text-center text-sm">
-            Already have an account?{" "}
-            <Link href="#" className="underline">
-              Sign in
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+            <div className="mt-4 text-center text-sm">
+              Already have an account?{" "}
+              <Link href="/" className="underline">
+                Sign in
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </form>
   );
 };
 

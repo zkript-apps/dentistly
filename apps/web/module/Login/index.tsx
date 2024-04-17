@@ -1,4 +1,11 @@
 "use client";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import useLogin from "./hooks/useLogin";
+import Link from "next/link";
+import { toast } from "sonner"; // Assuming `sonner` has a `toast` function for displaying messages
+import { IUserLogin } from "@/common/types";
 import { Button } from "@/common/components/shadcn/ui/button";
 import {
   Card,
@@ -10,20 +17,33 @@ import {
 } from "@/common/components/shadcn/ui/card";
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
-import { useForm } from "react-hook-form";
-
-import useLogin from "./hooks/useLogin";
-import { IUserLogin } from "@/common/types";
-import Link from "next/link";
 
 const Login = () => {
-  const { register, handleSubmit, watch } = useForm<IUserLogin>();
-  const { mutate } = useLogin();
-  const onSubmit = async (data: IUserLogin) => {
+  const router = useRouter();
+  const { mutate: loginUser, isPending: isLoginPending } = useLogin();
+  const { register, handleSubmit } = useForm<IUserLogin>();
+
+  const onSubmit = async (formData: IUserLogin) => {
     try {
-      console.log(data);
+      const callBackReq = {
+        onSuccess: (data: any) => {
+          if (!data.error && !isLoginPending) {
+            if (data.action?.data.action.link) {
+              router.push(data.action.link);
+            }
+          } else {
+            toast.error(String(data.message));
+          }
+        },
+        onError: (err: any) => {
+          toast.error(String(err));
+        },
+      };
+
+      loginUser(formData, callBackReq);
     } catch (error) {
       console.error("Error adding user:", error);
+      toast.error("An error occurred. Please try again later.");
     }
   };
 
@@ -66,13 +86,22 @@ const Login = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" type="submit">
-              Sign in
-            </Button>
+            <div className="flex flex-col w-full items-center">
+              <Button variant="default" className="w-full" type="submit">
+                Sign in
+              </Button>
+              <div className="border w-auto text-center text-sm m-4">
+                Don&apos;t have an account?{" "}
+                <Link href="/create-account" className="underline">
+                  Sign up
+                </Link>
+              </div>
+            </div>
           </CardFooter>
         </Card>
       </div>
     </form>
   );
 };
+
 export default Login;
