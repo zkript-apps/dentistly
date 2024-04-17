@@ -60,6 +60,11 @@ export interface IDeleteCheckup {
   id: string;
 }
 
+export interface IProcedure {
+  procedureName: string;
+  description: string;
+}
+
 export interface IDeleteProcedure {
   id: string;
   procedureId: string;
