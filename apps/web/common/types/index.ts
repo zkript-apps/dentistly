@@ -61,8 +61,8 @@ export interface IDeleteCheckup {
 }
 
 export interface IProcedure {
-  procedureName: string,
-  description: string,
+  procedureName: string;
+  description: string;
 }
 
 export interface IDeleteProcedure {
@@ -82,4 +82,3 @@ export interface IUpdateProcedure {
   procedureName: string;
   description: string;
 }
-
