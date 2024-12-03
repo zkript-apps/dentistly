@@ -1,4 +1,4 @@
-import { API_MOCK, API_URL } from "../constants/ev";
+import { API_MOCK, API_URL, WEB_URL } from "../constants/ev";
 
 enum EContentType {
   JSON = "application/json",
@@ -12,7 +12,7 @@ export class ApiService {
     if (source === "mock") {
       this.BASE_URL = API_MOCK;
     } else {
-      this.BASE_URL = API_URL;
+      this.BASE_URL = WEB_URL;
     }
   }
 
