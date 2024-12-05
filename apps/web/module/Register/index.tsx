@@ -17,7 +17,8 @@ import {
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
 import { useRouter } from "next/navigation";
-import { SignUpWithPasswordCredentials } from "@supabase/supabase-js";
+import { supabase } from "@/common/libs/supabase-client";
+import { registerUser } from "@/common/libs/auth/register";
 
 const Register = () => {
   const router = useRouter();
@@ -25,14 +26,59 @@ const Register = () => {
   // const { mutate } = useRegister();
   const onSubmit = async (data: T_UserRegister) => {
     try {
-      const { user } = await signUp(data.email, data.password, {
-        first_name: data.firstName,
-        last_name: data.lastName,
+      registerUser(
+        data.organization,
+        data.firstName,
+        data.lastName,
+        data.email,
+        data.password as string
+      ).then((res) => {
+        console.log(res);
       });
-      console.log(user)
-      if (user) {
-        router.push("/")
-      }
+      //   const { user: userData } = await signUp(data.email, data.password, {
+      //     first_name: data.firstName,
+      //     last_name: data.lastName,
+      //   });
+
+      //   // router.push("/");
+      //  const { data: user, error } = await supabase.auth.getUser();
+      //  if (error) {
+      //    console.error("User not authenticated:", error);
+      //  } else {
+      //    console.log("Authenticated user:", user.user.id);
+      //  }
+
+      //  if(user){
+      //    const { data: orgData, error: orgError } = await supabase
+      //      .from("Organization")
+      //      .insert([
+      //        {
+      //          clinicName: "Org",
+      //          address: "asd", // You might want to add this field to your form
+      //          dayOff: "asd", // You might want to add this field to your form
+      //          id: user?.user?.id,
+      //        },
+      //      ])
+      //      .select();
+      //    console.log(orgData);
+      //    console.log(orgError);
+      //  }
+
+      const callBackReq = {
+        onSuccess: (data: any) => {
+          if (!data.error) {
+            if (data.action && data.action.link) {
+              router.push(data.action.link);
+            }
+          } else {
+            toast.error(String(data.message));
+          }
+        },
+        onError: (err: any) => {
+          toast.error(String(err));
+        },
+      };
+      // mutate(data, callBackReq);
     } catch (error) {
       toast.error('An error occurred');
     }
@@ -55,15 +101,16 @@ const Register = () => {
           >
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="clinicName">Clinic Name</Label>
+                <Label htmlFor="organization">Organization Name</Label>
                 <Input
-                  id="clinicName"
-                  type="clinicName"
-                  {...register("clinicName", { required: true })}
+                  id="organization"
+                  type="organization"
+                  {...register("organization", { required: true })}
                   placeholder=""
                   required
                 />
               </div>
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="first-name">First name</Label>

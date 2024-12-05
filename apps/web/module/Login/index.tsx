@@ -15,15 +15,42 @@ import { useForm } from "react-hook-form";
 import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
 import Link from "next/link";
+import { supabase } from "@/common/libs/supabase-client";
+import { useRouter } from "next/navigation";
+import { E_UserRole } from "@repo/contract";
+import useSessionStore from "@/common/store/useSessionStore";
+
 
 const Login = () => {
   const { register, handleSubmit, watch } = useForm<IUserLogin>();
-  const { mutate } = useLogin();
+  const updateSession = useSessionStore((state) => state.update);
+  const router = useRouter();
   const onSubmit = async (data: IUserLogin) => {
-    try {
-      console.log(data);
+    try { 
+      const { data: authData, error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) throw error;
+      if (authData?.user) {
+        updateSession({
+          _id: authData.user.id,
+          email: authData.user.email!,
+          registrationType: "email", // Adjust if you have different registration types
+          role: E_UserRole.User,
+        });
+      }
+      // Handle successful login (e.g., redirect to dashboard)
+      console.log("Logged in successfully");
+      router.push("/dashboard");
     } catch (error) {
-      console.error("Error adding user:", error);
+     if (error instanceof Error) {
+       alert(error.message);
+     } else {
+       console.log("Unknown error");
+     }
+      // alert(error.AuthApiError.message);
     }
   };
 
