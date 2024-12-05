@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { T_UserRegister } from "@repo/contract";
 import { useForm } from "react-hook-form";
 import useRegister from "./hooks/useRegister";
+import { signUp, supabase } from "@/lib/supabaseClient";
 
 import {
   Card,
@@ -16,30 +17,24 @@ import {
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
 import { useRouter } from "next/navigation";
+import { SignUpWithPasswordCredentials } from "@supabase/supabase-js";
 
 const Register = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm<T_UserRegister>();
-  const { mutate } = useRegister();
+  // const { mutate } = useRegister();
   const onSubmit = async (data: T_UserRegister) => {
     try {
-      const callBackReq = {
-        onSuccess: (data: any) => {
-          if (!data.error) {
-            if (data.action && data.action.link) {
-              router.push(data.action.link);
-            }
-          } else {
-            toast.error(String(data.message));
-          }
-        },
-        onError: (err: any) => {
-          toast.error(String(err));
-        },
-      };
-      mutate(data, callBackReq);
+      const { user } = await signUp(data.email, data.password, {
+        first_name: data.firstName,
+        last_name: data.lastName,
+      });
+      console.log(user)
+      if (user) {
+        router.push("/")
+      }
     } catch (error) {
-      toast.error(String(error));
+      toast.error('An error occurred');
     }
   };
   return (

@@ -11,19 +11,19 @@ module.exports = {
     return [
       {
         source: "/assets/:path*",
-        destination: `${process.env.API_URL}/assets/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/assets/:path*`,
       },
       {
         source: "/api/:path*",
-        destination: `${process.env.API_URL}/api/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/:path*`,
       },
       {
         source: "/mock/:path*",
-        destination: `${process.env.API_URL}/mock/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/mock/:path*`,
       },
     ];
   },
   env: {
-    API_URL: process.env.API_URL,
+    API_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
   },
 };
