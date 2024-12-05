@@ -20,12 +20,13 @@ import { useRouter } from "next/navigation";
 import { E_UserRole } from "@repo/contract";
 import useSessionStore from "@/common/store/useSessionStore";
 
+
 const Login = () => {
   const { register, handleSubmit, watch } = useForm<IUserLogin>();
   const updateSession = useSessionStore((state) => state.update);
   const router = useRouter();
   const onSubmit = async (data: IUserLogin) => {
-    try {
+    try { 
       const { data: authData, error } = await supabase.auth.signInWithPassword({
         email: data.email,
         password: data.password,
@@ -44,7 +45,12 @@ const Login = () => {
       console.log("Logged in successfully");
       router.push("/dashboard");
     } catch (error) {
-      console.error("Error adding user:", error);
+     if (error instanceof Error) {
+       alert(error.message);
+     } else {
+       console.log("Unknown error");
+     }
+      // alert(error.AuthApiError.message);
     }
   };
 
