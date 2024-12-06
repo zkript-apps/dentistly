@@ -1,12 +1,7 @@
-
 import People from "@/module/People";
 
 const PeoplePage = async () => {
-  return (
-
-      <People />
-
-  );
+  return <People />;
 };
 
 export default PeoplePage;

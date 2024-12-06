@@ -30,7 +30,7 @@ const Register = () => {
         data.firstName,
         data.lastName,
         data.email,
-        data.password as string
+        data.password as string,
       ).then((res) => {
         console.log(res);
       });

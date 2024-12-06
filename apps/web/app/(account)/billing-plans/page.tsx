@@ -1,13 +1,7 @@
-
-
 import BillingPlans from "@/module/BillingPlans";
 
 const BillingPlansPage = async () => {
-  return (
-
-      <BillingPlans />
- 
-  );
+  return <BillingPlans />;
 };
 
 export default BillingPlansPage;

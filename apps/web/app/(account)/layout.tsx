@@ -5,7 +5,6 @@ import QueryClientWrapper from "@/common/components/QueryClientWrapper";
 import React from "react";
 import AuthLayout from "@/common/components/AuthLayout";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

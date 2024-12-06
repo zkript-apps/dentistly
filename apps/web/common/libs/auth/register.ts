@@ -6,7 +6,7 @@ export const registerUser = async (
   firstName: string,
   lastName: string,
   email: string,
-  password: string
+  password: string,
 ) => {
   const { data: organizationData, error: organizationError }: any =
     await supabase.from("Organization").insert({ name: name }).select("id");

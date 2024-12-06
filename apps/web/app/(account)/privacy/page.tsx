@@ -1,12 +1,7 @@
-
 import Privacy from "@/module/Privacy";
 
 const PrivacyPage = async () => {
-  return (
-
-      <Privacy />
-
-  );
+  return <Privacy />;
 };
 
 export default PrivacyPage;

@@ -1,4 +1,3 @@
-
 import Settings from "@/module/Settings";
 
 const SettingsPage = async () => {

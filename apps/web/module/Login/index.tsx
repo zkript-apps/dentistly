@@ -33,7 +33,7 @@ const Login = () => {
         data: { session },
       } = await supabase.auth.getSession();
 
-      if(session){
+      if (session) {
         router.push("/dashboard");
         console.log("successfully logged");
       }
