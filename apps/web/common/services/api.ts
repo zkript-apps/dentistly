@@ -12,7 +12,7 @@ export class ApiService {
     if (source === "mock") {
       this.BASE_URL = API_MOCK;
     } else {
-      this.BASE_URL = WEB_URL;
+      this.BASE_URL = API_URL;
     }
   }
 
