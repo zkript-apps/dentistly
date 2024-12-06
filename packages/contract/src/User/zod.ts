@@ -14,7 +14,7 @@ export const Z_User = z.object({
 });
 
 export const Z_UserRegister = z.object({
-  clinicName: z.string(),
+  organization: z.string(),
   email: z.string().email(),
   password: z.string().min(8).optional(),
   firstName: z.string(),

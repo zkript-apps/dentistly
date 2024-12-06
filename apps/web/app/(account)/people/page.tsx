@@ -1,12 +1,7 @@
-import AuthGuard from "@/common/components/AuthGuard";
 import People from "@/module/People";
 
 const PeoplePage = async () => {
-  return (
-    <AuthGuard>
-      <People />
-    </AuthGuard>
-  );
+  return <People />;
 };
 
 export default PeoplePage;

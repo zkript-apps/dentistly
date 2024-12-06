@@ -1,4 +1,4 @@
-import { API_MOCK, API_URL } from "../constants/ev";
+import { API_MOCK, API_URL, WEB_URL } from "../constants/ev";
 
 enum EContentType {
   JSON = "application/json",
