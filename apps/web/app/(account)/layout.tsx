@@ -22,9 +22,8 @@ export default async function AccountLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientWrapper>
-          <AuthStateProvider>
             <AuthLayout>{children}</AuthLayout>
-          </AuthStateProvider>
+          
         </QueryClientWrapper>
       </body>
     </html>
