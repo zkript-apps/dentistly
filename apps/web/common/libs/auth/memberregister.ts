@@ -1,8 +1,7 @@
 import { error } from "console";
 import { supabase } from "../supabase-client";
 //ts-ignore
-export const registerUser = async (
-  name: string,
+export const memberRegisterUser = async (
   firstName: string,
   lastName: string,
   email: string,
@@ -22,21 +21,6 @@ export const registerUser = async (
   //   return authError
   // }
   
-// Check if the organization already exists (case-insensitive)
-const { data: existingOrganization, error: organizationCheckError } = await supabase
-  .from("Organization")
-  .select("id")
-  .filter("name", "ilike", name.toLowerCase()) // Use ilike for case-insensitive matching
-  .maybeSingle(); // Use maybeSingle() to return null if no match is found
-
-
-if (organizationCheckError) {
-return { message: "Error checking organization existence", error: organizationCheckError };
-}
-
-if (existingOrganization) {
-return { message: "Organization already exists" };
-}
 
 // Check if the email already exists
 const { data: existingUser, error: userCheckError } = await supabase
