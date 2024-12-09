@@ -5,8 +5,8 @@ import Members from "@/module/Member";
 const DashboardPage = async () => {
   return (
     
-      // <Dashboard />
-      <Members/>
+      <Dashboard />
+      
     
   );
 };
