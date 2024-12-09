@@ -5,6 +5,8 @@ import QueryClientWrapper from "@/common/components/QueryClientWrapper";
 import React from "react";
 import AuthLayout from "@/common/components/AuthLayout";
 import AuthStateProvider from "@/common/components/AuthStateProvider";
+import { Header } from "@/common/components/ui/header/header";
+import { Navigation } from "@/common/components/ui/header/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +24,14 @@ export default async function AccountLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientWrapper>
-          <AuthStateProvider>
-            <AuthLayout>{children}</AuthLayout>
-          </AuthStateProvider>
+          {/* <AuthStateProvider> */}
+          {/* <AuthLayout>{children}</AuthLayout> */}
+          <div>
+            <Header />
+            <Navigation />
+            {children}
+          </div>
+          {/* </AuthStateProvider> */}
         </QueryClientWrapper>
       </body>
     </html>
