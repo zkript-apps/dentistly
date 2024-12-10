@@ -5,11 +5,8 @@ import type { NextRequest } from "next/server";
 const publicPaths = ["/", "/create-account", "/forgot-password"];
 const protectedPaths = [
   "/dashboard",
-  "/profile",
+  "/members",
   "/settings",
-  "/people",
-  "/privacy",
-  "/billing-plans",
 ];
 
 export async function middleware(req: NextRequest) {
@@ -22,7 +19,7 @@ export async function middleware(req: NextRequest) {
     {
       supabaseUrl,
       supabaseKey,
-    },
+    }
   );
 
   const {
