@@ -5,6 +5,8 @@ import QueryClientWrapper from "@/common/components/QueryClientWrapper";
 import React from "react";
 import AuthLayout from "@/common/components/AuthLayout";
 import AuthStateProvider from "@/common/components/AuthStateProvider";
+import { Header } from "@/common/components/ui/header/header";
+import { Navigation } from "@/common/components/ui/header/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
