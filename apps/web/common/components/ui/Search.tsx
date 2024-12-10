@@ -1,12 +1,12 @@
 import React from "react";
 import { Input } from "../shadcn/ui/input";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-  } from "@/common/components/shadcn/ui/select";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/common/components/shadcn/ui/select";
 import { Menu } from "lucide-react";
 
 const Search = () => {
@@ -30,30 +30,30 @@ const Search = () => {
         </svg>
       </div>
       <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="All Team Roles" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select>
-              <SelectTrigger className="relative">
-                <div className="absolute">
-                <Menu size={15}/>
-                </div>
-                <div className="pl-5">
-                <SelectValue placeholder="Date"/>
-                </div>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
-              </SelectContent>
-            </Select>
+        <SelectTrigger>
+          <SelectValue placeholder="All Team Roles" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="light">Light</SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select>
+        <SelectTrigger className="relative">
+          <div className="absolute">
+            <Menu size={15} />
+          </div>
+          <div className="pl-5">
+            <SelectValue placeholder="Date" />
+          </div>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="light">Light</SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   );
 };

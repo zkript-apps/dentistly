@@ -80,7 +80,7 @@ const Register = () => {
       };
       // mutate(data, callBackReq);
     } catch (error) {
-      toast.error('An error occurred');
+      toast.error("An error occurred");
     }
   };
   return (
@@ -102,7 +102,7 @@ const Register = () => {
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="organization">Organization Name</Label>
-                
+
                 <Input
                   id="organization"
                   type="organization"

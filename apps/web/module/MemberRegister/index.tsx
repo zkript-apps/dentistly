@@ -30,7 +30,7 @@ const MemberRegister = () => {
         data.firstName,
         data.lastName,
         data.email,
-        data.password as string
+        data.password as string,
       ).then((res) => {
         console.log(res);
       });
@@ -79,7 +79,7 @@ const MemberRegister = () => {
       };
       // mutate(data, callBackReq);
     } catch (error) {
-      toast.error('An error occurred');
+      toast.error("An error occurred");
     }
   };
   return (
@@ -99,8 +99,6 @@ const MemberRegister = () => {
             method="POST"
           >
             <div className="grid gap-4">
-              
-
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="first-name">First name</Label>
