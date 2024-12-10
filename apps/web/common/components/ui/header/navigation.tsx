@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function Navigation() {
-  const [activeItem, setActiveItem] = useState("Usage");
+  const [activeItem, setActiveItem] = useState("Dashboard");
   const router = useRouter();
 
   const items = ["Dashboard", "members", "Settings"];
