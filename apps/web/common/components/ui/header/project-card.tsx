@@ -1,8 +1,6 @@
-
 import { Clock3, Github } from "lucide-react";
 import Link from "next/link";
 import { Card } from "../../shadcn/ui/card";
-
 
 interface ProjectCardProps {
   name: string;

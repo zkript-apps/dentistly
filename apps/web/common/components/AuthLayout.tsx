@@ -39,7 +39,6 @@ import { usePathname } from "next/navigation";
 import { Header } from "./ui/header/header";
 import { Navigation } from "./ui/header/navigation";
 
-
 export default function AuthLayout({
   children,
 }: {
@@ -48,8 +47,8 @@ export default function AuthLayout({
   const pathname = usePathname();
   return (
     <div className="flex flex-col">
-     <Header />
-     <Navigation />
+      <Header />
+      <Navigation />
 
       {children}
     </div>
