@@ -23,8 +23,13 @@ const GeneralCard = ({title, children, footer }: Props) => {
         <CardHeader>
           <CardTitle>{title}</CardTitle>
         </CardHeader>
+<<<<<<< HEAD
         <CardContent className="space-y-4 ">{children}</CardContent>
         <CardFooter className="flex justify-between bg-gray-200 items-center pt-2">
+=======
+        <CardContent className="">{children}</CardContent>
+        <CardFooter className="flex justify-between bg-gray-50 border-t items-center py-3 px-6 max-h-fit">
+>>>>>>> 74bd52a92343da5ced9165f0c2da363eeac7fc18
           {footer}
         </CardFooter>
       </form>
@@ -32,4 +37,8 @@ const GeneralCard = ({title, children, footer }: Props) => {
   );
 };
 
+<<<<<<< HEAD
 export default GeneralCard;
+=======
+export default GeneralCard;
+>>>>>>> 74bd52a92343da5ced9165f0c2da363eeac7fc18
