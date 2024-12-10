@@ -22,13 +22,7 @@ export default async function AccountLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientWrapper>
-<<<<<<< HEAD
             <AuthLayout>{children}</AuthLayout>
-=======
-        
-            <AuthLayout>{children}</AuthLayout>
-         
->>>>>>> 74bd52a92343da5ced9165f0c2da363eeac7fc18
         </QueryClientWrapper>
       </body>
     </html>
