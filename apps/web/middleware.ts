@@ -3,11 +3,7 @@ import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import type { NextRequest } from "next/server";
 
 const publicPaths = ["/", "/create-account", "/forgot-password"];
-const protectedPaths = [
-  "/dashboard",
-  "/members",
-  "/settings",
-];
+const protectedPaths = ["/dashboard", "/members", "/settings"];
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -19,7 +15,7 @@ export async function middleware(req: NextRequest) {
     {
       supabaseUrl,
       supabaseKey,
-    }
+    },
   );
 
   const {
