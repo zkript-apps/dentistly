@@ -10,6 +10,9 @@ import {
 import { ProjectCard } from "@/common/components/ui/header/project-card";
 import React from "react";
 
+import { Switch } from "@/common/components/shadcn/ui/switch";
+import { AlertCircle, Copy } from "lucide-react";
+
 const Dashboard = () => {
   return (
     <div className="p-6">
