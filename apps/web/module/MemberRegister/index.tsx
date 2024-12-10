@@ -2,9 +2,8 @@
 import Link from "next/link";
 import { Button } from "@/common/components/shadcn/ui/button";
 import { toast } from "sonner";
-import { T_UserRegister } from "@repo/contract";
+import { T_MemberRegister } from "@repo/contract";
 import { useForm } from "react-hook-form";
-import useRegister from "./hooks/useRegister";
 
 import {
   Card,
@@ -19,19 +18,19 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/common/libs/supabase-client";
 import { registerUser } from "@/common/libs/auth/register";
 import { ComboBox } from "@/common/components/ui/ComboBox";
+import { memberRegisterUser } from "@/common/libs/auth/memberregister";
 
-const Register = () => {
+const MemberRegister = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<T_UserRegister>();
+  const { register, handleSubmit } = useForm<T_MemberRegister>();
   // const { mutate } = useRegister();
-  const onSubmit = async (data: T_UserRegister) => {
+  const onSubmit = async (data: T_MemberRegister) => {
     try {
-      registerUser(
-        data.organization.toLowerCase(),
+      memberRegisterUser(
         data.firstName,
         data.lastName,
         data.email,
-        data.password as string,
+        data.password as string
       ).then((res) => {
         console.log(res);
       });
@@ -87,7 +86,7 @@ const Register = () => {
     <div className="flex justify-center items-center h-screen">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardTitle className="text-xl">Member Sign Up</CardTitle>
           <CardDescription>
             Enter your information to create an account
           </CardDescription>
@@ -100,17 +99,7 @@ const Register = () => {
             method="POST"
           >
             <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="organization">Organization Name</Label>
-                
-                <Input
-                  id="organization"
-                  type="organization"
-                  {...register("organization", { required: true })}
-                  placeholder=""
-                  required
-                />
-              </div>
+              
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
@@ -171,4 +160,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default MemberRegister;

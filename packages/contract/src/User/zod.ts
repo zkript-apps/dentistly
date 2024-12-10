@@ -20,3 +20,10 @@ export const Z_UserRegister = z.object({
   firstName: z.string(),
   lastName: z.string(),
 });
+
+export const Z_MemberRegister = z.object({
+  email: z.string().email(),
+  password: z.string().min(8).optional(),
+  firstName: z.string(),
+  lastName: z.string(),
+});
