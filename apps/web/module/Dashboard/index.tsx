@@ -14,15 +14,61 @@ import { Switch } from "@/common/components/shadcn/ui/switch";
 import { AlertCircle, Copy } from "lucide-react";
 
 const Dashboard = () => {
+  const clinics = [
+    {
+      clinicName: "Harmony Dental Center",
+      address: "456 Smile Street, Los Angeles",
+      dayOff: [
+        { day: "Saturday", timeRanges: "09:00 AM - 05:00 PM" },
+        { day: "Sunday", timeRanges: "Closed" },
+      ],
+      createdAt: new Date("2023-11-15T09:00:00Z"),
+      updatedAt: new Date("2024-02-20T14:45:00Z"),
+      deletedAt: null,
+    },
+    {
+      clinicName: "Pinnacle Health Clinic",
+      address: "789 Peak Road, Denver",
+      dayOff: [{ day: "Sunday", timeRanges: "Closed" }],
+      createdAt: new Date("2022-08-25T11:30:00Z"),
+      updatedAt: new Date("2024-05-15T10:00:00Z"),
+      deletedAt: null,
+    },
+    {
+      clinicName: "Carewell Family Clinic",
+      address: "321 Kindness Blvd, New York",
+      dayOff: [{ day: "Friday", timeRanges: "10:00 AM - 03:00 PM" }],
+      createdAt: new Date("2021-04-12T16:00:00Z"),
+      updatedAt: new Date("2024-07-10T18:20:00Z"),
+      deletedAt: null,
+    },
+    {
+      clinicName: "Green Valley Clinic",
+      address: "654 Forest Lane, Seattle",
+      dayOff: [
+        { day: "Sunday", timeRanges: "Closed" },
+        { day: "Monday", timeRanges: "09:00 AM - 12:00 PM" },
+      ],
+      createdAt: new Date("2020-10-03T07:45:00Z"),
+      updatedAt: new Date("2024-01-12T09:15:00Z"),
+      deletedAt: new Date("2024-06-01T08:00:00Z"),
+    },
+    {
+      clinicName: "Bright Eyes Vision Center",
+      address: "987 Clarity Drive, Miami",
+      dayOff: [{ day: "Saturday", timeRanges: "09:00 AM - 05:00 PM" }],
+      createdAt: new Date("2019-03-18T13:00:00Z"),
+      updatedAt: new Date("2024-09-05T12:30:00Z"),
+      deletedAt: null,
+    },
+  ];
+
   return (
     <div className="p-6">
       <div className="flex gap-5 items-center  mb-6">
         <div className="flex items-center space-x-2 flex-grow ">
           <div className="relative flex-1 ">
-            <Input
-              placeholder="Search Repositories and Projects..."
-              className="pl-8 pr-16"
-            />
+            <Input placeholder="Search Clinic..." className="pl-8 pr-16" />
             <svg
               className="absolute left-2.5 top-2.5 h-5 w-5 text-muted-foreground"
               fill="none"
@@ -78,50 +124,16 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="grid grid-cols-3  gap-4">
-        <ProjectCard
-          name="animepulse"
-          url="animepulse-xi.vercel.app"
-          repository="animepulse"
-          repoOwner="CodeCarlz"
-          lastCommit={{
-            message: "change the overlay top position to 44",
-            timestamp: "33d",
-            branch: "main",
-          }}
-        />
-        <ProjectCard
-          name="code-carlz"
-          url="code-carlz.vercel.app"
-          repository="CodeCarlz"
-          repoOwner="CodeCarlz"
-          lastCommit={{
-            message: "change projectUrl",
-            timestamp: "39d",
-            branch: "main",
-          }}
-        />
-        <ProjectCard
-          name="code-carlz1"
-          url="code-carlz1.vercel.app"
-          repository="CodeCarlz"
-          repoOwner="CodeCarlz"
-          lastCommit={{
-            message: "change projectUrl",
-            timestamp: "44d",
-            branch: "main",
-          }}
-        />
-        <ProjectCard
-          name="animepulse-backend"
-          url="animepulse-backend-mauve.vercel.app"
-          repository="animepulse-backend"
-          repoOwner="CodeCarlz"
-          lastCommit={{
-            message: "Initial commit Created from https://vercel.com/new",
-            timestamp: "275d",
-            branch: "main",
-          }}
-        />
+        {clinics.map((clinic, index) => (
+          <ProjectCard
+            key={index}
+            organizationName={clinic.clinicName}
+            Address={clinic.address}
+            dayOff={clinic.dayOff}
+            createdAt={clinic.createdAt}
+            updatedAt={clinic.updatedAt}
+          />
+        ))}
       </div>
     </div>
   );

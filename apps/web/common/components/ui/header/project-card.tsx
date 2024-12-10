@@ -2,35 +2,42 @@ import { Clock3, Github } from "lucide-react";
 import Link from "next/link";
 import { Card } from "../../shadcn/ui/card";
 
+interface DayOff {
+  day: string;
+  timeRanges: string;
+}
 interface ProjectCardProps {
-  name: string;
-  url: string;
-  repository: string;
-  repoOwner: string;
-  lastCommit: {
-    message: string;
-    timestamp: string;
-    branch: string;
-  };
+  organizationName: string;
+  Address: string;
+  dayOff: DayOff[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export function ProjectCard({
-  name,
-  url,
-  repository,
-  repoOwner,
-  lastCommit,
+  organizationName,
+  Address,
+  dayOff,
+  createdAt,
+  updatedAt,
 }: ProjectCardProps) {
+  function formatDate(date: Date) {
+    const d = new Date(date);
+    const month = (d.getMonth() + 1).toString().padStart(2, "0");
+    const day = d.getDate().toString().padStart(2, "0");
+    const year = d.getFullYear();
+    return `${month} - ${day} - ${year}`;
+  }
   return (
     <Card className="p-4 hover:border-gray-400 transition-colors">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-3">
           <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm">
-            {name.charAt(0).toUpperCase()}
+            {organizationName.charAt(0).toUpperCase()}
           </div>
           <div>
-            <h3 className="font-medium text-sm">{name}</h3>
-            <p className="text-sm text-muted-foreground">{url}</p>
+            <h3 className="font-medium text-sm">{organizationName}</h3>
+            <p className="text-sm text-muted-foreground">{Address}</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -59,22 +66,26 @@ export function ProjectCard({
         </div>
       </div>
       <div className="mt-4">
-        <Link
-          href={`https://github.com/${repoOwner}/${repository}`}
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <Github className="w-4 h-4" />
-          {repoOwner}/{repository}
-        </Link>
-      </div>
-      <div className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
-        <Clock3 className="w-4 h-4" />
-        <span>{lastCommit.message}</span>
-        <span>·</span>
-        <span>{lastCommit.timestamp} ago on</span>
-        <span className="px-1.5 py-0.5 bg-accent rounded text-xs">
-          {lastCommit.branch}
+        <span className="flex flex-col items-start gap-2 text-sm text-muted-foreground hover:text-foreground">
+          {dayOff.map((off) => (
+            <div className="flex gap-3">
+              <span className="text-gray-600 font-semibold">{off.day}</span>
+              <span>{off.timeRanges}</span>
+            </div>
+          ))}
         </span>
+      </div>
+      <div className="mt-3 flex flex-col items-start gap-2 text-sm text-muted-foreground">
+        <div className="flex gap-2 items-center">
+          <Clock3 className="w-4 h-4" />
+          <span className="text-gray-600"> CreatedAt</span> <span>·</span>
+          <span>{formatDate(createdAt)}</span>
+        </div>
+        <div className="flex gap-2 items-center">
+          <Clock3 className="w-4 h-4" />
+          <span className="text-gray-600"> UpdatedAt</span> <span>·</span>
+          <span>{formatDate(updatedAt)}</span>
+        </div>
       </div>
     </Card>
   );
