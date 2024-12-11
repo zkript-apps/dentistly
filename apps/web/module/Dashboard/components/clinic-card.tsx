@@ -1,6 +1,7 @@
-import { Clock3, Github } from "lucide-react";
+import { Activity, Clock3, Github } from "lucide-react";
 import Link from "next/link";
-import { Card } from "../../shadcn/ui/card";
+import { Card } from "../../../common/components/shadcn/ui/card";
+import { EllipsisHorizontalIcon } from "@heroicons/react/20/solid";
 
 interface DayOff {
   day: string;
@@ -14,7 +15,7 @@ interface ProjectCardProps {
   updatedAt: Date;
 }
 
-export function ProjectCard({
+export function ClinicCard({
   organizationName,
   Address,
   dayOff,
@@ -29,7 +30,7 @@ export function ProjectCard({
     return `${month} - ${day} - ${year}`;
   }
   return (
-    <Card className="p-4 hover:border-gray-400 transition-colors">
+    <Card className="px-6 py-4 hover:border-gray-400 transition-colors">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-3">
           <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm">
@@ -42,33 +43,20 @@ export function ProjectCard({
         </div>
         <div className="flex items-center gap-2">
           <button className="p-2 hover:bg-accent rounded-md">
-            <svg
-              className="w-4 h-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M12 5v14M5 12h14" />
-            </svg>
+            <Activity size={15} />
           </button>
           <button className="p-2 hover:bg-accent rounded-md">
-            <svg
-              className="w-4 h-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M12 12h.01M8 12h.01M16 12h.01" />
-            </svg>
+            <EllipsisHorizontalIcon className="w-4 h-4" />
           </button>
         </div>
       </div>
       <div className="mt-4">
-        <span className="flex flex-col items-start gap-2 text-sm text-muted-foreground hover:text-foreground">
+        <span className="flex flex-col items-start gap-2 text-sm text-muted-foreground ">
           {dayOff.map((off, index) => (
-            <div className="flex gap-3" key={index}>
+            <div
+              className="flex gap-3 bg-gray-100 px-2 py-1 rounded-lg hover:text-foreground"
+              key={index}
+            >
               <span className="text-gray-600 font-semibold">{off.day}</span>
               <span>{off.timeRanges}</span>
             </div>
