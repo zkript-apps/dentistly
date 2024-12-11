@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import QueryClientWrapper from "@/common/components/QueryClientWrapper";
 import React from "react";
 import AuthLayout from "@/common/components/AuthLayout";
-import AuthStateProvider from "@/common/components/AuthStateProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +21,7 @@ export default async function AccountLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientWrapper>
-          <AuthStateProvider>
-            <AuthLayout>{children}</AuthLayout>
-          </AuthStateProvider>
+          <AuthLayout>{children}</AuthLayout>
         </QueryClientWrapper>
       </body>
     </html>

@@ -11,19 +11,38 @@ import {
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
 import { useForm } from "react-hook-form";
-
-import useLogin from "./hooks/useLogin";
 import { IUserLogin } from "@/common/types";
 import Link from "next/link";
+import { supabase } from "@/common/libs/supabase-client";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const { register, handleSubmit, watch } = useForm<IUserLogin>();
-  const { mutate } = useLogin();
+  const { register, handleSubmit } = useForm<IUserLogin>();
+
+  const router = useRouter();
   const onSubmit = async (data: IUserLogin) => {
     try {
-      console.log(data);
+      const { data: authData, error } = await supabase.auth.signInWithPassword({
+        email: data.email,
+        password: data.password,
+      });
+
+      if (error) throw error;
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (session) {
+        router.push("/dashboard");
+        console.log("successfully logged");
+      }
     } catch (error) {
-      console.error("Error adding user:", error);
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        console.log("Unknown error");
+      }
     }
   };
 
