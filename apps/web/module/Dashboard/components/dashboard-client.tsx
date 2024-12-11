@@ -32,7 +32,7 @@ export function DashboardClient({ initialClinics }: DashboardClientProps) {
     return initialClinics.filter(
       (clinic) =>
         clinic.clinicName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        clinic.address.toLowerCase().includes(searchTerm.toLowerCase())
+        clinic.address.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [initialClinics, searchTerm]);
 

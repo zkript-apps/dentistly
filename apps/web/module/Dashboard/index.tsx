@@ -1,6 +1,5 @@
 import { DashboardClient } from "./components/dashboard-client";
 
-
 async function getClinics() {
   return [
     {
