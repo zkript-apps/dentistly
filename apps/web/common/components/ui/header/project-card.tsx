@@ -67,8 +67,8 @@ export function ProjectCard({
       </div>
       <div className="mt-4">
         <span className="flex flex-col items-start gap-2 text-sm text-muted-foreground hover:text-foreground">
-          {dayOff.map((off) => (
-            <div className="flex gap-3">
+          {dayOff.map((off, index) => (
+            <div className="flex gap-3" key={index}>
               <span className="text-gray-600 font-semibold">{off.day}</span>
               <span>{off.timeRanges}</span>
             </div>

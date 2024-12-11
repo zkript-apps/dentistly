@@ -125,14 +125,15 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-3  gap-4">
         {clinics.map((clinic, index) => (
-          <ProjectCard
-            key={index}
-            organizationName={clinic.clinicName}
-            Address={clinic.address}
-            dayOff={clinic.dayOff}
-            createdAt={clinic.createdAt}
-            updatedAt={clinic.updatedAt}
-          />
+          <React.Fragment key={index}>
+            <ProjectCard
+              organizationName={clinic.clinicName}
+              Address={clinic.address}
+              dayOff={clinic.dayOff}
+              createdAt={clinic.createdAt}
+              updatedAt={clinic.updatedAt}
+            />
+          </React.Fragment>
         ))}
       </div>
     </div>
