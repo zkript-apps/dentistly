@@ -1,4 +1,4 @@
-import { ChevronDown, Bell, Menu } from "lucide-react";
+import { ChevronDown, Bell, Menu, CircleUserRound } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -10,8 +10,26 @@ import {
 } from "../../shadcn/ui/select";
 import { Button } from "../../shadcn/ui/button";
 import { ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../../shadcn/ui/dropdown-menu";
+import { supabase } from "@/common/libs/supabase-client";
+import { useRouter } from "next/navigation";
 
 export function Header() {
+  const router = useRouter ()
+  const handleLogout = async () => {
+    const {
+      error
+    } = await supabase.auth.signOut();
+    router.push('/')
+  }
+
   return (
     <header className="flex h-14 items-center justify-between  px-4 md:px-6">
       <div className="flex items-center space-x-4">
@@ -86,7 +104,18 @@ export function Header() {
             <span className="absolute right-0 top-0 h-2 w-2 rounded-full bg-blue-600" />
           </div>
 
-          <div className="hidden h-8 w-8 rounded-full bg-[#7C3AED] md:block cursor-pointer" />
+          <div className="hidden h-8 w-8 rounded-full bg-[#7C3AED] md:block cursor-pointer">
+            <DropdownMenu>
+              <DropdownMenuTrigger className="p-0.5 m-0.5 items-stretch">
+                <CircleUserRound />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem ><Button onClick={handleLogout}>Logout</Button></DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-5 w-5" />
           </Button>
