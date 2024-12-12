@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/common/components/shadcn/ui/button";
 import { Card } from "@/common/components/shadcn/ui/card";
 import { Checkbox } from "@/common/components/shadcn/ui/checkbox";
@@ -15,10 +16,64 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/common/components/shadcn/ui/tabs";
+import { toast } from "@/common/components/shadcn/ui/use-toast";
 import Search from "@/common/components/ui/Search";
+import { sendEmail } from "@/common/helpers/send-email";
+import { supabase } from "@/common/libs/supabase-client";
 import { Link, MoreVertical, PlusCircleIcon } from "lucide-react";
+import { NextResponse } from "next/server";
+import { useState } from "react";
 
 const Members = () => {
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const handleInvite = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+     const response = await fetch("/members/api", {
+       method: "POST",
+       headers: {
+         "Content-Type": "application/json",
+       },
+       body: JSON.stringify({
+         email,
+         subject: "Invitation to join Dentistly",
+         body: "You've been invited to join Dentistly. Click here to accept the invitation.",
+       }),
+     });
+      console.log(response);
+      setIsLoading(true);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!email) {
+        toast({
+          title: "Error",
+          description: "Please enter an email address.",
+          variant: "destructive",
+        });
+        return;
+      }
+     
+      toast({
+        title: "Success",
+        description: "Invitation sent successfully.",
+      });
+      setEmail("");
+    } catch (error) {
+      console.error("Error sending invitation:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send invitation. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="p-9 max-h-[85vh] overflow-auto">
       <h1 className="text-xl font-semibold">Members</h1>
@@ -26,7 +81,7 @@ const Members = () => {
       <Card className="py-5 px-6">
         <div className="flex justify-between mt-3 pb-6 border-b">
           <p>Invite new members by email address</p>
-          <Button className="text-xs flex gap-3">
+          <Button className="text-xs flex gap-3" onClick={handleInvite}>
             <Link size={15} />
             Invite Link
           </Button>
@@ -34,7 +89,7 @@ const Members = () => {
         <div className="flex w-full gap-2 mt-6">
           <div className="w-full">
             <p className="">Email Address</p>
-            <Input />
+            <Input value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="w-full">
             <p className="">Role</p>

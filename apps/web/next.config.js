@@ -25,5 +25,6 @@ module.exports = {
   },
   env: {
     API_URL: process.env.NEXT_PUBLIC_DENTISTLY_SUPABASE_URL,
+    POSTMARK_API_KEY: process.env.POSTMARK_API_KEY,
   },
 };
