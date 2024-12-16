@@ -30,7 +30,7 @@ export function ClinicCard({
     return `${month} - ${day} - ${year}`;
   }
   return (
-    <Card className="px-6 py-4 hover:border-gray-400 transition-colors">
+    <Card className="px-6 py-4 hover:border-gray-400 transition-colors h-[13rem]">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-3">
           <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-sm">
