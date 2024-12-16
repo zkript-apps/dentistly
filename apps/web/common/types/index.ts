@@ -77,3 +77,15 @@ export interface IUpdateProcedure {
   procedureName: string;
   description: string;
 }
+
+export interface IOperation {
+  operationId: string;
+  operationName: string;
+  description: string;
+}
+
+export interface IProcedure {
+  procedureId: string;
+  procedureName: string;
+  description: string;
+}
