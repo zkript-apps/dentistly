@@ -19,15 +19,16 @@ import {
 import { MinusCircleIcon, PlusCircleIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { T_ClinicRegister } from "/Zkript/dentistly/packages/contract/src/Clinic/type";
+
 import { addClinic } from "@/common/libs/auth/addclinic";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Z_dayOffs } from "/Zkript/dentistly/packages/contract/src/Clinic/zod";
+
 import { off } from "process";
 import { supabase } from "@/common/libs/supabase-client";
+import { T_ClinicRegister, Z_dayOffs } from "@repo/contract";
 
-export const Clinic = () => {
+export const AddClinic = () => {
   const [scheduleCount, setScheduleCount] = useState(1);
   const [dayoffs, setDayoffs] = useState([
     {
@@ -55,8 +56,7 @@ export const Clinic = () => {
   const onSubmit = async (data: T_ClinicRegister) => {
     try {
       const organizationId = 86;
-      
-      
+
       const validatedDayoffs = Z_dayOffs.array().parse(dayoffs);
       const response = await addClinic(
         organizationId,
@@ -79,7 +79,9 @@ export const Clinic = () => {
     }
   };
 
-  const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
+  const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = async (
+    event
+  ) => {
     event.preventDefault();
     const {
       data: { session },
@@ -88,8 +90,6 @@ export const Clinic = () => {
 
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
-
-
 
     // Convert form data to T_ClinicRegister
     const data: T_ClinicRegister = {
@@ -106,7 +106,7 @@ export const Clinic = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center flex-grow">
       <Card className="mx-auto max-w-xl">
         <CardHeader>
           <CardTitle className="text-xl">Add Clinic</CardTitle>
@@ -224,4 +224,4 @@ export const Clinic = () => {
   );
 };
 
-export default Clinic;
+export default AddClinic;
