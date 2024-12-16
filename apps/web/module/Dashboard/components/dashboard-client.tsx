@@ -33,7 +33,7 @@ export function DashboardClient({ initialClinics }: DashboardClientProps) {
     return initialClinics.filter(
       (clinic) =>
         clinic.clinicName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        clinic.address.toLowerCase().includes(searchTerm.toLowerCase()),
+        clinic.address.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [initialClinics, searchTerm]);
 
@@ -103,7 +103,9 @@ export function DashboardClient({ initialClinics }: DashboardClientProps) {
               </svg>
             </Button>
           </div>
-          <Button>Add New...</Button>
+          <Button asChild>
+            <Link href="/dashboard/clinic/add">New Clinic</Link>
+          </Button>
         </div>
       </div>
       <div className="grid grid-cols-3 gap-4">

@@ -46,7 +46,7 @@ export default function AuthLayout({
 }) {
   const pathname = usePathname();
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-screen">
       <Header />
       <Navigation />
 
