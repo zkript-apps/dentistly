@@ -9,8 +9,8 @@ const ClinicDetails = () => {
   const searchParam = useSearchParams();
   const name = searchParam.get("name");
   return (
-    <div className="flex justify-center max-h-[89vh] overflow-y-scroll">
-      <div className="flex flex-col gap-10 max-w-[70vw]">
+    <div className="flex justify-center max-h-[85vh]  overflow-y-scroll">
+      <div className="flex flex-col gap-10 max-w-[70vw] ">
         <div className="flex justify-between py-10 min-w-[60vw] border-b">
           <div className="font-bold text-2xl">{name}</div>
           <div className="flex gap-2">
@@ -38,7 +38,7 @@ const ClinicDetails = () => {
           </div>
         </div>
 
-        <div >
+        <div>
           <div className="border-2 p-5">
             <Card className="flex justify-center flex-col items-center py-10 px-0 border-dotted ">
               <div className="flex border w-fit h-fit p-6 rounded-full ">
@@ -73,17 +73,15 @@ const ClinicDetails = () => {
 
         <div className="font-bold text-xl border-t py-10 ">Active Branches</div>
         <div className="border-2 p-5">
-            <Card className="flex justify-center flex-col items-center py-10 px-0 border-dotted ">
-              
-              <div className="text-center pt-6 text-muted-foreground font-bold text-2xl">
-                No Preview Deployments
-              </div>
-              <div className="text-center text-muted-foreground font-bold text-sm font-normal pt-5">
+          <Card className="flex justify-center flex-col items-center py-10 px-0 border-dotted ">
+            <div className="text-center pt-6 text-muted-foreground font-bold text-2xl">
+              No Preview Deployments
+            </div>
+            <div className="text-center text-muted-foreground  text-sm font-normal pt-5">
               Commit using our Git connections.
-              </div>
-              
-            </Card>
-          </div>
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
