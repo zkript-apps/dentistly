@@ -10,6 +10,7 @@ import {
   SelectContent,
 } from "@/common/components/shadcn/ui/select";
 import { ClinicCard } from "@/module/Dashboard/components/clinic-card";
+import Link from "next/link";
 import React, { useState, useMemo } from "react";
 
 interface Clinic {
@@ -108,6 +109,7 @@ export function DashboardClient({ initialClinics }: DashboardClientProps) {
       <div className="grid grid-cols-3 gap-4">
         {filteredClinics.map((clinic, index) => (
           <React.Fragment key={index}>
+            <Link href={`/dashboard/clinic?name=${clinic.clinicName}`}>
             <ClinicCard
               organizationName={clinic.clinicName}
               Address={clinic.address}
@@ -115,6 +117,7 @@ export function DashboardClient({ initialClinics }: DashboardClientProps) {
               createdAt={clinic.createdAt}
               updatedAt={clinic.updatedAt}
             />
+            </Link>
           </React.Fragment>
         ))}
       </div>
