@@ -22,13 +22,11 @@ import { supabase } from "@/common/libs/supabase-client";
 import { useRouter } from "next/navigation";
 
 export function Header() {
-  const router = useRouter ()
+  const router = useRouter();
   const handleLogout = async () => {
-    const {
-      error
-    } = await supabase.auth.signOut();
-    router.push('/')
-  }
+    const { error } = await supabase.auth.signOut();
+    router.push("/");
+  };
 
   return (
     <header className="flex h-14 items-center justify-between  px-4 md:px-6">
@@ -110,9 +108,13 @@ export function Header() {
                 <CircleUserRound />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-center">
+                  My Account
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem ><Button onClick={handleLogout}>Logout</Button></DropdownMenuItem>
+                <DropdownMenuItem className="flex justify-center">
+                  <Button onClick={handleLogout}>Logout</Button>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
