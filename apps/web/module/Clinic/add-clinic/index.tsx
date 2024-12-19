@@ -21,20 +21,25 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { addClinic } from "@/common/libs/auth/addclinic";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 import { off } from "process";
 import { supabase } from "@/common/libs/supabase-client";
 import { T_ClinicRegister, Z_dayOffs } from "@repo/contract";
 
+type Dayoff = {
+  day: string;
+  fromTime: string;
+  toTime: string;
+  [key: string]: string; // Index signature for dynamic access
+};
+
 export const AddClinic = () => {
-  const [scheduleCount, setScheduleCount] = useState(1);
-  const [dayoffs, setDayoffs] = useState([
+  const [dayoffs, setDayoffs] = useState<Dayoff[]>([
     {
       day: "Monday",
-      fromTime: "07:00 AM",
-      toTime: "05:00 PM",
+      fromTime: "",
+      toTime: "",
     },
   ]);
   const handleAddScheduleCount = () => {
@@ -44,14 +49,31 @@ export const AddClinic = () => {
       toTime: "",
     };
     setDayoffs((prev) => [...prev, addData]);
-    setScheduleCount((prev) => prev + 1);
   };
 
   const handleMinusScheduleCount = () => {
     setDayoffs((prev) => prev.slice(0, -1));
   };
 
-  const router = useRouter();
+  const handleDayoffUpdate = (
+    index: number,
+    field: keyof Dayoff,
+    value: string,
+    period?: string
+  ) => {
+    setDayoffs((prev) => {
+      const newDayoffs = [...prev];
+      const dayoff = newDayoffs[index];
+      if (dayoff) {
+        if (field === "fromTime" || field === "toTime") {
+          dayoff[field] = value ? `${value} ${period}` : "";
+        } else {
+          dayoff[field] = value;
+        }
+      }
+      return newDayoffs;
+    });
+  };
 
   const onSubmit = async (data: T_ClinicRegister) => {
     try {
@@ -141,9 +163,13 @@ export const AddClinic = () => {
               {dayoffs.map((dayoff, index) => (
                 <div className="flex gap-2 items-center" key={index}>
                   <div>
-                    <Select>
+                    <Select
+                      onValueChange={(value) =>
+                        handleDayoffUpdate(index, "day", value)
+                      }
+                    >
                       <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder={dayoff.day} />
+                        <SelectValue placeholder="Monday" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="monday">Monday</SelectItem>
@@ -160,13 +186,31 @@ export const AddClinic = () => {
                   <div className="grid gap-2">
                     <div className="flex gap-1">
                       <Input
-                        id="timeFrom"
+                        id={`timeFrom-${index}`}
                         type="text"
                         placeholder="From"
                         className="max-w-[80px]"
                         required
+                        value={dayoff.fromTime.split(" ")[0]}
+                        onChange={(e) =>
+                          handleDayoffUpdate(
+                            index,
+                            "fromTime",
+                            e.target.value,
+                            dayoff.fromTime.split(" ")[1] || "AM"
+                          )
+                        }
                       />
-                      <Select>
+                      <Select
+                        onValueChange={(value) =>
+                          handleDayoffUpdate(
+                            index,
+                            "fromTime",
+                            dayoff.fromTime.split(" ")[0] || "",
+                            value
+                          )
+                        }
+                      >
                         <SelectTrigger className="w-[70px]">
                           <SelectValue placeholder="AM" />
                         </SelectTrigger>
@@ -180,13 +224,31 @@ export const AddClinic = () => {
                   <div className="grid gap-2">
                     <div className="flex gap-1">
                       <Input
-                        id="timeFrom"
+                        id={`timeTo-${index}`}
                         type="text"
                         placeholder="To"
                         className="max-w-[80px]"
                         required
+                        value={dayoff.toTime.split(" ")[0]}
+                        onChange={(e) =>
+                          handleDayoffUpdate(
+                            index,
+                            "toTime",
+                            e.target.value,
+                            dayoff.toTime.split(" ")[1] || "PM"
+                          )
+                        }
                       />
-                      <Select>
+                      <Select
+                        onValueChange={(value) =>
+                          handleDayoffUpdate(
+                            index,
+                            "toTime",
+                            dayoff.toTime.split(" ")[0] || "",
+                            value
+                          )
+                        }
+                      >
                         <SelectTrigger className="w-[70px]">
                           <SelectValue placeholder="PM" />
                         </SelectTrigger>
