@@ -1,4 +1,3 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_DENTISTLY_SUPABASE_URL;
@@ -8,7 +7,13 @@ if (!supabaseUrl || !supabaseKey) {
   throw new Error("Missing Supabase environment variables");
 }
 
-export const supabase = createClientComponentClient({
+export const supabase = createClient(
   supabaseUrl,
   supabaseKey,
-});
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+);
