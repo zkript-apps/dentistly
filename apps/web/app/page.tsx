@@ -1,5 +1,3 @@
-"use client";
-import { Button } from "@/common/components/shadcn/ui/button";
 import {
   Card,
   CardContent,
@@ -10,62 +8,36 @@ import {
 } from "@/common/components/shadcn/ui/card";
 import { Input } from "@/common/components/shadcn/ui/input";
 import { Label } from "@/common/components/shadcn/ui/label";
-import { useForm } from "react-hook-form";
-import { IUserLogin } from "@/common/types";
+import { handleLogin } from "./actions";
+import { Button } from "@/common/components/shadcn/ui/button";
 import Link from "next/link";
-import { supabase } from "@/common/libs/supabase-client";
-import { useRouter } from "next/navigation";
+import { cookies } from "next/headers";
+import ErrorMessage from "./components/error-message";
 
-const Login = () => {
-  const { register, handleSubmit } = useForm<IUserLogin>();
-
-  const router = useRouter();
-  const onSubmit = async (data: IUserLogin) => {
-    try {
-      const { data: authData, error } = await supabase.auth.signInWithPassword({
-        email: data.email,
-        password: data.password,
-      });
-
-      if (error) throw error;
-
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (session) {
-        router.push("/dashboard");
-        console.log("successfully logged");
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message);
-      } else {
-        console.log("Unknown error");
-      }
-    }
-  };
-
+export default async function LoginPage() {
+  const cookieStore = cookies();
+  const errorMessage = cookieStore.get("loginError")?.value || "Unknown error";
   return (
+    <div className="flex flex-col w-full">
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      action={handleLogin}
       className="space-y-4"
-      action="#"
-      method="POST"
     >
       <div className="flex justify-center items-center h-screen">
+        <ErrorMessage message={errorMessage} />
         <Card className="w-full max-w-sm">
           <CardHeader>
             <CardTitle className="text-2xl">Login</CardTitle>
             <CardDescription>
-              Enter your email below to login to your account.
+              Enter your email below to Login to your account.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
-                {...register("email")}
+                id="email"
+                name="email"
                 type="email"
                 placeholder="m@example.com"
                 required
@@ -81,7 +53,12 @@ const Login = () => {
                   Forgot your password?
                 </Link>
               </div>
-              <Input {...register("password")} type="password" required />
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+              />
             </div>
           </CardContent>
           <CardFooter>
@@ -92,6 +69,6 @@ const Login = () => {
         </Card>
       </div>
     </form>
+    </div>
   );
 };
-export default Login;
