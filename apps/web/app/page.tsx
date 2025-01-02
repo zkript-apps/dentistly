@@ -13,12 +13,12 @@ import { Button } from "@/common/components/shadcn/ui/button";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import ErrorMessage from "./components/error-message";
-import { redirect } from "next/navigation";
 
 export default async function LoginPage() {
   const cookieStore = cookies();
   const errorMessage = cookieStore.get("loginError")?.value || "Unknown error";
   return (
+    <div className="flex flex-col w-full">
     <form
       action={handleLogin}
       className="space-y-4"
@@ -69,5 +69,6 @@ export default async function LoginPage() {
         </Card>
       </div>
     </form>
+    </div>
   );
 };
