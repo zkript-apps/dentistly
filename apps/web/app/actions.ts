@@ -9,7 +9,6 @@ export async function handleLogin(formData: FormData) {
   const password = formData.get("password") as string;
 
   // const validate = Z_Login.safeParse({ email, password });
-  
 
   // if (!validate.success) {
   //   cookies().set("loginError", "Invalid email or password", {

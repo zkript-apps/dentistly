@@ -1,6 +1,6 @@
-"use client"
-import { useEffect } from 'react'
-import { toast } from "sonner"
+"use client";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 const ErrorMessage = ({ message }: { message: string }) => {
   useEffect(() => {
@@ -10,9 +10,9 @@ const ErrorMessage = ({ message }: { message: string }) => {
         label: "Undo",
         onClick: () => console.log("Undo"),
       },
-    })
-  }, [])
-  return null
-}
+    });
+  }, []);
+  return null;
+};
 
-export default ErrorMessage
+export default ErrorMessage;
